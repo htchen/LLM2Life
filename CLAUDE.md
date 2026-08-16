@@ -41,10 +41,15 @@ others is the main way this repo breaks:
 | Instructor notes | whoever is teaching | `instructor/` |
 
 `instructor/timeline.md` is the **source of truth for timings and lab order**. If a lab grows or
-shrinks, update the timeline first, then propagate. When you change what students actually type,
-the prompt must match verbatim in *both* `workbook/lab-N-*.md` and `site/index.html` — students
-copy from the site and check their work against the workbook, and a mismatch reads as a bug in
-the material.
+shrinks, update the timeline first, then propagate — including the slide-number column, which is
+easy to leave stale. When you change what students actually type, the prompt must match verbatim
+in *both* `workbook/lab-N-*.md` and `site/index.html` — students copy from the site and check
+their work against the workbook, and a mismatch reads as a bug in the material.
+
+`instructor/insights.md` is the **source of truth for the argument** — the four 🧠 segments
+(three 3-minute interludes plus the 12-minute closing). Slides carry only the conclusions; the
+reasoning, the evidence, and the Q&A rebuttals live there. Never edit an insight slide without
+reconciling it with that file, or the speaker ends up defending a claim the notes don't support.
 
 `site/index.html` is published as an Artifact at:
 
@@ -74,6 +79,22 @@ These are verified against the current docs and shape the whole design. Do not s
 - **Lab 2's workflow must carry both `workflow_dispatch` and `permissions: contents: write`.**
   `workflow_dispatch` is non-negotiable: a `schedule:` trigger alone cannot be demonstrated
   inside a workshop, and a scheduled run only fires from the default branch anyway.
+
+## Insight segments: experience first, then name it
+
+Each 🧠 interlude discusses only what the students physically did ten minutes earlier — Lab 1's
+re-prompting, Lab 2's scheduled run, Lab 3's red X and 404. **Order is load-bearing.** This
+audience has no background to evaluate abstract claims about AI and software, but it has total
+authority over what it just felt. Moving any of this material to the opening as a "philosophy"
+section turns it into noise, so don't — no matter how much it looks like framing.
+
+Two consequences when editing:
+
+- A lab step that an interlude depends on is **not** trimmable. Lab 1's "change one thing" step
+  is the fuel for interlude 1; cut it and the segment three minutes later has nothing to point at.
+- The closing argument's honest-limits section (four named limitations) is **not** optional. It
+  is what separates the talk from a sales pitch, and students who hit the 80/20 wall at home
+  without having been warned will conclude they were misled.
 
 ## Student repo shape
 
