@@ -1,0 +1,38 @@
+# 選配：把 `starter/` 發布成範本 repo
+
+**預設流程不需要這個。** Lab 0 讓學員從 https://github.com/new 建空的 repo，
+不依賴講師事先準備任何東西——少一個會在開課前壞掉的環節。
+
+但如果你想讓學員一開始就有 `CLAUDE.md`（會明顯提升產出品質，因為它讓每個學員的
+Claude Code 都知道「使用者沒有程式背景、要做單一檔案、要中文介面」），可以這樣做。
+
+## 值不值得
+
+| | 空 repo（預設） | 範本 repo |
+| --- | --- | --- |
+| 講師課前準備 | 無 | 要建 repo 並開啟 Template |
+| 學員拿到 `CLAUDE.md` | ❌ | ✅ |
+| 壞掉的風險 | 幾乎沒有 | 忘記勾 Template → **全班卡住** |
+
+**30 人以上、或你不是自己開課的人，建議用預設流程。** 一個環節壞掉會拖垮整場。
+
+## 設定步驟（課前做）
+
+1. 把 `starter/` 的內容推成一個新的公開 repo，例如 `my-life-tools-starter`。
+2. 進入該 repo → **Settings** → 在 General 最上面勾選 **Template repository**。
+3. 用無痕視窗打開該 repo，確認看得到綠色的 **Use this template** 按鈕。
+   **看不到就是沒生效**，不要相信自己記得有勾。
+
+## 課堂上改講的內容
+
+`lab-0-setup.md` 的**步驟 2** 換成：
+
+> 1. 打開 `https://github.com/<你的帳號>/my-life-tools-starter`
+> 2. 按綠色的 **Use this template** → **Create a new repository**
+> 3. Repository name 填 `my-life-tools`
+> 4. 選 **Public**
+> 5. 按 **Create repository**
+
+其餘步驟完全不變。注意這條路線**不需要**勾「Add a README file」——範本裡已經有了。
+
+把改動同步到 `site/index.html` 的 Lab 0 區塊，否則學員照著隨堂網站做會對不上。

@@ -1,0 +1,43 @@
+# 參考解：Lab 2 的 GitHub Actions workflow
+#
+# 這份檔案是給「講師救援卡關學員」用的，不要直接發給學員——
+# Lab 2 的價值就在於學員自己用提示詞把它產生出來。
+#
+# 學員的檔案應該放在：.github/workflows/digest.yml
+#
+# 三個關鍵，缺一個現場就會爆：
+#   1. workflow_dispatch      → 沒有它就沒有手動執行按鈕，課堂上等不到 cron
+#   2. permissions: contents: write → 沒有它推不回 repo，最後一步會紅字失敗
+#   3. 檔案要 push 上 GitHub  → 沒 push，Actions 分頁裡什麼都看不到
+
+name: Daily Digest
+
+on:
+  workflow_dispatch: # 手動執行按鈕（課堂上靠這個）
+  schedule:
+    - cron: "0 22 * * *" # UTC 22:00 = 台灣時間隔天早上 6:00
+
+permissions:
+  contents: write # 沒有這行，git push 會失敗
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 產生今天的摘要
+        run: node scripts/fetch-digest.mjs
+
+      - name: 存回 repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add digest/
+          # 沒有變更時 git commit 會回傳非零，用 --quiet 判斷避免整個 job 失敗
+          git diff --staged --quiet || git commit -m "每日摘要 $(TZ=Asia/Taipei date +'%Y-%m-%d')"
+          git push
