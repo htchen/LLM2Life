@@ -23,6 +23,8 @@
 - [`instructor/timeline.md`](instructor/timeline.md) — 時間與順序的唯一真實來源
 - [`instructor/insights.md`](instructor/insights.md) — **論證本身**：四段洞見的完整講稿、
   每個主張為什麼成立、被挑戰時怎麼回。投影片上只有結論，理由在這裡。
+- [`instructor/provisioning-tokens.md`](instructor/provisioning-tokens.md) — 如果要**主辦方統一付費**
+  而不是讓學員自己訂閱 Pro：Console 預付額度 + per-user 花費上限的完整做法與成本估算。
 
 ---
 
