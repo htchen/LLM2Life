@@ -96,6 +96,31 @@ Two consequences when editing:
   is what separates the talk from a sales pitch, and students who hit the 80/20 wall at home
   without having been warned will conclude they were misled.
 
+## `variant-free/`: a second, complete workshop — not a patch on this one
+
+`variant-free/` is the free-account version: claude.ai chat + the GitHub web UI instead of
+Claude Code, for students on free accounts, locked-down lab computers, or zero-budget/remote
+delivery. It duplicates the four-surface structure (slides/workbook/site/instructor) rather than
+branching off this one, because the two versions genuinely disagree at the mechanical level —
+students there hand-execute the "turn text into a file" step this workshop automates — and a
+shared template would force every edit here to be re-justified for a workflow it wasn't written
+for.
+
+Treat it as sibling material with its own drift rules, not a downstream copy to keep patched:
+
+- Its `timeline.md` and `insights.md` are independent documents with a **different thesis**.
+  This workshop's argument is "translation got cheap"; the free variant's is "translation didn't
+  get cheap today, and doing it by hand is what let you see what it actually consists of."
+  Porting an insights edit from one to the other without rereading it will likely contradict the
+  variant's argument rather than support it.
+- Its prompts are **not** required to match this workshop's verbatim — every prompt there ends
+  with an extra sentence demanding the complete file, which is load-bearing there and pointless
+  here. Judge `variant-free/` prompt changes against its own workbook/site pair, per its own
+  `README.md`, not against this repo's.
+- When a Lab's *scope* changes here (a feature added or cut, not just wording), check whether
+  `variant-free/` needs the same scope change — but expect the prompt text and step mechanics to
+  diverge, not match.
+
 ## Student repo shape
 
 Everything students build goes in **one** repo (`my-life-tools`) with one folder per lab, so

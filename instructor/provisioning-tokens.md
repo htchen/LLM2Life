@@ -55,8 +55,9 @@ Pro 約 US$17–20／人，30 人就是 $510–600；Console 額度按用量算�
 或線上開課且無法確認學員裝置。這時它是一堂**誠實可行的課**，只是要換個標題——
 「用 AI 和 GitHub 做出你的第一個網站」，而不是「用 Claude Code 打造生活小工具」。
 
-**需要這個版本的話跟我說**，教材要改的幅度不小（Lab 1／3 的操作步驟、
-投影片的核心對比、以及「它有手」那一段論證）。
+**這個版本已經完整寫好了**，見 [`../variant-free/`](../variant-free/)——
+完整的 slides／workbook／site／instructor 自成一套，不是這份教材改幾個字。
+隨堂網站：https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1
 
 ---
 

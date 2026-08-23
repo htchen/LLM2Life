@@ -4,7 +4,14 @@
 學員用自己的 GitHub 帳號和 Claude 帳號，在課堂上做出三個能用的小工具，
 最後拿到一個公開網址。
 
-**隨堂網站（學員用）：** https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289
+**隨堂網站（學員用，付費版）：** https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289
+
+> 🆓 **沒有付費方案、鎖死的電腦教室、或完全沒有預算？**
+> 有一個**免費變體**：同一個三小時骨架、同一組三個 Lab，用 claude.ai 免費聊天 +
+> GitHub 網頁介面取代 Claude Code，學員親手做「複製貼上存檔」那一步。
+> 見 [`variant-free/`](variant-free/)（[隨堂網站](https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1)）。
+> **免費帳號本身就無法使用 Claude Code**——換任何模型都一樣，這不是模型的限制，
+> 是方案的限制，見 [`instructor/provisioning-tokens.md`](instructor/provisioning-tokens.md)。
 
 ---
 
@@ -17,6 +24,7 @@
 | `site/` | 學員 | 隨堂網站原始檔（發布成上面那個網址） |
 | `instructor/` | 講師 | 流程表、**洞見講稿**、課前通知信、急救手冊、參考解 |
 | `starter/` | 選配 | 學員 repo 的範本（含 `CLAUDE.md`） |
+| `variant-free/` | 講師 | **免費變體**的完整教材（slides/workbook/site/instructor 自成一套） |
 
 **先讀這兩份：**
 
@@ -112,3 +120,7 @@ npm run slides:watch # 邊改邊看
 - 動到時間或順序 → 先改 `instructor/timeline.md`，再往下同步
 - 動到學員要貼的提示詞 → `workbook/` 和 `site/index.html` **必須逐字一致**
 - 改完 `site/index.html` → 重新發布到**原本那個網址**（用 `url` 參數），不要產生新的
+- **`variant-free/` 是獨立的一套**，有自己的 `timeline.md`／`insights.md`／
+  `site/index.html`（[另一個網址](https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1)）。
+  付費版改了 Lab 內容，通常 `variant-free/` 也要跟著改——但**不要**假設兩邊的提示詞要逐字一致，
+  免費版每個提示詞結尾都多一句「請給我完整程式碼」，這是刻意的差異，不是要修掉的不一致。

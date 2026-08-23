@@ -1,0 +1,960 @@
+<title>用 AI 和 GitHub 做出你的第一個網站（免費版）— 隨堂手冊</title>
+
+<style>
+  :root {
+    --ground: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef0f4;
+    --ink: #151a21;
+    --ink-2: #3d4753;
+    --muted: #6b7684;
+    --line: #dde1e8;
+    --line-2: #c9cfda;
+    --accent: #2f4a7c;
+    --accent-soft: #e6ecf7;
+    --accent-ink: #23395e;
+    --ok: #2b7a4b;
+    --ok-soft: #e3f2e8;
+    --warn: #b4531c;
+    --warn-soft: #fcece1;
+    --free: #6a4fb5;
+    --free-soft: #ece7f8;
+    --code-bg: #171c24;
+    --code-ink: #e9edf3;
+    --shadow: 0 1px 2px rgba(20, 26, 34, .05), 0 8px 24px -12px rgba(20, 26, 34, .18);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0e1116;
+      --surface: #161b22;
+      --surface-2: #1d232c;
+      --ink: #e8ecf2;
+      --ink-2: #b9c2ce;
+      --muted: #8b96a5;
+      --line: #262d38;
+      --line-2: #333c49;
+      --accent: #92aee2;
+      --accent-soft: #1b2534;
+      --accent-ink: #b9ccf0;
+      --ok: #63c089;
+      --ok-soft: #14251b;
+      --warn: #e2905b;
+      --warn-soft: #2a1c12;
+      --free: #b6a3ec;
+      --free-soft: #241c38;
+      --code-bg: #0a0d12;
+      --code-ink: #e4e9f0;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --ground: #f5f6f8; --surface: #ffffff; --surface-2: #eef0f4;
+    --ink: #151a21; --ink-2: #3d4753; --muted: #6b7684;
+    --line: #dde1e8; --line-2: #c9cfda;
+    --accent: #2f4a7c; --accent-soft: #e6ecf7; --accent-ink: #23395e;
+    --ok: #2b7a4b; --ok-soft: #e3f2e8;
+    --warn: #b4531c; --warn-soft: #fcece1;
+    --free: #6a4fb5; --free-soft: #ece7f8;
+    --code-bg: #171c24; --code-ink: #e9edf3;
+    --shadow: 0 1px 2px rgba(20, 26, 34, .05), 0 8px 24px -12px rgba(20, 26, 34, .18);
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0e1116; --surface: #161b22; --surface-2: #1d232c;
+    --ink: #e8ecf2; --ink-2: #b9c2ce; --muted: #8b96a5;
+    --line: #262d38; --line-2: #333c49;
+    --accent: #92aee2; --accent-soft: #1b2534; --accent-ink: #b9ccf0;
+    --ok: #63c089; --ok-soft: #14251b;
+    --warn: #e2905b; --warn-soft: #2a1c12;
+    --free: #b6a3ec; --free-soft: #241c38;
+    --code-bg: #0a0d12; --code-ink: #e4e9f0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans TC", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 96px; }
+
+  /* ---------- masthead ---------- */
+  .mast { padding: 56px 0 36px; border-bottom: 1px solid var(--line); }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+  .eyebrow {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+  .free-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: .8rem; font-weight: 800; letter-spacing: .04em;
+    background: var(--free-soft); color: var(--free);
+    border: 1px solid var(--free); border-radius: 999px; padding: 3px 12px;
+  }
+  .mast h1 {
+    margin: 0 0 16px; font-size: clamp(2rem, 5.2vw, 3.05rem); font-weight: 800;
+    letter-spacing: -.025em; line-height: 1.2; text-wrap: balance;
+  }
+  .mast p { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 1.08rem; }
+  .arc {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-top: 26px; font-size: .96rem; color: var(--muted);
+  }
+  .arc b { color: var(--ink); font-weight: 700; }
+  .arc span[aria-hidden] { color: var(--line-2); }
+
+  /* ---------- layout ---------- */
+  .cols { display: grid; grid-template-columns: 232px 1fr; gap: 56px; align-items: start; }
+
+  .rail { position: sticky; top: 24px; padding-top: 40px; }
+  .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .rail a {
+    display: flex; align-items: center; gap: 12px; padding: 9px 12px;
+    border-radius: 9px; text-decoration: none; color: var(--ink-2);
+    font-size: .95rem; font-weight: 600; border: 1px solid transparent;
+  }
+  .rail a:hover { background: var(--surface-2); color: var(--ink); }
+  .rail a.on { background: var(--accent-soft); color: var(--accent-ink); border-color: var(--line-2); }
+  .rail .n {
+    flex: none; width: 25px; height: 25px; border-radius: 50%;
+    display: grid; place-items: center; font-size: .78rem; font-weight: 800;
+    background: var(--surface-2); color: var(--muted); border: 1px solid var(--line-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .rail a.on .n { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+  .rail a.done .n { background: var(--ok); color: #fff; border-color: var(--ok); }
+  .rail .tick { margin-left: auto; color: var(--ok); font-weight: 800; opacity: 0; }
+  .rail a.done .tick { opacity: 1; }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 40px; scroll-margin-top: 20px; }
+  section > h2 {
+    margin: 0 0 6px; font-size: clamp(1.45rem, 3vw, 1.95rem); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  .lede { margin: 0 0 24px; color: var(--muted); font-size: 1rem; }
+  .mins {
+    display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+    background: var(--surface-2); border: 1px solid var(--line);
+    font-size: .78rem; font-weight: 700; color: var(--muted); vertical-align: middle;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 24px; margin: 16px 0;
+    box-shadow: var(--shadow);
+  }
+  .card > :first-child { margin-top: 0; }
+  .card > :last-child { margin-bottom: 0; }
+  .card h3 { margin: 0 0 10px; font-size: 1.08rem; font-weight: 700; letter-spacing: -.01em; }
+
+  .step-h {
+    display: flex; align-items: baseline; gap: 11px;
+    margin: 30px 0 10px; font-size: 1.14rem; font-weight: 700; letter-spacing: -.01em;
+  }
+  .step-h .sn {
+    flex: none; font-size: .74rem; font-weight: 800; color: var(--accent-ink);
+    background: var(--accent-soft); border: 1px solid var(--line-2);
+    border-radius: 6px; padding: 2px 8px; letter-spacing: .06em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 14px; padding-left: 1.35em; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .89em; background: var(--surface-2); border: 1px solid var(--line);
+    padding: 1px 6px; border-radius: 5px; word-break: break-word;
+  }
+  kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .82em;
+    background: var(--surface-2); border: 1px solid var(--line-2);
+    border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px;
+  }
+  strong { font-weight: 700; }
+
+  /* ---------- prompt blocks ---------- */
+  .prompt { margin: 14px 0 20px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-2); }
+  .prompt-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: var(--surface-2); padding: 8px 10px 8px 15px; border-bottom: 1px solid var(--line);
+  }
+  .prompt-bar span {
+    font-size: .76rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .copy {
+    font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer;
+    background: var(--accent); color: #fff; border: 1px solid var(--accent);
+    padding: 5px 15px; border-radius: 8px; white-space: nowrap;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .copy,
+    :root:not([data-theme="light"]) .rail a.on .n { color: #0e1116; }
+  }
+  :root[data-theme="dark"] .copy, :root[data-theme="dark"] .rail a.on .n { color: #0e1116; }
+  .copy:hover { filter: brightness(1.08); }
+  .copy:active { transform: translateY(1px); }
+  .copy.done { background: var(--ok); border-color: var(--ok); }
+  .prompt pre {
+    margin: 0; padding: 18px 20px; background: var(--code-bg); color: var(--code-ink);
+    overflow-x: auto; font-size: .93rem; line-height: 1.72;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    white-space: pre-wrap; word-break: break-word;
+  }
+
+  /* ---------- callouts ---------- */
+  .note { border-radius: var(--radius); padding: 16px 20px; margin: 18px 0; border: 1px solid; }
+  .note > :first-child { margin-top: 0; }
+  .note > :last-child { margin-bottom: 0; }
+  .note h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 800; letter-spacing: -.01em; }
+  .warn-box { background: var(--warn-soft); border-color: var(--warn); color: var(--ink); }
+  .warn-box h3 { color: var(--warn); }
+  .ok-box { background: var(--ok-soft); border-color: var(--ok); }
+  .ok-box h3 { color: var(--ok); }
+  .free-box { background: var(--free-soft); border-color: var(--free); }
+  .free-box h3 { color: var(--free); }
+
+  /* ---------- checkpoints ---------- */
+  .check { background: var(--surface); border: 1px solid var(--ok); border-radius: var(--radius); padding: 18px 22px; margin: 22px 0; }
+  .check h3 { margin: 0 0 12px; font-size: 1rem; font-weight: 800; color: var(--ok); }
+  .check label {
+    display: flex; gap: 11px; align-items: flex-start; cursor: pointer;
+    padding: 7px 0; border-top: 1px solid var(--line); line-height: 1.6;
+  }
+  .check label:first-of-type { border-top: 0; }
+  .check input { flex: none; width: 19px; height: 19px; margin: 4px 0 0; accent-color: var(--ok); cursor: pointer; }
+  .check input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-2); }
+
+  /* ---------- tables ---------- */
+  .tw { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: .95rem; }
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: var(--surface-2); font-weight: 700; font-size: .86rem; letter-spacing: .03em; color: var(--ink-2); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td code { white-space: nowrap; }
+
+  /* ---------- details ---------- */
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); margin: 18px 0; overflow: hidden; }
+  summary { cursor: pointer; padding: 14px 20px; font-weight: 700; font-size: .98rem; list-style: none; display: flex; align-items: center; gap: 9px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "▸"; color: var(--muted); font-size: .9em; }
+  details[open] summary { border-bottom: 1px solid var(--line); }
+  details[open] summary::before { content: "▾"; }
+  .details-body { padding: 16px 20px 4px; }
+
+  /* ---------- tabs (OS picker) ---------- */
+  .ostabs { display: flex; gap: 8px; margin: 16px 0 -1px; }
+  .ostab {
+    font: inherit; font-size: .88rem; font-weight: 700; cursor: pointer;
+    background: var(--surface); color: var(--ink-2); border: 1px solid var(--line);
+    border-bottom: none; padding: 8px 18px; border-radius: 10px 10px 0 0;
+  }
+  .ostab.on { background: var(--surface); color: var(--accent-ink); border-color: var(--line-2); position: relative; }
+  .ostab.on::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--surface);
+  }
+  .ospanel { display: none; background: var(--surface); border: 1px solid var(--line-2); border-radius: 0 10px 10px 10px; padding: 20px; margin-bottom: 16px; }
+  .ospanel.on { display: block; }
+  .ospanel ol { margin-bottom: 0; }
+
+  /* ---------- cheatsheet ---------- */
+  .lines { display: grid; gap: 10px; margin: 16px 0; }
+  .line {
+    display: flex; align-items: center; gap: 12px; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 10px; padding: 10px 10px 10px 16px;
+  }
+  .line code {
+    flex: 1; background: transparent; border: 0; padding: 0;
+    font-size: .93rem; color: var(--ink); word-break: break-word; white-space: normal;
+  }
+  .line .copy { padding: 4px 12px; font-size: .8rem; }
+
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+
+  .formula {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    font-size: 1.06rem; font-weight: 700; margin: 4px 0 6px;
+  }
+  .formula i { font-style: normal; background: var(--accent-soft); color: var(--accent-ink);
+    border: 1px solid var(--line-2); border-radius: 8px; padding: 4px 12px; }
+  .formula b { color: var(--muted); font-weight: 700; }
+
+  .loop {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+    font-size: 1.05rem; font-weight: 800; margin: 10px 0 4px;
+  }
+  .loop i { font-style: normal; background: var(--free-soft); color: var(--free);
+    border: 1px solid var(--free); border-radius: 8px; padding: 6px 14px; }
+  .loop b { color: var(--line-2); font-weight: 400; }
+
+  footer { margin-top: 64px; padding-top: 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: .93rem; }
+
+  :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  @media (max-width: 900px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px 72px; }
+    .cols { grid-template-columns: 1fr; gap: 0; }
+    .rail {
+      position: sticky; top: 0; z-index: 20; padding: 10px 0;
+      background: var(--ground); border-bottom: 1px solid var(--line);
+      margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+    }
+    .rail ol { flex-direction: row; overflow-x: auto; gap: 7px; padding-bottom: 2px; }
+    .rail a { border: 1px solid var(--line); background: var(--surface); white-space: nowrap; padding: 6px 12px; font-size: .88rem; }
+    .rail .n { width: 21px; height: 21px; font-size: .7rem; }
+    .rail .tick { display: none; }
+    .mast { padding: 32px 0 24px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="badges">
+      <span class="eyebrow">三小時實作工作坊 · 隨堂手冊</span>
+      <span class="free-badge">🆓 免費版 · 不用付費、不用安裝</span>
+    </div>
+    <h1>用 AI 和 GitHub 做出你的第一個網站</h1>
+    <p>這一頁是你今天的地圖。所有要貼的話都在這裡，按一下就複製。<strong>不需要程式背景，不用付費，不用裝任何軟體。</strong></p>
+    <div class="arc">
+      <b>在你電腦上能跑</b><span aria-hidden="true">→</span>
+      <b>睡覺時它自己跑</b><span aria-hidden="true">→</span>
+      <b>全世界都打得開</b>
+    </div>
+  </header>
+
+  <div class="cols">
+
+    <nav class="rail" aria-label="章節">
+      <ol>
+        <li><a href="#start" class="on"><span class="n">!</span>開始之前<span class="tick">✓</span></a></li>
+        <li><a href="#lab0"><span class="n">0</span>準備工具<span class="tick">✓</span></a></li>
+        <li><a href="#lab1"><span class="n">1</span>記帳小工具<span class="tick">✓</span></a></li>
+        <li><a href="#lab2"><span class="n">2</span>每日自動摘要<span class="tick">✓</span></a></li>
+        <li><a href="#lab3"><span class="n">3</span>上線！<span class="tick">✓</span></a></li>
+        <li><a href="#stuck"><span class="n">?</span>卡住了<span class="tick">✓</span></a></li>
+        <li><a href="#ideas"><span class="n">◆</span>三個想法<span class="tick">✓</span></a></li>
+        <li><a href="#cheat"><span class="n">★</span>小抄<span class="tick">✓</span></a></li>
+      </ol>
+    </nav>
+
+    <main>
+
+      <!-- ============ 開始之前 ============ -->
+      <section id="start">
+        <h2>開始之前</h2>
+        <p class="lede">兩分鐘認識今天的動作。這個版本跟「用 Claude Code」的版本只差一件事。</p>
+
+        <div class="note free-box">
+          <h3>🆓 今天完全免費，代價是要親手做一步</h3>
+          <p>Claude Code 會直接幫你把程式碼寫成檔案、打開瀏覽器。今天沒有這個功能——
+          <strong>你需要自己把 AI 給的文字變成一個真的檔案。</strong>好消息是這個技能只要學一次，
+          之後整場都在重複同一招。</p>
+          <p style="margin-bottom:0">四個步驟，今天會重複很多次：</p>
+          <div class="loop"><i>問</i><b>→</b><i>複製</i><b>→</b><i>存檔</i><b>→</b><i>打開</i></div>
+        </div>
+
+        <div class="note warn-box">
+          <h3>⚠️ 登入 claude.ai 後，請不要點 Code 分頁</h3>
+          <p style="margin-bottom:0">畫面上方如果看到一個 <strong>Code</strong> 分頁，那是需要付費的功能。
+          我們今天只用中間可以打字的<strong>一般聊天視窗</strong>，跟平常跟 AI 聊天一樣。</p>
+        </div>
+
+        <div class="check" data-cp>
+          <h3>✅ 開始之前</h3>
+          <label><input type="checkbox" id="c-s1"><span>我能登入 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>，看得到聊天畫面</span></label>
+          <label><input type="checkbox" id="c-s2"><span>我能登入 <a href="https://github.com" target="_blank" rel="noopener">github.com</a>，而且信箱已經驗證</span></label>
+          <label><input type="checkbox" id="c-s3"><span>手機在身邊（最後一段會用到）</span></label>
+        </div>
+      </section>
+
+      <!-- ============ Lab 0 ============ -->
+      <section id="lab0">
+        <h2>Lab 0 · 把工具準備好<span class="mins">25 分鐘</span></h2>
+        <p class="lede">今天最重要的技能在這裡練一次，後面三個 Lab 都是重複它。</p>
+
+        <div class="step-h"><span class="sn">步驟 1</span>兩個帳號</div>
+        <ul>
+          <li>到 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> 用 Email 或 Google 帳號註冊，<strong>免費方案就夠了</strong></li>
+          <li>到 <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> 註冊，<strong>記得收信驗證信箱</strong></li>
+        </ul>
+
+        <div class="step-h"><span class="sn">步驟 2</span>建立你的 repo</div>
+        <p>打開 <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>，只要填三個地方：</p>
+        <div class="tw"><table>
+          <thead><tr><th>欄位</th><th>填什麼</th></tr></thead>
+          <tbody>
+            <tr><td>Repository name</td><td><code>my-life-tools</code></td></tr>
+            <tr><td>Public / Private</td><td><strong>Public</strong> ⚠️（要往下捲才看得到）</td></tr>
+            <tr><td>Add a README file</td><td><strong>打勾</strong> ✅</td></tr>
+          </tbody>
+        </table></div>
+
+        <div class="step-h"><span class="sn">步驟 3</span>學會「把文字變成檔案」⭐</div>
+        <p>複製這段測試文字，等一下要貼：</p>
+        <div class="prompt">
+          <div class="prompt-bar"><span>測試文字</span><button class="copy" type="button">複製</button></div>
+          <pre>&lt;h1&gt;Hello, 我做出來了！&lt;/h1&gt;</pre>
+        </div>
+
+        <div class="ostabs" role="tablist">
+          <button class="ostab on" type="button" data-os="win">Windows（記事本）</button>
+          <button class="ostab" type="button" data-os="mac">Mac（文字編輯）</button>
+        </div>
+        <div class="ospanel on" data-os="win">
+          <ol>
+            <li>開始選單搜尋「<strong>記事本</strong>」打開</li>
+            <li>貼上上面那段測試文字</li>
+            <li>上方選單 <strong>檔案 → 另存新檔</strong></li>
+            <li><strong>「存檔類型」選「所有檔案 (*.*)」</strong>——這步最容易漏掉</li>
+            <li>檔案名稱打 <code>test.html</code>（要包含 <code>.html</code>），存到桌面</li>
+            <li>到桌面<strong>滑鼠雙擊</strong>那個檔案</li>
+          </ol>
+          <p style="margin-bottom:0"><strong>你應該會看到：</strong>瀏覽器打開，顯示「Hello, 我做出來了！」</p>
+        </div>
+        <div class="ospanel" data-os="mac">
+          <ol>
+            <li><code>Cmd + Space</code> 打開 Spotlight，搜尋「<strong>文字編輯</strong>」打開</li>
+            <li><strong>先做這步，不然會存壞：</strong>上方選單 <strong>格式 → 製作純文字</strong>（<code>Shift+Cmd+T</code>）</li>
+            <li>貼上上面那段測試文字</li>
+            <li>上方選單 <strong>檔案 → 儲存</strong></li>
+            <li>檔案名稱打 <code>test.html</code>，存到桌面</li>
+            <li>到桌面<strong>滑鼠雙擊</strong>那個檔案</li>
+          </ol>
+          <p style="margin-bottom:0"><strong>你應該會看到：</strong>瀏覽器打開，顯示「Hello, 我做出來了！」</p>
+        </div>
+
+        <div class="note warn-box">
+          <h3>⚠️ 兩個最容易踩的坑</h3>
+          <p><strong>Windows：</strong>雙擊打開的是記事本不是瀏覽器？代表存成了 <code>test.html.txt</code>。
+          回存檔那步，「存檔類型」一定要選「所有檔案」。</p>
+          <p style="margin-bottom:0"><strong>Mac：</strong>打開是一堆奇怪符號？代表漏了「製作純文字」那步。
+          重新開新檔案，記得先按 <code>Shift+Cmd+T</code>。</p>
+        </div>
+
+        <div class="check" data-cp>
+          <h3>✅ Lab 0 檢查點</h3>
+          <label><input type="checkbox" id="c-0a"><span>claude.ai 能登入，看得到聊天畫面</span></label>
+          <label><input type="checkbox" id="c-0b"><span>GitHub repo <code>my-life-tools</code> 建好了，是 <strong>Public</strong></span></label>
+          <label><input type="checkbox" id="c-0c"><span><strong>雙擊 test.html，瀏覽器打開顯示「Hello」</strong></span></label>
+        </div>
+      </section>
+
+      <!-- ============ Lab 1 ============ -->
+      <section id="lab1">
+        <h2>Lab 1 · 記帳小工具<span class="mins">40 分鐘</span></h2>
+        <p class="lede">記帳只是題目。真正要學的是怎麼把想法講清楚，以及怎麼把它的話變成真的東西。</p>
+
+        <div class="card">
+          <h3>講話的公式（今天多一句）</h3>
+          <div class="formula"><i>我要做什麼</i><b>+</b><i>有哪些功能</i><b>+</b><i>我要看到什麼</i><b>+</b><i>有什麼限制</i><b>+</b><i>請給我完整程式碼</i></div>
+          <p style="margin-bottom:0;color:var(--muted)">最後那句今天一定要加——AI 有時候會用「...」偷懶帶過，這句話能防住這件事。</p>
+        </div>
+
+        <div class="step-h"><span class="sn">步驟 1</span>問 → 貼 → 存 → 開</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>貼給 claude.ai</span><button class="copy" type="button">複製</button></div>
+          <pre>做一個記帳小工具，單一個 index.html 檔案就好，不要用任何套件。
+功能：
+1. 可以輸入金額、項目名稱，按一下就新增一筆
+2. 下面列出所有紀錄，每一筆可以刪掉
+3. 最上面顯示這個月的總花費
+4. 資料存在瀏覽器裡，關掉再打開還在
+畫面請做得乾淨好看，中文介面，手機上也要能用。
+請直接給我完整、可以存成 index.html 直接打開使用的程式碼，不要省略任何部分。</pre>
+        </div>
+        <p>存成 <code>expenses.html</code>，雙擊打開，實際輸入幾筆試試看，重新整理確認資料還在。</p>
+
+        <div class="step-h"><span class="sn">步驟 2</span>改成你想要的樣子 ⭐</div>
+        <div class="note warn-box">
+          <h3>這一步比第一版更重要</h3>
+          <p style="margin-bottom:0"><strong>不滿意就再講一次，不用重來。</strong>因為它每次給你「整份完整檔案」，
+          你只要「全選蓋掉、存檔、重新整理」——不用自己找哪個字要改。</p>
+        </div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>例如加分類</span><button class="copy" type="button">複製</button></div>
+          <pre>幫我加上「分類」功能：新增的時候可以選餐飲、交通、購物、其他，
+列表上用不同顏色的標籤顯示，最上面再加一個各分類的小計。
+請一樣給我完整、可以直接存成檔案使用的程式碼，不要只給片段。</pre>
+        </div>
+
+        <div class="card">
+          <h3>換掉舊版本，四步驟</h3>
+          <div class="loop"><i>複製新版本</i><b>→</b><i>全選（Ctrl/Cmd+A）</i><b>→</b><i>貼上蓋掉</i><b>→</b><i>存檔、重新整理</i></div>
+        </div>
+
+        <div class="step-h"><span class="sn">步驟 3</span>存回 GitHub</div>
+        <ol>
+          <li>你的 repo → <strong>Add file → Create new file</strong></li>
+          <li>檔名打 <code>expenses/index.html</code>（打斜線自動建資料夾）</li>
+          <li>把電腦裡檔案的內容整段貼進編輯框</li>
+          <li><strong>Commit changes</strong></li>
+        </ol>
+
+        <div class="check" data-cp>
+          <h3>✅ Lab 1 檢查點</h3>
+          <label><input type="checkbox" id="c-1a"><span>能新增、能刪除，<strong>重新整理後資料還在</strong></span></label>
+          <label><input type="checkbox" id="c-1b"><span>GitHub 上看得到 <code>expenses/index.html</code></span></label>
+        </div>
+
+        <details>
+          <summary>落後了？貼這段，一次做完</summary>
+          <div class="details-body">
+            <div class="prompt">
+              <div class="prompt-bar"><span>追進度</span><button class="copy" type="button">複製</button></div>
+              <pre>做一個記帳小工具，單一個 index.html 檔案，不用套件。
+可以新增金額和項目、可以刪除、最上面顯示總花費、資料存在瀏覽器裡。
+中文介面、手機能用。請給我完整、可以直接存成檔案使用的程式碼，不要省略。</pre>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ Lab 2 ============ -->
+      <section id="lab2">
+        <h2>Lab 2 · 每天自動幫你做事<span class="mins">30 分鐘</span></h2>
+        <p class="lede">這一段幾乎跟付費版一樣——因為 GitHub Actions 不在乎檔案是怎麼放上去的。</p>
+
+        <div class="card">
+          <h3>GitHub Actions 是什麼</h3>
+          <p>想像 GitHub 免費借你一台電腦，放在雲端。你寫一張紙條給它：<strong>「每天早上 6 點，幫我做這件事。」</strong></p>
+          <p style="margin-bottom:0">然後它就真的會做。<strong>用滑鼠複製貼上，跟用最先進的工具自動寫進去，對 GitHub 來說是同一件事。</strong></p>
+        </div>
+
+        <div class="step-h"><span class="sn">步驟 1</span>跟 Claude 要兩個檔案</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>貼給 claude.ai</span><button class="copy" type="button">複製</button></div>
+          <pre>我要一個每天自動執行的功能，請用 GitHub Actions 做：
+1. 每天台灣時間早上 6 點自動執行
+2. 抓 Google 新聞的 RSS（繁體中文台灣版），取前 5 則標題和連結
+3. 存成 digest/YYYY-MM-DD.md 這樣的檔案，然後自動 commit 回這個 repo
+
+要求：
+- 一定要能手動按按鈕執行（workflow_dispatch），我今天上課就要看到結果
+- workflow 要有 contents: write 權限，不然推不回來
+- 不要用任何 npm 套件，用 Node 內建的功能就好
+
+我會用複製貼上的方式把檔案放到 GitHub 網頁上，不是用電腦本機操作。
+請分成兩個檔案：
+一個是 .github/workflows/digest.yml
+一個是 scripts/fetch-digest.mjs
+請分別給我這兩個檔案完整、可以直接複製貼上使用的內容。</pre>
+        </div>
+
+        <div class="step-h"><span class="sn">步驟 2</span>把兩個檔案貼到 GitHub</div>
+        <p><strong>重複兩次</strong>「Add file → Create new file」：</p>
+        <div class="tw"><table>
+          <thead><tr><th>檔名（貼在 Name your file）</th><th>內容</th></tr></thead>
+          <tbody>
+            <tr><td><code>.github/workflows/digest.yml</code></td><td>Claude 給的 digest.yml</td></tr>
+            <tr><td><code>scripts/fetch-digest.mjs</code></td><td>Claude 給的 fetch-digest.mjs</td></tr>
+          </tbody>
+        </table></div>
+        <p>每次都是：Add file → Create new file → 打路徑 → 貼內容 → Commit changes。</p>
+
+        <div class="step-h"><span class="sn">步驟 3</span>按下按鈕，看它跑</div>
+        <ol>
+          <li>你的 repo → <strong>Actions</strong> 分頁</li>
+          <li>左邊點你的 workflow（大概叫 <code>Daily Digest</code>）</li>
+          <li>右邊按 <strong>Run workflow</strong> → 再按綠色的 <strong>Run workflow</strong></li>
+        </ol>
+        <p>🟡 黃色轉圈圈 → 大約 30 秒 → ✅ 綠色打勾。回 repo 首頁按 <kbd>F5</kbd>，會多出 <code>digest/今天日期.md</code>。</p>
+
+        <div class="note ok-box">
+          <h3>這份檔案不是你放進去的</h3>
+          <p style="margin-bottom:0">是那台雲端電腦幫你放的——<strong>跟你今天用什麼工具建立它完全無關</strong>。
+          GitHub 收到那張紙條的時候，根本不知道也不在乎它是誰貼上去的。</p>
+        </div>
+
+        <div class="check" data-cp>
+          <h3>✅ Lab 2 檢查點</h3>
+          <label><input type="checkbox" id="c-2a"><span>Actions 分頁有一列<strong>綠色打勾</strong> ✅</span></label>
+          <label><input type="checkbox" id="c-2b"><span>repo 裡有 <code>digest/今天日期.md</code>，點得進去</span></label>
+        </div>
+
+        <details>
+          <summary>變成紅色 ✗ 了？（很正常，這是好事）</summary>
+          <div class="details-body">
+            <p>點紅色那一列 → 點紅色 ✗ 的步驟 → <strong>把錯誤訊息整段複製</strong> → 貼回聊天視窗：</p>
+            <div class="prompt">
+              <div class="prompt-bar"><span>萬用修復</span><button class="copy" type="button">複製</button></div>
+              <pre>我的 GitHub Actions 失敗了，錯誤訊息是：
+（在這裡貼上）
+請告訴我哪個檔案要改，並給我修好之後的完整內容。</pre>
+            </div>
+            <p style="margin-bottom:0">拿到回答後，回 GitHub 該檔案頁面，點右上角<strong>鉛筆圖示</strong>編輯，全選覆蓋，Commit changes。</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ Lab 3 ============ -->
+      <section id="lab3">
+        <h2>Lab 3 · 習慣儀表板 + 上線<span class="mins">35 分鐘</span></h2>
+        <p class="lede">前兩個 Lab 的成果只有你看得到。這一段結束時，你會有一個能傳到家族群組裡的網址。</p>
+
+        <div class="step-h"><span class="sn">步驟 1</span>習慣追蹤表（本機測試）</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>貼給 claude.ai</span><button class="copy" type="button">複製</button></div>
+          <pre>做一個習慣追蹤表，單一個 index.html：
+1. 我可以自己新增想追蹤的習慣（例如喝水、運動、閱讀）
+2. 顯示最近 30 天的格子，點一下代表那天有做到，變成綠色
+3. 每個習慣顯示「連續達成幾天」
+4. 資料存在瀏覽器裡，關掉再打開還在
+中文介面，手機上要能用。
+請給我完整、可以存成 index.html 直接打開使用的程式碼，不要省略。</pre>
+        </div>
+        <p>存成 <code>habits.html</code>，雙擊測試，點幾格試試看。</p>
+
+        <div class="step-h"><span class="sn">步驟 2</span>做一個首頁（本機測試）</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>貼給 claude.ai</span><button class="copy" type="button">複製</button></div>
+          <pre>做一個首頁 index.html，用卡片的方式連到我的三個工具：
+- expenses/index.html 記帳小工具
+- habits/index.html 習慣追蹤表
+- digest/ 每日摘要
+連結請用相對路徑，例如 href="expenses/index.html"，不要用完整網址。
+風格要跟前面的工具一致，中文介面，手機上要好看。
+最上面放一個標題「我的生活小工具」。
+請給我完整、可以存成 index.html 直接使用的程式碼。</pre>
+        </div>
+        <p>⚠️ 連結一定要用<strong>相對路徑</strong>。存成 <code>home.html</code>，雙擊看畫面（連結現在點了會 404，等推上 GitHub 就正常了）。</p>
+
+        <div class="step-h"><span class="sn">步驟 3</span>把三個檔案存回 GitHub</div>
+        <div class="tw"><table>
+          <thead><tr><th>你電腦上的檔案</th><th>GitHub 上的路徑</th></tr></thead>
+          <tbody>
+            <tr><td><code>habits.html</code></td><td><code>habits/index.html</code></td></tr>
+            <tr><td>首頁（<code>home.html</code>）</td><td><code>index.html</code>（<strong>根目錄，不要放進資料夾</strong>）</td></tr>
+          </tbody>
+        </table></div>
+        <p><code>expenses/index.html</code> Lab 1 已經放好了，不用重做。</p>
+
+        <div class="step-h" id="lab3-pages"><span class="sn">步驟 4</span>讓全世界都打得開 ⭐</div>
+        <ol>
+          <li>你的 repo → 上排 <strong>Settings</strong></li>
+          <li><strong>左邊</strong>選單往下捲，找到 <strong>Pages</strong>（在 "Code and automation" 那一區，<strong>不是上排的分頁</strong>）</li>
+          <li><strong>Source</strong> 選 <strong>Deploy from a branch</strong></li>
+          <li><strong>Branch</strong> 選 <strong>main</strong>，右邊資料夾選 <strong>/ (root)</strong></li>
+          <li>按 <strong>Save</strong></li>
+        </ol>
+        <p>然後你會拿到網址：<code>https://你的帳號.github.io/my-life-tools/</code></p>
+
+        <div class="note warn-box">
+          <h3>⚠️ 現在打開可能是 404 — 這是正常的</h3>
+          <p style="margin-bottom:0">第一次部署要等 <strong>1–10 分鐘</strong>。之後每次更新網站也需要一點時間，
+          改完別急著看，先做別的事，等一下再回來看。</p>
+        </div>
+
+        <div class="note ok-box">
+          <h3>📱 然後用你的手機打開它</h3>
+          <p style="margin-bottom:0">這一步不要省。三小時前你沒寫過程式、沒裝過任何軟體。<strong>現在你有一個上線的網站。</strong></p>
+        </div>
+
+        <div class="check" data-cp>
+          <h3>✅ Lab 3 檢查點</h3>
+          <label><input type="checkbox" id="c-3a"><span>我的網址打得開</span></label>
+          <label><input type="checkbox" id="c-3b"><span>首頁點得到記帳工具</span></label>
+          <label><input type="checkbox" id="c-3c"><span>首頁點得到習慣追蹤表</span></label>
+          <label><input type="checkbox" id="c-3d"><span><strong>我用手機打開過了</strong> 📱</span></label>
+        </div>
+
+        <details>
+          <summary>打開是 404？按這個順序查</summary>
+          <div class="details-body">
+            <div class="tw"><table>
+              <thead><tr><th>#</th><th>檢查</th><th>怎麼修</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>才剛按 Save？</td><td>再等 5 分鐘，第一次部署很慢</td></tr>
+                <tr><td>2</td><td>repo 是 Public 嗎？</td><td>Settings → 最下面 Danger Zone → Change visibility</td></tr>
+                <tr><td>3</td><td>網址結尾有 <code>/</code> 嗎？</td><td><code>.../my-life-tools/</code></td></tr>
+                <tr><td>4</td><td>根目錄有 <code>index.html</code> 嗎？</td><td>到 repo 首頁確認，不是在資料夾裡面</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ 卡住了 ============ -->
+      <section id="stuck">
+        <h2>卡住了</h2>
+        <p class="lede">照症狀找。這個版本的坑跟付費版不一樣——多了「檔案存錯格式」這類機械小麻煩。</p>
+
+        <div class="note ok-box">
+          <h3>最好用的一招</h3>
+          <p style="margin-bottom:0">看到<strong>紅色的字</strong>或畫面不對，不要慌、不要自己讀。
+          <strong>整段複製，貼回聊天視窗，說「請修好，給我完整版本」。</strong></p>
+        </div>
+
+        <div class="tw"><table>
+          <thead><tr><th>你看到的</th><th>怎麼辦</th></tr></thead>
+          <tbody>
+            <tr><td>雙擊打開的是記事本，不是瀏覽器</td><td>存成了 <code>.html.txt</code>。存檔類型要選「所有檔案」</td></tr>
+            <tr><td>Mac 打開是一堆奇怪符號</td><td>漏了「製作純文字」，重新開檔案先按 <code>Shift+Cmd+T</code></td></tr>
+            <tr><td>畫面一片空白</td><td>按 <kbd>F12</kbd> 複製紅色錯誤 →「畫面是空白的，主控台出現這個錯誤：（貼上）」</td></tr>
+            <tr><td>重新整理資料就不見了</td><td>某些瀏覽器對雙擊打開的檔案會限制儲存功能，換 Chrome 或 Edge 試試</td></tr>
+            <tr><td>它的回答中間寫「...」被截斷</td><td>「請重新給我完整版本，不要省略任何一行」</td></tr>
+            <tr><td>它改壞了原本能動的東西</td><td>回聊天視窗要「一開始那個能動的版本」（同一個對話串它通常記得）</td></tr>
+            <tr><td>它做的跟我想的不一樣</td><td>描述太短了。補上：功能 + 我要看到什麼 + <strong>請給我完整程式碼</strong></td></tr>
+            <tr><td>我落後兩個 Lab 了</td><td>不要從頭追。跳到大家正在做的那一段，用該段的「落後了？」提示詞</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <!-- ============ 三個想法 ============ -->
+      <section id="ideas">
+        <h2>三個想法</h2>
+        <p class="lede">操作會過時，這三件事不會。課堂上講過，這裡是完整版——回家再看一次。</p>
+
+        <div class="card">
+          <h3>① 一件事會被自動化，一件事不會</h3>
+          <p>今天你做了兩種完全不同的事：<strong>機械性的</strong>（複製、貼上、存檔——照做就對）和
+          <strong>判斷性的</strong>（要加什麼功能、對不對——只有你能決定）。</p>
+          <p style="margin-bottom:0">付費工具拿走的是機械性那一半，判斷性那一半<strong>永遠是你的</strong>。
+          今天你把兩件事都做了一遍，知道哪一半是誰的，比會不會複製貼上重要得多。</p>
+        </div>
+
+        <div class="card">
+          <h3>② 付費工具在省的是哪一段</h3>
+          <p>Lab 2 你純手動把檔案貼上 GitHub，它照樣每天自動執行——<strong>GitHub 完全不知道也不在乎
+          檔案是怎麼放上去的</strong>。</p>
+          <p style="margin-bottom:0">所以付費工具不是「讓自動化變得可能」，那件事本來就可能。
+          它省的是<strong>前面那幾步</strong>：複製、貼上、存檔。你今天親手做過，所以你比很多人更清楚
+          那些工具到底在幫你省下什麼。</p>
+        </div>
+
+        <div class="card">
+          <h3>③ 你比很多人多讀過一遍程式碼</h3>
+          <p>因為今天每一段程式碼都要親手複製貼上，你其實被迫看過一遍它實際寫了什麼——
+          用自動化工具的人不一定會這樣。</p>
+          <p style="margin-bottom:0">但看過一遍不等於它是對的。<strong>危險的是「看起來很對、但其實不對」</strong>，
+          帶走這條判準：越難收回的事，越要親眼看過再放行。</p>
+        </div>
+
+        <div class="note warn-box">
+          <h3>誠實的那一半</h3>
+          <ul style="margin-bottom:0">
+            <li><strong>它會非常有自信地做錯。</strong> 看起來對，不等於對。</li>
+            <li><strong>責任不會轉移。</strong> 出問題的是你的帳號、你的資料。</li>
+            <li><strong>今天的方便是有代價的。</strong> 複製貼上做久了會累——這是訊號，不是缺點：
+            如果你一週要做這件事好幾次，那就是換一個更快工具的理由。</li>
+          </ul>
+        </div>
+
+        <div class="note ok-box">
+          <h3>那該練什麼</h3>
+          <p><strong>練「說清楚」</strong>——包括永遠記得要求「請給我完整程式碼」。</p>
+          <p style="margin-bottom:0"><strong>練「驗證」</strong>——動手之前先想「做好了應該長什麼樣」。
+          這兩件事在你自己的專業裡練，比在程式裡練有用得多——你本來就是你那件事的專家。</p>
+        </div>
+      </section>
+
+      <!-- ============ 小抄 ============ -->
+      <section id="cheat">
+        <h2>帶回家的小抄</h2>
+        <p class="lede">三小時裡真正需要記住的東西，全部在這裡。</p>
+
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">四步驟：把文字變成檔案</h3>
+        <div class="card">
+          <div class="loop"><i>複製 Claude 給的文字</i><b>→</b><i>貼到記事本／文字編輯</i><b>→</b><i>存成正確檔名</i><b>→</b><i>雙擊打開</i></div>
+          <p style="margin:14px 0 0;color:var(--muted)">改東西的時候：複製新版本 → 全選舊內容蓋掉 → 存檔 → 重新整理瀏覽器。</p>
+        </div>
+
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">五句救命的話</h3>
+        <div class="lines">
+          <div class="line"><code>（貼上錯誤訊息）請告訴我哪裡有問題，並給我修好之後的完整程式碼</code><button class="copy" type="button">複製</button></div>
+          <div class="line"><code>請重新給我完整版本，不要省略任何一行</code><button class="copy" type="button">複製</button></div>
+          <div class="line"><code>我雙擊打開這個檔案，畫面是空白的，主控台出現這個錯誤：（貼上）</code><button class="copy" type="button">複製</button></div>
+          <div class="line"><code>這個放到 GitHub Pages 上連結點不到，我用的路徑是（貼上）</code><button class="copy" type="button">複製</button></div>
+          <div class="line"><code>用我聽得懂的方式解釋你剛剛做了什麼，不要用專有名詞</code><button class="copy" type="button">複製</button></div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <h3>心態（比技巧重要）</h3>
+            <ul style="margin-bottom:0">
+              <li>每次都要求<strong>「請給我完整程式碼」</strong></li>
+              <li><strong>不滿意就再講一次</strong>，全選蓋掉、存檔、重新整理</li>
+              <li>看到紅字或畫面不對 → 整段複製 → 貼回去</li>
+              <li>Mac 貼上前<strong>先按 Shift+Cmd+T</strong></li>
+              <li>越難收回的事，越要親眼看過再放行</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>GitHub 名詞對照</h3>
+            <ul style="margin-bottom:0">
+              <li><code>repo</code> — 會記得所有版本的資料夾</li>
+              <li><code>Add file → Create new file</code> — 在網頁上新增檔案</li>
+              <li><code>Commit changes</code> — 存檔並留下紀錄</li>
+              <li><code>Actions</code> — 雲端電腦，可按時自動做事</li>
+              <li><code>Pages</code> — 把網頁變成公開網址</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">回家作業（由易到難）</h3>
+        <div class="card">
+          <ol style="margin-bottom:0">
+            <li>把<strong>記帳工具</strong>改成你真的會用的樣子</li>
+            <li>把<strong>每日摘要</strong>改成你真的想收到的：你追的網站、天氣、匯率</li>
+            <li>做一個<strong>只有你需要</strong>的小工具 ⭐</li>
+          </ol>
+        </div>
+
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">今天用到的網址</h3>
+        <div class="tw"><table>
+          <thead><tr><th>用途</th><th>網址</th></tr></thead>
+          <tbody>
+            <tr><td>claude.ai（免費聊天）</td><td><a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></td></tr>
+            <tr><td>建立新的 repo</td><td><a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a></td></tr>
+            <tr><td>你的 repo</td><td><code>github.com/你的帳號/my-life-tools</code></td></tr>
+            <tr><td>你的網站</td><td><code>你的帳號.github.io/my-life-tools/</code></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <footer>
+        <p><strong>你今天沒有學會寫程式。你學會的是把想法講清楚，和確認它真的對——而這兩件事，本來就是你的。</strong></p>
+        <p style="margin-bottom:0">打勾的進度存在這台裝置的瀏覽器裡，關掉頁面也還在。</p>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    /* ---- OS tabs (Windows / Mac instructions) ---- */
+    document.addEventListener("click", function (ev) {
+      var tab = ev.target.closest(".ostab");
+      if (!tab) return;
+      var os = tab.dataset.os;
+      var group = tab.closest(".step-h") ? null : tab.parentElement;
+      // scope: tabs + panels that share the same nearest ancestor block
+      var scope = tab.closest("section");
+      scope.querySelectorAll(".ostab").forEach(function (t) {
+        t.classList.toggle("on", t === tab);
+      });
+      scope.querySelectorAll(".ospanel").forEach(function (p) {
+        p.classList.toggle("on", p.dataset.os === os);
+      });
+    });
+
+    /* ---- 複製按鈕：文字直接取自畫面上的內容 ---- */
+    function textFor(btn) {
+      var box = btn.closest(".prompt");
+      if (box) { var pre = box.querySelector("pre"); if (pre) return pre.textContent; }
+      var line = btn.closest(".line");
+      if (line) { var c = line.querySelector("code"); if (c) return c.textContent; }
+      return "";
+    }
+
+    function fallbackCopy(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-1000px";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    function flash(btn, ok) {
+      var original = btn.dataset.label || btn.textContent;
+      btn.dataset.label = original;
+      btn.textContent = ok ? "已複製 ✓" : "請手動選取";
+      btn.classList.toggle("done", ok);
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function () {
+        btn.textContent = btn.dataset.label;
+        btn.classList.remove("done");
+      }, 1600);
+    }
+
+    document.addEventListener("click", function (ev) {
+      var btn = ev.target.closest(".copy");
+      if (!btn) return;
+      var text = textFor(btn);
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(
+          function () { flash(btn, true); },
+          function () { flash(btn, fallbackCopy(text)); }
+        );
+      } else {
+        flash(btn, fallbackCopy(text));
+      }
+    });
+
+    /* ---- 檢查點：存進 localStorage ---- */
+    var KEY = "llm2life-free.progress";
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+
+    var boxes = Array.prototype.slice.call(document.querySelectorAll(".check input[type=checkbox]"));
+    boxes.forEach(function (b) { if (saved[b.id]) b.checked = true; });
+
+    function syncRail() {
+      document.querySelectorAll("section[id]").forEach(function (sec) {
+        var inputs = sec.querySelectorAll(".check input[type=checkbox]");
+        if (!inputs.length) return;
+        var all = Array.prototype.every.call(inputs, function (i) { return i.checked; });
+        var link = document.querySelector('.rail a[href="#' + sec.id + '"]');
+        if (link) link.classList.toggle("done", all);
+      });
+    }
+
+    boxes.forEach(function (b) {
+      b.addEventListener("change", function () {
+        saved[b.id] = b.checked;
+        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* 無痕模式，略過 */ }
+        syncRail();
+      });
+    });
+    syncRail();
+
+    /* ---- 捲動時標示目前章節 ---- */
+    var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+    var sections = links
+      .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+      .filter(Boolean);
+
+    function current() {
+      var pos = window.scrollY + window.innerHeight * 0.28;
+      var active = sections[0];
+      sections.forEach(function (s) { if (s.offsetTop <= pos) active = s; });
+      links.forEach(function (a) {
+        a.classList.toggle("on", a.getAttribute("href") === "#" + active.id);
+      });
+    }
+
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { current(); ticking = false; });
+    }, { passive: true });
+    current();
+  })();
+</script>
