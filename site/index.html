@@ -391,7 +391,7 @@
 
       <!-- ============ Lab 1 ============ -->
       <section id="lab1">
-        <h2>Lab 1 · 記帳小工具<span class="mins">35 分鐘</span></h2>
+        <h2>Lab 1 · 記帳小工具<span class="mins">33 分鐘</span></h2>
         <p class="lede">記帳只是題目。這一段真正要學的是<strong>怎麼把想法講成它聽得懂的話</strong>。</p>
 
         <div class="card">
@@ -413,6 +413,11 @@
 做好之後幫我在瀏覽器打開來看。</pre>
         </div>
         <p><strong>它跑很久是正常的</strong>，它在讀檔案、寫檔案、檢查自己。可以停、可以插話、<strong>不用重來</strong>。趁這時候想：等一下要加什麼功能？</p>
+        <p>實際輸入幾筆、刪掉一筆，再重新整理。確認第一版能動後，先留一個安全存檔點：</p>
+        <div class="prompt">
+          <div class="prompt-bar"><span>第一版測試通過後</span><button class="copy" type="button">複製</button></div>
+          <pre>先把目前能正常運作的第一版 commit，commit 訊息寫「完成記帳工具第一版」，先不要改其他東西。</pre>
+        </div>
 
         <div class="step-h"><span class="sn">步驟 2</span>改成你想要的樣子 ⭐</div>
         <div class="note warn-box">
@@ -425,17 +430,20 @@
 列表上用不同顏色的標籤顯示，最上面再加一個各分類的小計。</pre>
         </div>
         <p>或換成你自己想要的：加圖表、改成暖色系、金額加千分位、匯出 CSV……都可以。</p>
+        <p>改完不要只看 Claude 說「完成了」。回到瀏覽器，<strong>親手試一次剛加的功能</strong>，再確認原本的新增、刪除、重新整理都還能用。</p>
 
         <div class="step-h"><span class="sn">步驟 3</span>存回 GitHub</div>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
-          <pre>把目前的改動 commit 並 push 到 GitHub，commit 訊息用中文描述我做了什麼。</pre>
+          <pre>把這次新增的功能另做一個 commit，commit 訊息用中文清楚寫出改了哪一塊，然後 push 到 GitHub。</pre>
         </div>
+        <p>回到 GitHub，點進你剛寫的 commit 訊息。<strong>不用看懂程式碼</strong>，只要確認畫面上的改動都跟新功能有關，沒有意外刪掉別的東西。</p>
 
         <div class="check" data-cp>
           <h3>✅ Lab 1 檢查點</h3>
           <label><input type="checkbox" id="c-1a"><span>能新增、能刪除，<strong>重新整理後資料還在</strong></span></label>
           <label><input type="checkbox" id="c-1b"><span>GitHub 上看得到 <code>expenses/</code> 資料夾</span></label>
+          <label><input type="checkbox" id="c-1c"><span>GitHub 上看得到<strong>兩個分開的 commit</strong>：第一版，以及後來改的那一塊</span></label>
         </div>
 
         <details>
@@ -453,7 +461,7 @@
 
       <!-- ============ Lab 2 ============ -->
       <section id="lab2">
-        <h2>Lab 2 · 每天自動幫你做事<span class="mins">35 分鐘</span></h2>
+        <h2>Lab 2 · 每天自動幫你做事<span class="mins">34 分鐘</span></h2>
         <p class="lede">Lab 1 的東西要你打開它才會動。這一段做的東西，<strong>你在睡覺的時候它自己會做事</strong>。</p>
 
         <div class="card">
@@ -543,7 +551,7 @@
 
       <!-- ============ Lab 3 ============ -->
       <section id="lab3">
-        <h2>Lab 3 · 習慣儀表板 + 上線<span class="mins">35 分鐘</span></h2>
+        <h2>Lab 3 · 習慣儀表板 + 上線<span class="mins">33 分鐘</span></h2>
         <p class="lede">前兩個 Lab 的成果只有你看得到。這一段結束時，你會有一個<strong>能傳到家族群組裡的網址</strong>。</p>
 
         <div class="step-h"><span class="sn">步驟 1</span>習慣追蹤表</div>
@@ -682,7 +690,8 @@
           <h3>③ 越難收回的事，越要親眼看過再放行</h3>
           <p>危險的不是它寫出爛東西——爛東西你一眼就看得出來。<strong>危險的是它寫出「看起來很對、但其實不對」的東西</strong>，而且它會非常有自信地做錯，不會跟你說「我不太確定」。</p>
           <p>所以新的能力不是讀得懂程式碼，是<strong>在它動手之前，你先說得出「做好了應該長什麼樣」</strong>。今天每一段的 ✅ 檢查點，練的就是這件事。</p>
-          <p style="margin-bottom:0">帶走這條判準：改個顏色？讓它做，錯了再改。<strong>刪資料、寄信給別人、花錢？先看過再說。</strong></p>
+          <p>帶走這條判準：改個顏色？讓它做，錯了再改。<strong>刪資料、寄信給別人、花錢？先看過再說。</strong></p>
+          <p style="margin-bottom:0">驗收前問四件事：<strong>能不能回上一版？做好該看到什麼？錯了誰會看到、代價是什麼？有沒有畫面、截圖或實際執行結果可以親眼看？</strong></p>
         </div>
 
         <div class="note warn-box">
@@ -690,7 +699,7 @@
           <p>不講這些就變成推銷了：</p>
           <ul style="margin-bottom:0">
             <li><strong>前面 80% 十分鐘，最後 20% 可能三小時。</strong> 課堂上的題目是挑過的。你回家做自己的題目會遇到那條曲線——<strong>這不代表你不行，這是常態。</strong></li>
-            <li><strong>責任不會轉移。</strong> 它做錯了，壞掉的是你的東西、你的資料、你的信譽。</li>
+            <li><strong>責任不會轉移。</strong> 像 CEO 可以充分授權，但規劃、決策和驗收仍要自己負責。它做錯了，壞掉的是你的東西、你的資料、你的信譽。</li>
             <li><strong>給自己用和給別人用，是兩套標準。</strong> 今天做的東西使用者只有你一個，所以怎樣都行。碰到錢、碰到別人的個資，需要的嚴謹度完全不同。</li>
             <li><strong>你會有「我好像什麼都會了」的錯覺。</strong> 你會的是描述和驗證——這兩件事本身就夠有價值，不用假裝成別的。</li>
           </ul>
@@ -698,6 +707,7 @@
 
         <div class="note ok-box">
           <h3>那該練什麼</h3>
+          <p>今天不只做出產品、解決問題，也練了一種<strong>帶得走的能力</strong>。</p>
           <p><strong>練「說清楚」</strong>——不是修辭，是把你腦袋裡預設不用講的東西講出來。</p>
           <p><strong>練「驗證」</strong>——動手之前先想「做好了應該長什麼樣」。</p>
           <p style="margin-bottom:0">而這兩件事，在<strong>你自己的專業裡</strong>練，比在程式裡練有用得多。你本來就是你那件事的專家——<strong>那才是你的優勢，不是程式。</strong></p>
@@ -709,12 +719,25 @@
         <h2>帶回家的小抄</h2>
         <p class="lede">三小時裡真正需要記住的東西，全部在這裡。</p>
 
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">把大要求切成小塊</h3>
+        <div class="card">
+          <p><strong>先拆小塊 → 一次做一塊 → 打開來看 → 親手測試 → commit 存一版</strong></p>
+          <div class="prompt">
+            <div class="prompt-bar"><span>先規劃</span><button class="copy" type="button">複製</button></div>
+            <pre>先把這個需求拆成幾個可以各自驗收的小步驟，只列步驟，先不要動手。</pre>
+          </div>
+          <div class="prompt" style="margin-bottom:0">
+            <div class="prompt-bar"><span>一次只做一塊</span><button class="copy" type="button">複製</button></div>
+            <pre>現在只做第 1 步。做完幫我打開來看，其他步驟先不要做。</pre>
+          </div>
+        </div>
+
         <h3 style="margin:26px 0 6px;font-size:1.1rem">五句救命的話</h3>
         <div class="lines">
           <div class="line"><code>請把剛剛的改動還原，回到上一個能正常運作的版本</code><button class="copy" type="button">複製</button></div>
           <div class="line"><code>（貼上錯誤訊息）請修好它</code><button class="copy" type="button">複製</button></div>
           <div class="line"><code>幫我在瀏覽器打開這個頁面</code><button class="copy" type="button">複製</button></div>
-          <div class="line"><code>把目前的改動 commit 並 push 到 GitHub</code><button class="copy" type="button">複製</button></div>
+          <div class="line"><code>把剛剛測試通過的這一塊 commit 並 push 到 GitHub，commit 訊息清楚寫出改了什麼</code><button class="copy" type="button">複製</button></div>
           <div class="line"><code>用我聽得懂的方式解釋你剛剛做了什麼，不要用專有名詞</code><button class="copy" type="button">複製</button></div>
         </div>
 
