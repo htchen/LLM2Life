@@ -143,11 +143,14 @@ lesson the student doesn't get to have.
 - **Traditional Chinese (繁體中文, Taiwan idiom) for all prose.** Commands, code, file names, and
   literal UI labels stay in English — students must match what they see on screen. Write
   「按 **Settings** → **Pages**」, never 「按設定 → 頁面」.
+- Use neutral, direct prose. Avoid jokes, slang, exaggerated claims, anthropomorphic judgments,
+  or wording that frames the reader as incapable. Prefer 「常見問題」, 「疑難排解」,
+  「需要追上進度」, 「錯誤訊息」, and 「發布成公開網站」 over playful metaphors.
 - Every lab step a student performs is written as an imperative with a **verifiable end state**
   (「你應該會看到…」). Steps a beginner cannot self-check are how a room silently falls behind.
 - Prompts students paste into Claude Code are fenced as `text`, never `bash` — they are not
   shell commands, and beginners genuinely make that mistake.
-- Each lab ends with a **✅ 檢查點** and a **落後了？** escape hatch, so falling behind in Lab 1
+- Each lab ends with a **✅ 檢查點** and a **需要追上進度？** section, so falling behind in Lab 1
   never cascades into Lab 2.
 - Reference implementations live in `instructor/reference/` and are for the *instructor* to
-  rescue a stuck student with. Do not link them from the workbook.
+  use when resolving student issues. Do not link them from the workbook.

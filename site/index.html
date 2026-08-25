@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>用 Claude Code 打造生活小工具 — 隨堂手冊</title>
 
 <style>
@@ -101,7 +106,8 @@
   .arc span[aria-hidden] { color: var(--line-2); }
 
   /* ---------- layout ---------- */
-  .cols { display: grid; grid-template-columns: 232px 1fr; gap: 56px; align-items: start; }
+  .cols { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 56px; align-items: start; }
+  main { min-width: 0; }
 
   .rail { position: sticky; top: 24px; padding-top: 40px; }
   .rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
@@ -271,30 +277,32 @@
   @media (max-width: 900px) {
     body { font-size: 16px; }
     .wrap { padding: 0 16px 72px; }
-    .cols { grid-template-columns: 1fr; gap: 0; }
+    .cols { grid-template-columns: minmax(0, 1fr); gap: 0; }
     .rail {
       position: sticky; top: 0; z-index: 20; padding: 10px 0;
       background: var(--ground); border-bottom: 1px solid var(--line);
-      margin: 0 -16px; padding-left: 16px; padding-right: 16px;
+      margin: 0 -16px; padding-left: 16px; padding-right: 16px; min-width: 0; max-width: 100vw;
     }
-    .rail ol { flex-direction: row; overflow-x: auto; gap: 7px; padding-bottom: 2px; }
+    .rail ol { flex-direction: row; overflow-x: auto; gap: 7px; padding-bottom: 2px; max-width: 100%; }
     .rail a { border: 1px solid var(--line); background: var(--surface); white-space: nowrap; padding: 6px 12px; font-size: .88rem; }
     .rail .n { width: 21px; height: 21px; font-size: .7rem; }
     .rail .tick { display: none; }
     .mast { padding: 32px 0 24px; }
   }
 </style>
+</head>
+<body>
 
 <div class="wrap">
 
   <header class="mast">
     <p class="eyebrow">三小時實作工作坊 · 隨堂手冊</p>
     <h1>用 Claude Code 打造你的生活小工具</h1>
-    <p>這一頁是你今天的地圖。所有要貼的話都在這裡，按一下就複製。<strong>不需要程式背景。</strong></p>
+    <p>這一頁整理課程步驟與提示詞；提示詞可以按一下複製。<strong>不需要程式背景。</strong></p>
     <div class="arc">
       <b>在我電腦上能跑</b><span aria-hidden="true">→</span>
-      <b>我睡覺時它自己跑</b><span aria-hidden="true">→</span>
-      <b>全世界都打得開</b>
+      <b>依排程自動執行</b><span aria-hidden="true">→</span>
+      <b>發布成公開網站</b>
     </div>
   </header>
 
@@ -306,10 +314,10 @@
         <li><a href="#lab0"><span class="n">0</span>準備工具<span class="tick">✓</span></a></li>
         <li><a href="#lab1"><span class="n">1</span>記帳小工具<span class="tick">✓</span></a></li>
         <li><a href="#lab2"><span class="n">2</span>每日自動摘要<span class="tick">✓</span></a></li>
-        <li><a href="#lab3"><span class="n">3</span>上線！<span class="tick">✓</span></a></li>
-        <li><a href="#stuck"><span class="n">?</span>卡住了<span class="tick">✓</span></a></li>
-        <li><a href="#ideas"><span class="n">◆</span>三個想法<span class="tick">✓</span></a></li>
-        <li><a href="#cheat"><span class="n">★</span>小抄<span class="tick">✓</span></a></li>
+        <li><a href="#lab3"><span class="n">3</span>發布網站<span class="tick">✓</span></a></li>
+        <li><a href="#stuck"><span class="n">?</span>遇到問題<span class="tick">✓</span></a></li>
+        <li><a href="#ideas"><span class="n">◆</span>三項觀念<span class="tick">✓</span></a></li>
+        <li><a href="#cheat"><span class="n">★</span>重點整理<span class="tick">✓</span></a></li>
       </ol>
     </nav>
 
@@ -318,12 +326,12 @@
       <!-- ============ 開始之前 ============ -->
       <section id="start">
         <h2>開始之前</h2>
-        <p class="lede">兩分鐘確認。這一段沒過，後面都動不了。</p>
+        <p class="lede">請先完成以下確認，後續步驟會使用這些帳號與裝置。</p>
 
         <div class="note warn-box">
           <h3>⚠️ Claude Code 需要付費方案</h3>
-          <p>需要 <strong>Pro、Max、Team 或 Enterprise</strong> 方案，<strong>免費的 Claude 帳號無法使用</strong>，這一點沒有例外。</p>
-          <p style="margin-bottom:0"><strong>怎麼確認：</strong>打開 Claude 桌面版 → 點最上面中間的 <strong>Code</strong> 分頁。看到可以打字的畫面就沒問題；<strong>跳出要你升級 → 請現在舉手</strong>，講師會安排你跟同學兩人一組。不要自己卡在這裡。</p>
+          <p>需要 <strong>Pro、Max、Team 或 Enterprise</strong> 方案；免費 Claude 帳號無法使用 Claude Code。</p>
+          <p style="margin-bottom:0"><strong>確認方式：</strong>打開 Claude 桌面版 → 點最上方的 <strong>Code</strong> 分頁。若看到升級提示，請現在舉手，講師會安排兩人一組。</p>
         </div>
 
         <div class="check" data-cp>
@@ -334,7 +342,7 @@
         </div>
 
         <details>
-          <summary>裝不起來？用瀏覽器版，完全不用安裝</summary>
+          <summary>無法安裝時，可改用瀏覽器版</summary>
           <div class="details-body">
             <p>打開 <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a>，登入後照畫面指示連結 GitHub 帳號即可。<strong>一樣需要付費方案。</strong></p>
             <p>這條路線的差別：<strong>檔案在雲端，不在你的電腦裡。</strong>改完之後要按 <strong>Create PR</strong> 才會存回主要版本。走這條路線的話，請先跳到 <a href="#lab3-pages">Lab 3 的步驟 4</a> 把網站開起來，這樣接下來每一段你都看得到成果。</p>
@@ -345,7 +353,7 @@
       <!-- ============ Lab 0 ============ -->
       <section id="lab0">
         <h2>Lab 0 · 把工具準備好<span class="mins">20 分鐘</span></h2>
-        <p class="lede">這一段有點瑣碎，但所有麻煩事在這裡一次解決。撐過去，後面就只剩下講話。</p>
+        <p class="lede">這一段會完成 repo、下載與 GitHub 上傳權限設定。</p>
 
         <div class="step-h"><span class="sn">步驟 1</span>在 GitHub 上建 repo</div>
         <p>打開 <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>，只要填三個地方：</p>
@@ -359,8 +367,8 @@
         </table></div>
 
         <div class="note warn-box">
-          <h3>⚠️ 一定要選 Public</h3>
-          <p style="margin-bottom:0">今天最後要把作品變成公開網址，<strong>免費帳號的 Private repo 做不到</strong>。現在選錯，等一下要花五分鐘回來改。</p>
+          <h3>⚠️ 請選 Public</h3>
+          <p style="margin-bottom:0">最後會使用 GitHub Pages 發布網站。免費帳號的 Private repo 無法使用這項設定；若選成 Private，之後需要回來修改。</p>
         </div>
 
         <div class="step-h"><span class="sn">步驟 2</span>把 repo 下載到你的電腦</div>
@@ -369,35 +377,35 @@
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>請幫我把 https://github.com/你的帳號/my-life-tools 這個 repo 下載到這個資料夾。</pre>
         </div>
-        <p>它會問你可不可以執行指令 → 按<strong>同意</strong>。<span style="color:var(--muted)">它每次動你的電腦都會先問，不會偷偷來。</span></p>
+        <p>Claude Code 會在執行指令前詢問你的同意。確認操作內容後，按<strong>同意</strong>。</p>
 
-        <div class="step-h"><span class="sn">步驟 3</span>打通「上傳」這條路 ⭐</div>
-        <p>下載很容易，<strong>傳回去需要先證明你是你</strong>。現在設定好，後面三個 Lab 都不會再卡。</p>
+        <div class="step-h"><span class="sn">步驟 3</span>確認可以上傳到 GitHub</div>
+        <p>要把改動傳回 GitHub，需要先完成帳號驗證。後面三個 Lab 會沿用這項設定。</p>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>請幫我設定好 GitHub 的登入，讓我等一下可以把改動上傳回去。
 如果需要我操作瀏覽器、複製代碼或輸入東西，請一步一步用中文告訴我，一次講一步。
 設定好之後，請在 README.md 加一行「我的生活小工具」，然後 commit 並 push 上去。</pre>
         </div>
-        <p>看不懂它在講什麼，就直接回它：<code>我看到的畫面是……，接下來要按哪裡？</code></p>
+        <p>若畫面與說明不同，可以回覆：<code>我看到的畫面是……，接下來要按哪裡？</code></p>
 
         <div class="check" data-cp>
           <h3>✅ Lab 0 檢查點</h3>
           <label><input type="checkbox" id="c-0a"><span>回 GitHub 網頁按 <kbd>F5</kbd>，<code>README.md</code> 裡多了「我的生活小工具」</span></label>
           <label><input type="checkbox" id="c-0b"><span>我的 repo 是 <strong>Public</strong></span></label>
         </div>
-        <p style="color:var(--muted)">沒看到那一行 → <strong>舉手</strong>。這一步沒過，後面每個 Lab 的最後一步都會卡住。</p>
+        <p style="color:var(--muted)">若沒有看到該行，請<strong>舉手</strong>。後面的 Lab 需要先完成這項設定。</p>
       </section>
 
       <!-- ============ Lab 1 ============ -->
       <section id="lab1">
         <h2>Lab 1 · 記帳小工具<span class="mins">33 分鐘</span></h2>
-        <p class="lede">記帳只是題目。這一段真正要學的是<strong>怎麼把想法講成它聽得懂的話</strong>。</p>
+        <p class="lede">記帳是練習題目。這一段的重點是<strong>如何把需求說明清楚</strong>。</p>
 
         <div class="card">
-          <h3>講話的公式</h3>
+          <h3>描述需求的格式</h3>
           <div class="formula"><i>我要做什麼</i><b>+</b><i>有哪些功能</i><b>+</b><i>我要看到什麼</i><b>+</b><i>有什麼限制</i></div>
-          <p style="margin-bottom:0;color:var(--muted)">想像你在交代一個很能幹、但沒讀過你腦袋的人。他不知道你要中文介面、不知道你要放手機看——除非你講。</p>
+          <p style="margin-bottom:0;color:var(--muted)">Claude Code 不知道你沒有說明的條件。中文介面、手機版面與限制都需要寫進需求。</p>
         </div>
 
         <div class="step-h"><span class="sn">步驟 1</span>做出第一版</div>
@@ -412,7 +420,7 @@
 畫面請做得乾淨好看，中文介面，手機上也要能用。
 做好之後幫我在瀏覽器打開來看。</pre>
         </div>
-        <p><strong>它跑很久是正常的</strong>，它在讀檔案、寫檔案、檢查自己。可以停、可以插話、<strong>不用重來</strong>。趁這時候想：等一下要加什麼功能？</p>
+        <p>如果處理時間較長，可以查看它目前正在讀取或修改哪些檔案，也可以按停止或補充說明。等待時可先決定下一步要增加的功能。</p>
         <p>實際輸入幾筆、刪掉一筆，再重新整理。確認第一版能動後，先留一個安全存檔點：</p>
         <div class="prompt">
           <div class="prompt-bar"><span>第一版測試通過後</span><button class="copy" type="button">複製</button></div>
@@ -421,8 +429,8 @@
 
         <div class="step-h"><span class="sn">步驟 2</span>改成你想要的樣子 ⭐</div>
         <div class="note warn-box">
-          <h3>這一步比第一版更重要</h3>
-          <p style="margin-bottom:0"><strong>不滿意就再講一次，不用重來。</strong>你不會把它弄壞——就算弄壞了，下一句「請還原剛剛的改動」就救回來了。這是今天最值得帶走的習慣，請一定要親手試一次。</p>
+          <h3>根據測試結果修改</h3>
+          <p style="margin-bottom:0">結果不符合需求時，補充條件後再修改。如果修改後無法正常運作，可以要求 Claude 還原剛才的改動。</p>
         </div>
         <div class="prompt">
           <div class="prompt-bar"><span>例如加分類</span><button class="copy" type="button">複製</button></div>
@@ -430,14 +438,14 @@
 列表上用不同顏色的標籤顯示，最上面再加一個各分類的小計。</pre>
         </div>
         <p>或換成你自己想要的：加圖表、改成暖色系、金額加千分位、匯出 CSV……都可以。</p>
-        <p>改完不要只看 Claude 說「完成了」。回到瀏覽器，<strong>親手試一次剛加的功能</strong>，再確認原本的新增、刪除、重新整理都還能用。</p>
+        <p>修改後不要只看 Claude 回覆「完成了」。回到瀏覽器，<strong>實際測試新增的功能</strong>，再確認原本的新增、刪除、重新整理都還能用。</p>
 
         <div class="step-h"><span class="sn">步驟 3</span>存回 GitHub</div>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>把這次新增的功能另做一個 commit，commit 訊息用中文清楚寫出改了哪一塊，然後 push 到 GitHub。</pre>
         </div>
-        <p>回到 GitHub，點進你剛寫的 commit 訊息。<strong>不用看懂程式碼</strong>，只要確認畫面上的改動都跟新功能有關，沒有意外刪掉別的東西。</p>
+        <p>回到 GitHub，點進你剛寫的 commit 訊息。不需要逐行閱讀程式碼；先確認改動都與新功能有關，而且沒有刪除其他功能。</p>
 
         <div class="check" data-cp>
           <h3>✅ Lab 1 檢查點</h3>
@@ -447,7 +455,7 @@
         </div>
 
         <details>
-          <summary>落後了？貼這段，一次做完</summary>
+          <summary>需要追上進度？使用這段提示詞</summary>
           <div class="details-body">
             <div class="prompt">
               <div class="prompt-bar"><span>追進度</span><button class="copy" type="button">複製</button></div>
@@ -462,15 +470,15 @@
       <!-- ============ Lab 2 ============ -->
       <section id="lab2">
         <h2>Lab 2 · 每天自動幫你做事<span class="mins">34 分鐘</span></h2>
-        <p class="lede">Lab 1 的東西要你打開它才會動。這一段做的東西，<strong>你在睡覺的時候它自己會做事</strong>。</p>
+        <p class="lede">Lab 1 的工具需要手動開啟。這一段會建立<strong>可定時自動執行的工作</strong>。</p>
 
         <div class="card">
           <h3>GitHub Actions 是什麼</h3>
-          <p>想像 GitHub 免費借你一台電腦，放在雲端。你寫一張紙條給它：<strong>「每天早上 6 點，幫我做這件事。」</strong></p>
-          <p style="margin-bottom:0">然後它就真的會做。<strong>你的筆電關機也沒關係</strong>——做事的不是你的電腦。這張紙條叫 <code>workflow</code>。</p>
+          <p>GitHub Actions 可以依照指定時間，在 GitHub 的雲端環境執行工作。</p>
+          <p style="margin-bottom:0">執行時間與內容寫在 <code>workflow</code> 檔案中，因此你的電腦關機時排程仍可執行。</p>
         </div>
 
-        <div class="step-h"><span class="sn">步驟 1</span>寫下那張紙條</div>
+        <div class="step-h"><span class="sn">步驟 1</span>建立 workflow</div>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>我要一個每天自動執行的功能，請用 GitHub Actions 做：
@@ -486,11 +494,11 @@
 做好之後把檔案 push 上去。</pre>
         </div>
         <div class="note warn-box">
-          <h3>為什麼要寫得這麼囉唆？</h3>
-          <p style="margin-bottom:0">後面那三個「要求」是這個題目<strong>最容易踩的三個坑</strong>。先講清楚就不會踩到。這就是「把想法講清楚」的實際樣子——<strong>不是講得漂亮，是把你知道的限制講出來。</strong></p>
+          <h3>為什麼要列出這三項要求？</h3>
+          <p style="margin-bottom:0">它們分別處理手動測試、寫入權限與套件相依性，是這個題目常見的失敗原因。在需求中先列出限制，可以減少後續修正。</p>
         </div>
 
-        <div class="step-h"><span class="sn">步驟 2</span>按下按鈕，看它跑</div>
+        <div class="step-h"><span class="sn">步驟 2</span>手動執行 workflow</div>
         <p>⚠️ <strong>檔案一定要先 push 上 GitHub</strong>，這一步才有東西可看。存在自己電腦裡不算。</p>
         <ol>
           <li>打開你的 repo → 點上面的 <strong>Actions</strong> 分頁</li>
@@ -502,8 +510,8 @@
         <div class="step-h"><span class="sn">步驟 3</span>看成果</div>
         <p>回 repo 首頁按 <kbd>F5</kbd>，會多出一個 <code>digest/今天日期.md</code>，點進去是今天的新聞標題。</p>
         <div class="note ok-box">
-          <h3>這份檔案不是你放進去的</h3>
-          <p style="margin-bottom:0">是那台雲端電腦幫你放的。而且<strong>每天早上 6 點它都會再做一次</strong>。</p>
+          <h3>檔案由 GitHub Actions 產生</h3>
+          <p style="margin-bottom:0">workflow 會把檔案寫入 repo，並在<strong>每天早上 6 點再次執行</strong>。</p>
         </div>
 
         <div class="check" data-cp>
@@ -513,11 +521,11 @@
         </div>
 
         <details>
-          <summary>變成紅色 ✗ 了？（很正常，這是好事）</summary>
+          <summary>執行結果是紅色 ✗ 時</summary>
           <div class="details-body">
             <p>點紅色那一列 → 點紅色 ✗ 的步驟 → <strong>把錯誤訊息整段複製</strong> → 貼回去：</p>
             <div class="prompt">
-              <div class="prompt-bar"><span>萬用修復</span><button class="copy" type="button">複製</button></div>
+              <div class="prompt-bar"><span>修正 workflow</span><button class="copy" type="button">複製</button></div>
               <pre>我的 GitHub Actions 失敗了，錯誤訊息是：
 （在這裡貼上）
 請修好它，然後 push 上去。</pre>
@@ -535,7 +543,7 @@
         </details>
 
         <details>
-          <summary>落後了？貼這段，一次做完</summary>
+          <summary>需要追上進度？使用這段提示詞</summary>
           <div class="details-body">
             <div class="prompt">
               <div class="prompt-bar"><span>追進度</span><button class="copy" type="button">複製</button></div>
@@ -551,8 +559,8 @@
 
       <!-- ============ Lab 3 ============ -->
       <section id="lab3">
-        <h2>Lab 3 · 習慣儀表板 + 上線<span class="mins">33 分鐘</span></h2>
-        <p class="lede">前兩個 Lab 的成果只有你看得到。這一段結束時，你會有一個<strong>能傳到家族群組裡的網址</strong>。</p>
+        <h2>Lab 3 · 習慣儀表板 + 發布成公開網站<span class="mins">33 分鐘</span></h2>
+        <p class="lede">這一段會建立首頁，並使用 GitHub Pages 發布成公開網站。</p>
 
         <div class="step-h"><span class="sn">步驟 1</span>習慣追蹤表</div>
         <div class="prompt">
@@ -572,7 +580,7 @@
 - expenses/ 記帳小工具
 - habits/ 習慣追蹤表
 - digest/ 每日摘要
-風格要跟那兩個工具一致，中文介面，手機上要好看。
+風格要跟那兩個工具一致，中文介面，手機上要清楚易讀。
 最上面放一個標題「我的生活小工具」。</pre>
         </div>
 
@@ -581,9 +589,9 @@
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>把全部改動 commit 並 push 到 GitHub。</pre>
         </div>
-        <p>⚠️ 這一步一定要成功，下一步才有東西可以公開。到 GitHub 重新整理，確認看得到 <code>habits/</code> 和根目錄的 <code>index.html</code>。</p>
+        <p>完成 push 後再進行下一步。到 GitHub 重新整理，確認看得到 <code>habits/</code> 和根目錄的 <code>index.html</code>。</p>
 
-        <div class="step-h" id="lab3-pages"><span class="sn">步驟 4</span>讓全世界都打得開 ⭐</div>
+        <div class="step-h" id="lab3-pages"><span class="sn">步驟 4</span>發布成公開網站</div>
         <p>這一步在 GitHub 網頁上做，<strong>不用 Claude Code</strong>：</p>
         <ol>
           <li>你的 repo → 上排 <strong>Settings</strong></li>
@@ -592,7 +600,7 @@
           <li><strong>Branch</strong> 選 <strong>main</strong>，右邊資料夾選 <strong>/ (root)</strong></li>
           <li>按 <strong>Save</strong></li>
         </ol>
-        <p>然後你會拿到網址：<code>https://你的帳號.github.io/my-life-tools/</code></p>
+        <p>完成後會取得網址：<code>https://你的帳號.github.io/my-life-tools/</code></p>
 
         <div class="note warn-box">
           <h3>⚠️ 現在打開會是 404 — 這是正常的</h3>
@@ -600,8 +608,8 @@
         </div>
 
         <div class="note ok-box">
-          <h3>📱 然後用你的手機打開它</h3>
-          <p style="margin-bottom:0">這一步不要省。在自己手機上打開自己做的網站，是這三小時最好的部分。</p>
+          <h3>📱 使用手機開啟網站</h3>
+          <p style="margin-bottom:0">請確認網站在手機上可以開啟，首頁連結也能正常使用。</p>
         </div>
 
         <div class="check" data-cp>
@@ -616,7 +624,7 @@
           <summary>打開是 404？按這個順序查</summary>
           <div class="details-body">
             <div class="tw"><table>
-              <thead><tr><th>#</th><th>檢查</th><th>怎麼修</th></tr></thead>
+              <thead><tr><th>#</th><th>檢查</th><th>處理方式</th></tr></thead>
               <tbody>
                 <tr><td>1</td><td>才剛按 Save？</td><td>再等 5 分鐘，第一次部署很慢</td></tr>
                 <tr><td>2</td><td>repo 是 Public 嗎？</td><td>Settings → 最下面 Danger Zone → Change visibility</td></tr>
@@ -625,7 +633,7 @@
                 <tr><td>5</td><td>根目錄有 <code>index.html</code> 嗎？</td><td>先開 <code>.../my-life-tools/habits/</code></td></tr>
               </tbody>
             </table></div>
-            <p>樣式跑掉、圖片破掉的話：</p>
+            <p>如果樣式或圖片載入異常：</p>
             <div class="prompt">
               <div class="prompt-bar"><span>修路徑</span><button class="copy" type="button">複製</button></div>
               <pre>這個頁面放到 GitHub Pages 上樣式跑掉了，請把所有路徑改成相對路徑，然後 push。</pre>
@@ -634,14 +642,14 @@
         </details>
       </section>
 
-      <!-- ============ 卡住了 ============ -->
+      <!-- ============ 遇到問題 ============ -->
       <section id="stuck">
-        <h2>卡住了</h2>
-        <p class="lede">照症狀找。九成的狀況在這張表裡。</p>
+        <h2>遇到問題</h2>
+        <p class="lede">請依照畫面或錯誤訊息查找處理方式。</p>
 
         <div class="note ok-box">
-          <h3>最好用的一招</h3>
-          <p style="margin-bottom:0">看到<strong>紅色的字</strong>不要慌、不要自己讀。<strong>整段複製，貼回去，說「請修好它」。</strong>你今天之後遇到的九成問題都是這樣解決的。</p>
+          <h3>先保留完整錯誤訊息</h3>
+          <p style="margin-bottom:0">看到<strong>紅色錯誤訊息</strong>時，請完整複製並貼回 Claude Code，再要求它說明與修正。</p>
         </div>
 
         <div class="tw"><table>
@@ -650,76 +658,75 @@
             <tr><td>找不到檔案、不知道怎麼打開</td><td>幫我在瀏覽器打開這個頁面</td></tr>
             <tr><td>重新整理資料就不見了</td><td>幫我開一個本機伺服器來打開這個頁面，這樣資料才存得住</td></tr>
             <tr><td>畫面一片空白</td><td>按 <kbd>F12</kbd> 複製紅色錯誤 →「畫面是空白的，主控台出現這個錯誤：（貼上）請修好它」</td></tr>
-            <tr><td>它改壞了原本能動的東西</td><td>請把剛剛的改動還原，回到上一個能正常運作的版本</td></tr>
-            <tr><td>它做的跟我想的不一樣</td><td>你的描述太短了。補上：有哪些功能 + 我要看到什麼 + 有什麼限制</td></tr>
-            <tr><td>它跑好久沒反應</td><td>正常，它在讀你的檔案。可以按停止，也可以直接打字插話</td></tr>
+            <tr><td>修改後原本功能無法運作</td><td>請把剛剛的改動還原，回到上一個能正常運作的版本</td></tr>
+            <tr><td>結果不符合需求</td><td>補上：有哪些功能 + 我要看到什麼 + 有什麼限制</td></tr>
+            <tr><td>處理時間較長</td><td>查看它正在讀取或修改的檔案；必要時可以按停止或補充說明</td></tr>
             <tr><td>push 失敗</td><td>回 <a href="#lab0">Lab 0</a> 確認檢查點有沒有過</td></tr>
-            <tr><td>我落後兩個 Lab 了</td><td>不要從頭追。跳到大家正在做的那一段，用該段的「落後了？」提示詞</td></tr>
+            <tr><td>需要追上課程進度</td><td>先進行全班目前所在的段落，使用該段的「需要追上進度？」提示詞</td></tr>
           </tbody>
         </table></div>
 
         <details>
-          <summary>它改壞了，而且「還原」也救不回來</summary>
+          <summary>修改後無法運作，而且還原沒有成功</summary>
           <div class="details-body">
             <p>走 GitHub 網頁：你的 repo → <strong>Commits</strong> → 找到還能動的那一版 → 右邊 <strong>&lt;&gt;</strong> 看當時的檔案 → 複製內容貼回來。</p>
-            <p style="margin-bottom:0"><strong>這就是為什麼我們一開始就把東西放上 GitHub。</strong></p>
+            <p style="margin-bottom:0">GitHub 的版本紀錄可以協助回到先前可用的狀態。</p>
           </div>
         </details>
       </section>
 
-      <!-- ============ 三個想法 ============ -->
+      <!-- ============ 三項觀念 ============ -->
       <section id="ideas">
-        <h2>三個想法</h2>
-        <p class="lede">操作會過時，這三件事不會。課堂上講過，這裡是完整版——回家再看一次。</p>
+        <h2>三項課程觀念</h2>
+        <p class="lede">以下內容整理課堂練習所對應的三項原則。</p>
 
         <div class="card">
-          <h3>① 你沒辦法把「自己還沒想清楚的事」外包出去</h3>
-          <p>今天你大概改了兩三次才做出想要的東西。那幾次<strong>不是在修正它，是在修正你自己</strong>。</p>
-          <p>你說「做一個記帳的東西」的時候，腦袋裡其實有一整套沒講出來的預設——要中文、要能刪掉、要在手機上看。你沒講，因為你覺得那還用說嗎。</p>
-          <p style="margin-bottom:0">過去五十年，稀缺的能力是<strong>把想法翻譯成機器聽得懂的話</strong>。那個工作現在很便宜了。剩下來、而且變得更值錢的，是<strong>你本來就得自己想清楚的那一半</strong>。</p>
+          <h3>① 尚未釐清的需求無法完整交給 AI</h3>
+          <p>如果經過幾次修改才符合需求，通常表示最初有些條件尚未說明。</p>
+          <p>例如中文介面、刪除功能與手機版面，對你而言可能理所當然，但 AI 不會自行知道。</p>
+          <p style="margin-bottom:0">產生程式碼的成本降低後，<strong>釐清需求與做出取捨</strong>變得更重要。</p>
         </div>
 
         <div class="card">
-          <h3>② 值得自動化的門檻，剛剛降到你腳邊</h3>
-          <p>在今天以前，「要不要自動化」是一道算術：這件事每週花我 5 分鐘，找人做一個工具要兩個禮拜加一筆錢。<strong>算下來不划算，所以你就一直手動做。</strong></p>
-          <p>全世界大多數的小麻煩都卡在這道算術的錯誤那一邊——<strong>不是不能解決，是不值得解決</strong>。</p>
-          <p style="margin-bottom:0">Lab 2 那二十分鐘，把「兩個禮拜和一筆錢」換成了「二十分鐘」。<strong>沒有人會為你一個人寫軟體，以前沒有，以後也不會。但現在你可以。</strong></p>
+          <h3>② 自動化的成本已明顯降低</h3>
+          <p>過去，一項每週只花幾分鐘的工作，可能不值得投入數週開發工具，因此會持續由人工處理。</p>
+          <p>現在製作與維護簡單工具所需的時間降低，更多個人需求開始適合自動化。</p>
+          <p style="margin-bottom:0">Lab 2 示範的重點是：<strong>只供自己使用的工具，也可能值得製作。</strong></p>
         </div>
 
         <div class="card">
           <h3>③ 越難收回的事，越要親眼看過再放行</h3>
-          <p>危險的不是它寫出爛東西——爛東西你一眼就看得出來。<strong>危險的是它寫出「看起來很對、但其實不對」的東西</strong>，而且它會非常有自信地做錯，不會跟你說「我不太確定」。</p>
+          <p>明顯不符合需求的結果容易發現；更需要注意的是<strong>外觀看似正確、實際行為卻不正確</strong>的結果。AI 的語氣可能很確定，但輸出仍需要驗證。</p>
           <p>所以新的能力不是讀得懂程式碼，是<strong>在它動手之前，你先說得出「做好了應該長什麼樣」</strong>。今天每一段的 ✅ 檢查點，練的就是這件事。</p>
-          <p>帶走這條判準：改個顏色？讓它做，錯了再改。<strong>刪資料、寄信給別人、花錢？先看過再說。</strong></p>
-          <p style="margin-bottom:0">驗收前問四件事：<strong>能不能回上一版？做好該看到什麼？錯了誰會看到、代價是什麼？有沒有畫面、截圖或實際執行結果可以親眼看？</strong></p>
+          <p>調整顏色等可回復的修改，可以先執行再檢查。刪除資料、寄送訊息或產生費用前，應先確認內容與影響。</p>
+          <p style="margin-bottom:0">驗收前問四件事：<strong>能不能回上一版？做好該看到什麼？錯了誰會看到、影響是什麼？有沒有畫面、截圖或實際執行結果可以親眼看？</strong></p>
         </div>
 
         <div class="note warn-box">
-          <h3>誠實的那一半</h3>
-          <p>不講這些就變成推銷了：</p>
+          <h3>使用限制</h3>
+          <p>使用時需要注意：</p>
           <ul style="margin-bottom:0">
-            <li><strong>前面 80% 十分鐘，最後 20% 可能三小時。</strong> 課堂上的題目是挑過的。你回家做自己的題目會遇到那條曲線——<strong>這不代表你不行，這是常態。</strong></li>
-            <li><strong>責任不會轉移。</strong> 像 CEO 可以充分授權，但規劃、決策和驗收仍要自己負責。它做錯了，壞掉的是你的東西、你的資料、你的信譽。</li>
-            <li><strong>給自己用和給別人用，是兩套標準。</strong> 今天做的東西使用者只有你一個，所以怎樣都行。碰到錢、碰到別人的個資，需要的嚴謹度完全不同。</li>
-            <li><strong>你會有「我好像什麼都會了」的錯覺。</strong> 你會的是描述和驗證——這兩件事本身就夠有價值，不用假裝成別的。</li>
+            <li><strong>最後一部分通常最花時間。</strong> 課堂題目已控制範圍；自行製作其他工具時，細節可能需要較多時間。</li>
+            <li><strong>責任不會轉移。</strong> 可以把執行工作交給 Claude Code，但規劃、決策與驗收仍由使用者負責。</li>
+            <li><strong>個人使用與提供他人使用，需要不同標準。</strong> 涉及金錢或個人資料時，需要增加安全、測試與資料處理措施。</li>
+            <li><strong>完成這堂課不等於具備所有軟體開發能力。</strong> 本課程練習的是需求描述與驗證。</li>
           </ul>
         </div>
 
         <div class="note ok-box">
-          <h3>那該練什麼</h3>
-          <p>今天不只做出產品、解決問題，也練了一種<strong>帶得走的能力</strong>。</p>
-          <p><strong>練「說清楚」</strong>——不是修辭，是把你腦袋裡預設不用講的東西講出來。</p>
-          <p><strong>練「驗證」</strong>——動手之前先想「做好了應該長什麼樣」。</p>
-          <p style="margin-bottom:0">而這兩件事，在<strong>你自己的專業裡</strong>練，比在程式裡練有用得多。你本來就是你那件事的專家——<strong>那才是你的優勢，不是程式。</strong></p>
+          <h3>後續練習重點</h3>
+          <p><strong>描述需求</strong>：把隱含條件、限制與預期結果寫出來。</p>
+          <p><strong>驗證結果</strong>：動手之前先定義「做好了應該長什麼樣」。</p>
+          <p style="margin-bottom:0">請在自己熟悉的工作領域練習這兩項能力，因為你最了解該領域的需求與判斷標準。</p>
         </div>
       </section>
 
-      <!-- ============ 小抄 ============ -->
+      <!-- ============ 重點整理 ============ -->
       <section id="cheat">
-        <h2>帶回家的小抄</h2>
-        <p class="lede">三小時裡真正需要記住的東西，全部在這裡。</p>
+        <h2>帶回家的重點整理</h2>
+        <p class="lede">以下內容可作為課後操作參考。</p>
 
-        <h3 style="margin:26px 0 6px;font-size:1.1rem">把大要求切成小塊</h3>
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">把大型需求拆成小步驟</h3>
         <div class="card">
           <p><strong>先拆小塊 → 一次做一塊 → 打開來看 → 親手測試 → commit 存一版</strong></p>
           <div class="prompt">
@@ -732,7 +739,7 @@
           </div>
         </div>
 
-        <h3 style="margin:26px 0 6px;font-size:1.1rem">五句救命的話</h3>
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">五個常用提示詞</h3>
         <div class="lines">
           <div class="line"><code>請把剛剛的改動還原，回到上一個能正常運作的版本</code><button class="copy" type="button">複製</button></div>
           <div class="line"><code>（貼上錯誤訊息）請修好它</code><button class="copy" type="button">複製</button></div>
@@ -743,13 +750,13 @@
 
         <div class="grid2">
           <div class="card">
-            <h3>心態（比技巧重要）</h3>
+            <h3>操作原則</h3>
             <ul style="margin-bottom:0">
-              <li><strong>不滿意就再講一次</strong>，不用重來</li>
-              <li>它問「可以嗎」是在<strong>保護你</strong></li>
-              <li>它跑很久是<strong>正常的</strong></li>
-              <li><strong>講得囉唆比講得漂亮有用</strong></li>
-              <li>紅色的錯誤不是失敗，是<strong>下一句話的材料</strong></li>
+              <li>結果不符合需求時，<strong>補充條件後再修改</strong></li>
+              <li>Claude Code 詢問權限時，先確認操作內容</li>
+              <li>處理時間較長時，查看正在修改的檔案</li>
+              <li><strong>把功能、結果與限制寫完整</strong></li>
+              <li>保留完整錯誤訊息，作為修正依據</li>
             </ul>
           </div>
           <div class="card">
@@ -767,14 +774,14 @@
         <h3 style="margin:26px 0 6px;font-size:1.1rem">回家作業（由易到難）</h3>
         <div class="card">
           <ol style="margin-bottom:12px">
-            <li>把<strong>記帳工具</strong>改成你真的會用的樣子——你要的分類、你喜歡的顏色</li>
-            <li>把<strong>每日摘要</strong>改成你真的想收到的：你追的網站、天氣、匯率</li>
-            <li>做一個<strong>只有你需要</strong>的小工具 ⭐ 這個最重要</li>
+            <li>依照自己的分類與配色需求修改<strong>記帳工具</strong></li>
+            <li>把<strong>每日摘要</strong>改成需要追蹤的網站、天氣或匯率</li>
+            <li>製作一個符合個人工作流程的工具</li>
           </ol>
-          <p style="margin-bottom:8px">第 3 題卡住的話，先問它：</p>
+          <p style="margin-bottom:8px">第 3 題若需要協助，可先使用以下提示詞：</p>
           <div class="prompt" style="margin-bottom:0">
             <div class="prompt-bar"><span>不知道要做什麼的時候</span><button class="copy" type="button">複製</button></div>
-            <pre>我每個禮拜都要手動做（描述那件事），很煩。
+            <pre>我每個禮拜都要手動做（描述那件事），希望減少這項重複操作。
 有沒有辦法自動化？請用我聽得懂的方式給我幾個做法，先不要寫程式。</pre>
           </div>
         </div>
@@ -793,7 +800,7 @@
       </section>
 
       <footer>
-        <p><strong>你今天沒有學會寫程式。你學會的是把想法講清楚，和確認它真的對——而這兩件事，本來就是你的。</strong></p>
+        <p><strong>本課程的重點是把需求說明清楚，並驗證工具是否符合預期。</strong></p>
         <p style="margin-bottom:0">打勾的進度存在這台裝置的瀏覽器裡，關掉頁面也還在。</p>
       </footer>
 
@@ -907,3 +914,5 @@
     current();
   })();
 </script>
+</body>
+</html>
