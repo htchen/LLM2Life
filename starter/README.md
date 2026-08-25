@@ -2,13 +2,14 @@
 
 用 Claude Code 製作的生活小工具。
 
-| 工具 | 做什麼 |
+| 資料夾 | 做什麼 |
 | --- | --- |
-| `expenses/` | 記帳，看這個月花了多少 |
-| `digest/` | 每天早上自動產生的摘要 |
-| `habits/` | 習慣追蹤表 |
+| `expenses/` | 課堂共同練習 |
+| `project/` | 個人專題的可操作版本 |
 
-公開網址：`https://你的帳號.github.io/my-life-tools/`
+`digest/` 與 `habits/` 是課後可選的參考案例。
+
+個人專題網址：`https://你的帳號.github.io/my-life-tools/project/`
 
 ---
 

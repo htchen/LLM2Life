@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>用 Claude Code 打造生活小工具 — 隨堂手冊</title>
+<title>把你的發想做成可操作工具 — 隨堂手冊</title>
 
 <style>
   :root {
@@ -296,13 +296,13 @@
 <div class="wrap">
 
   <header class="mast">
-    <p class="eyebrow">三小時實作工作坊 · 隨堂手冊</p>
-    <h1>用 Claude Code 打造你的生活小工具</h1>
-    <p>這一頁整理課程步驟與提示詞；提示詞可以按一下複製。<strong>不需要程式背景。</strong></p>
+    <p class="eyebrow">三小時開放式專題工作坊 · 隨堂手冊</p>
+    <h1>把你的發想做成可操作工具</h1>
+    <p>從真實問題開始，逐步完成規劃、實作與驗證。<strong>不需要程式背景。</strong></p>
     <div class="arc">
-      <b>在我電腦上能跑</b><span aria-hidden="true">→</span>
-      <b>依排程自動執行</b><span aria-hidden="true">→</span>
-      <b>發布成公開網站</b>
+      <b>提出問題</b><span aria-hidden="true">→</span>
+      <b>規劃最小版本</b><span aria-hidden="true">→</span>
+      <b>分段實作與驗證</b>
     </div>
   </header>
 
@@ -312,11 +312,11 @@
       <ol>
         <li><a href="#start" class="on"><span class="n">!</span>開始之前<span class="tick">✓</span></a></li>
         <li><a href="#lab0"><span class="n">0</span>準備工具<span class="tick">✓</span></a></li>
-        <li><a href="#lab1"><span class="n">1</span>記帳小工具<span class="tick">✓</span></a></li>
-        <li><a href="#lab2"><span class="n">2</span>每日自動摘要<span class="tick">✓</span></a></li>
-        <li><a href="#lab3"><span class="n">3</span>發布網站<span class="tick">✓</span></a></li>
+        <li><a href="#lab1"><span class="n">1</span>共同練習<span class="tick">✓</span></a></li>
+        <li><a href="#lab2"><span class="n">2</span>發想與目標<span class="tick">✓</span></a></li>
+        <li><a href="#lab3"><span class="n">3</span>規劃與實作<span class="tick">✓</span></a></li>
         <li><a href="#stuck"><span class="n">?</span>遇到問題<span class="tick">✓</span></a></li>
-        <li><a href="#ideas"><span class="n">◆</span>三項觀念<span class="tick">✓</span></a></li>
+        <li><a href="#ideas"><span class="n">◆</span>展示與回顧<span class="tick">✓</span></a></li>
         <li><a href="#cheat"><span class="n">★</span>重點整理<span class="tick">✓</span></a></li>
       </ol>
     </nav>
@@ -345,7 +345,7 @@
           <summary>無法安裝時，可改用瀏覽器版</summary>
           <div class="details-body">
             <p>打開 <a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code</a>，登入後照畫面指示連結 GitHub 帳號即可。<strong>一樣需要付費方案。</strong></p>
-            <p>這條路線的差別：<strong>檔案在雲端，不在你的電腦裡。</strong>改完之後要按 <strong>Create PR</strong> 才會存回主要版本。走這條路線的話，請先跳到 <a href="#lab3-pages">Lab 3 的步驟 4</a> 把網站開起來，這樣接下來每一段你都看得到成果。</p>
+            <p>這條路線的差別：<strong>檔案在雲端，不在你的電腦裡。</strong>改完之後要按 <strong>Create PR</strong> 才會存回主要版本。若要發布專題，可使用<a href="#lab3-pages">規劃與實作中的 GitHub Pages 說明</a>。</p>
           </div>
         </details>
       </section>
@@ -380,7 +380,7 @@
         <p>Claude Code 會在執行指令前詢問你的同意。確認操作內容後，按<strong>同意</strong>。</p>
 
         <div class="step-h"><span class="sn">步驟 3</span>確認可以上傳到 GitHub</div>
-        <p>要把改動傳回 GitHub，需要先完成帳號驗證。後面三個 Lab 會沿用這項設定。</p>
+        <p>要把改動傳回 GitHub，需要先完成帳號驗證。共同練習與個人專題會沿用這項設定。</p>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>請幫我設定好 GitHub 的登入，讓我等一下可以把改動上傳回去。
@@ -399,8 +399,8 @@
 
       <!-- ============ Lab 1 ============ -->
       <section id="lab1">
-        <h2>Lab 1 · 記帳小工具<span class="mins">33 分鐘</span></h2>
-        <p class="lede">記帳是練習題目。這一段的重點是<strong>如何把需求說明清楚</strong>。</p>
+        <h2>共同練習 · 記帳小工具<span class="mins">25 分鐘</span></h2>
+        <p class="lede">使用共同題目練習<strong>描述、修改、驗證與保存版本</strong>。個人專題會在休息後開始。</p>
 
         <div class="card">
           <h3>描述需求的格式</h3>
@@ -469,8 +469,62 @@
 
       <!-- ============ Lab 2 ============ -->
       <section id="lab2">
-        <h2>Lab 2 · 每天自動幫你做事<span class="mins">34 分鐘</span></h2>
-        <p class="lede">Lab 1 的工具需要手動開啟。這一段會建立<strong>可定時自動執行的工作</strong>。</p>
+        <h2>專題 1–2 · 發想與定義目標<span class="mins">35 分鐘</span></h2>
+        <p class="lede">先確認問題，再決定最小版本要完成什麼。這一段先規劃，不修改檔案。</p>
+
+        <div class="step-h"><span class="sn">15 分鐘</span>寫三個問題，選一個題目</div>
+        <p>回想最近兩週，寫下三件重複整理、記錄、比對或判斷的工作。每題只寫一行：</p>
+        <div class="card"><p style="margin-bottom:0"><strong>我在＿＿情境中，需要＿＿，目前用＿＿處理，主要問題是＿＿。</strong></p></div>
+        <p>用四項條件選題：你熟悉、只有一個核心問題、能用一個畫面展示、風險低。</p>
+        <div class="prompt">
+          <div class="prompt-bar"><span>請 Claude 協助比較</span><button class="copy" type="button">複製</button></div>
+          <pre>我正在選一個三小時工作坊中的個人小工具題目。以下是三個問題：
+1. （題目一）
+2. （題目二）
+3. （題目三）
+
+請依照「我是否熟悉、能否用一個畫面展示、是否能在一小時內做出最小版本、風險是否低」比較。
+先整理比較，不要寫程式，也不要替我決定。</pre>
+        </div>
+
+        <div class="step-h"><span class="sn">20 分鐘</span>完成一頁專題簡述</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>先自行填寫</span><button class="copy" type="button">複製</button></div>
+          <pre>我的專題題目：
+主要使用者：
+使用情境：
+目前問題：
+這次目標：
+
+必要功能：1.　2.　3.
+這次不做：1.　2.
+
+驗收條件：
+1. 當我＿＿，應該看到＿＿
+2. 當我＿＿，應該看到＿＿
+3. 關閉或重新整理後，＿＿應該＿＿</pre>
+        </div>
+        <div class="note warn-box">
+          <h3>課堂專題的範圍</h3>
+          <p style="margin-bottom:0">限定一個主要使用者、一個核心問題與一個可展示流程。登入、資料庫、多人同步、付款、敏感個資與自動對外寄送列入下一版。</p>
+        </div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>檢查範圍</span><button class="copy" type="button">複製</button></div>
+          <pre>以下是我的專題簡述：（貼上內容）
+請檢查這個範圍是否適合在 40 分鐘內做出可操作的最小版本。
+如果太大，請指出應延後的功能，並說明理由。
+先討論範圍，不要寫程式。</pre>
+        </div>
+        <div class="check" data-cp>
+          <h3>✅ 發想與目標檢查點</h3>
+          <label><input type="checkbox" id="c-2idea"><span>我選定一個熟悉、低風險的問題</span></label>
+          <label><input type="checkbox" id="c-2scope"><span>必要功能不超過三項，並寫出至少兩項「這次不做」</span></label>
+          <label><input type="checkbox" id="c-2accept"><span>我寫出三項可以實際操作的驗收條件</span></label>
+        </div>
+
+        <details>
+          <summary>備用案例：GitHub Actions 每日摘要</summary>
+          <div class="details-body">
 
         <div class="card">
           <h3>GitHub Actions 是什麼</h3>
@@ -555,12 +609,61 @@
             <p style="margin-bottom:0">push 完成後跳到上面的<strong>步驟 2</strong>。</p>
           </div>
         </details>
+          </div>
+        </details>
       </section>
 
       <!-- ============ Lab 3 ============ -->
       <section id="lab3">
-        <h2>Lab 3 · 習慣儀表板 + 發布成公開網站<span class="mins">33 分鐘</span></h2>
-        <p class="lede">這一段會建立首頁，並使用 GitHub Pages 發布成公開網站。</p>
+        <h2>專題 3 · 規劃、分段實作與分享<span class="mins">55 分鐘</span></h2>
+        <p class="lede">把目標拆成可驗收步驟，完成核心流程，再增加一項必要功能。</p>
+
+        <div class="step-h"><span class="sn">15 分鐘</span>拆成 2–4 個步驟</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>只規劃，先不動檔案</span><button class="copy" type="button">複製</button></div>
+          <pre>請把這份專題簡述拆成 2 到 4 個實作步驟。
+每一步都要包含：
+1. 這一步要完成什麼
+2. 完成後我要怎麼操作與驗證
+3. 哪些內容留到後面的步驟
+只列計畫，先不要修改檔案。</pre>
+        </div>
+        <p>第一步需要產生可操作的核心流程，不能只建立空白框架。講師或同桌確認後再開始。</p>
+
+        <div class="step-h"><span class="sn">25 分鐘</span>第一輪：完成核心流程</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>現在只做第 1 步</span><button class="copy" type="button">複製</button></div>
+          <pre>這是我的專題簡述與實作計畫：（貼上內容）
+請在 project/ 資料夾開始製作。現在只做第 1 步。
+完成後幫我在瀏覽器打開，並告訴我要依照哪些操作驗證這一步。
+其他步驟先不要做。</pre>
+        </div>
+        <p>依驗收條件實際操作。通過後先 commit，留下可回復的版本。</p>
+
+        <div class="step-h"><span class="sn">15 分鐘</span>第二輪：增加一項功能並重新驗證</div>
+        <div class="prompt">
+          <div class="prompt-bar"><span>現在只做第 2 步</span><button class="copy" type="button">複製</button></div>
+          <pre>現在進行計畫中的第 2 步。只修改這一步需要的內容。
+完成後打開結果，列出這一步與原有核心流程各要測試什麼。</pre>
+        </div>
+        <p>測試通過後 commit 並 push。若時間不足，停止增加功能，把未完成內容移到下一版。</p>
+
+        <div class="check" data-cp>
+          <h3>✅ 個人專題檢查點</h3>
+          <label><input type="checkbox" id="c-3core"><span>核心流程可以完整操作一次</span></label>
+          <label><input type="checkbox" id="c-3tests"><span>三項驗收條件至少通過兩項，未通過項目已記錄</span></label>
+          <label><input type="checkbox" id="c-3commits"><span>GitHub 上看得到分段 commit</span></label>
+          <label><input type="checkbox" id="c-3share"><span>我能說明問題、目標、驗收方式與下一步</span></label>
+        </div>
+
+        <div class="note ok-box">
+          <h3>一分鐘展示格式</h3>
+          <p style="margin-bottom:0">原本問題 → 縮小後的目標 → 操作與驗收 → 下一版最優先事項。未完成全部功能時，展示目前可操作版本。</p>
+        </div>
+
+        <details>
+          <summary>備用案例與 GitHub Pages 發布步驟</summary>
+          <div class="details-body">
 
         <div class="step-h"><span class="sn">步驟 1</span>習慣追蹤表</div>
         <div class="prompt">
@@ -640,6 +743,8 @@
             </div>
           </div>
         </details>
+          </div>
+        </details>
       </section>
 
       <!-- ============ 遇到問題 ============ -->
@@ -662,7 +767,7 @@
             <tr><td>結果不符合需求</td><td>補上：有哪些功能 + 我要看到什麼 + 有什麼限制</td></tr>
             <tr><td>處理時間較長</td><td>查看它正在讀取或修改的檔案；必要時可以按停止或補充說明</td></tr>
             <tr><td>push 失敗</td><td>回 <a href="#lab0">Lab 0</a> 確認檢查點有沒有過</td></tr>
-            <tr><td>需要追上課程進度</td><td>先進行全班目前所在的段落，使用該段的「需要追上進度？」提示詞</td></tr>
+            <tr><td>需要追上課程進度</td><td>先保留目前可操作版本，未完成內容移到「下一版」</td></tr>
           </tbody>
         </table></div>
 
@@ -675,10 +780,15 @@
         </details>
       </section>
 
-      <!-- ============ 三項觀念 ============ -->
+      <!-- ============ 展示與回顧 ============ -->
       <section id="ideas">
-        <h2>三項課程觀念</h2>
-        <p class="lede">以下內容整理課堂練習所對應的三項原則。</p>
+        <h2>展示與回顧</h2>
+        <p class="lede">課程成果是一個可操作版本，以及一套可以再次使用的專題流程。</p>
+
+        <div class="card">
+          <h3>專題流程</h3>
+          <p style="margin-bottom:0"><strong>提出問題 → 定義目標 → 拆解計畫 → 分段實作 → 驗證 → 決定下一步</strong></p>
+        </div>
 
         <div class="card">
           <h3>① 尚未釐清的需求無法完整交給 AI</h3>
@@ -688,14 +798,13 @@
         </div>
 
         <div class="card">
-          <h3>② 自動化的成本已明顯降低</h3>
-          <p>過去，一項每週只花幾分鐘的工作，可能不值得投入數週開發工具，因此會持續由人工處理。</p>
-          <p>現在製作與維護簡單工具所需的時間降低，更多個人需求開始適合自動化。</p>
-          <p style="margin-bottom:0">Lab 2 示範的重點是：<strong>只供自己使用的工具，也可能值得製作。</strong></p>
+          <h3>② 計畫可以依實作結果更新</h3>
+          <p>計畫代表目前的理解。看到第一版後發現新的限制，可以先更新目標與步驟，再進行下一輪。</p>
+          <p style="margin-bottom:0"><strong>調整計畫是專題的一部分，不代表前面的規劃失效。</strong></p>
         </div>
 
         <div class="card">
-          <h3>③ 越難收回的事，越要親眼看過再放行</h3>
+          <h3>③ 每一步都需要可操作的驗收方式</h3>
           <p>明顯不符合需求的結果容易發現；更需要注意的是<strong>外觀看似正確、實際行為卻不正確</strong>的結果。AI 的語氣可能很確定，但輸出仍需要驗證。</p>
           <p>所以新的能力不是讀得懂程式碼，是<strong>在它動手之前，你先說得出「做好了應該長什麼樣」</strong>。今天每一段的 ✅ 檢查點，練的就是這件事。</p>
           <p>調整顏色等可回復的修改，可以先執行再檢查。刪除資料、寄送訊息或產生費用前，應先確認內容與影響。</p>
@@ -771,18 +880,19 @@
           </div>
         </div>
 
-        <h3 style="margin:26px 0 6px;font-size:1.1rem">回家作業（由易到難）</h3>
+        <h3 style="margin:26px 0 6px;font-size:1.1rem">下一版</h3>
         <div class="card">
           <ol style="margin-bottom:12px">
-            <li>依照自己的分類與配色需求修改<strong>記帳工具</strong></li>
-            <li>把<strong>每日摘要</strong>改成需要追蹤的網站、天氣或匯率</li>
-            <li>製作一個符合個人工作流程的工具</li>
+            <li>重新執行今天的驗收條件，記錄未通過項目</li>
+            <li>從「這次不做」選一項，加入下一版計畫</li>
+            <li>完成一個步驟、測試並保存版本</li>
           </ol>
-          <p style="margin-bottom:8px">第 3 題若需要協助，可先使用以下提示詞：</p>
+          <p style="margin-bottom:8px">要開始另一個題目時：</p>
           <div class="prompt" style="margin-bottom:0">
-            <div class="prompt-bar"><span>不知道要做什麼的時候</span><button class="copy" type="button">複製</button></div>
-            <pre>我每個禮拜都要手動做（描述那件事），希望減少這項重複操作。
-有沒有辦法自動化？請用我聽得懂的方式給我幾個做法，先不要寫程式。</pre>
+            <div class="prompt-bar"><span>整理新題目</span><button class="copy" type="button">複製</button></div>
+            <pre>我最近重複遇到這個問題：（描述情境、目前做法與問題）。
+請先用問題、使用者、目標、限制與驗收條件幫我整理成專題簡述。
+資訊不足時先問我問題，不要直接寫程式。</pre>
           </div>
         </div>
 

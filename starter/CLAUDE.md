@@ -29,16 +29,16 @@
 
 ```
 my-life-tools/
-├── index.html   # 首頁，連到下面三個工具
-├── expenses/    # 記帳小工具
-├── digest/      # 每天自動產生的摘要（GitHub Actions 寫進來的）
-└── habits/      # 習慣追蹤表
+├── expenses/    # 共同練習
+├── project/     # 個人專題
+├── digest/      # 選配的 GitHub Actions 案例
+└── habits/      # 選配的習慣追蹤案例
 ```
 
 這個 repo 會發布到 GitHub Pages，所以：
 
 - 連結一律用**相對路徑**，不要用絕對路徑，以免發布後無法開啟。
-- 根目錄的 `index.html` 是首頁；新增工具時，請同步加入連結。
+- 若根目錄有 `index.html` 首頁，新增工具時請同步加入相對連結。
 
 ## GitHub Actions
 

@@ -76,25 +76,26 @@ These are verified against the current docs and shape the whole design. Do not s
   repo and is research-preview for Pro/Max/Team.
 - **GitHub Pages needs a public repo** on free accounts. Students are told to make
   `my-life-tools` public at creation time — flipping it later mid-lab costs five minutes.
-- **Lab 2's workflow must carry both `workflow_dispatch` and `permissions: contents: write`.**
-  `workflow_dispatch` is non-negotiable: a `schedule:` trigger alone cannot be demonstrated
-  inside a workshop, and a scheduled run only fires from the default branch anyway.
+- **The individual project stays inside a constrained technical envelope:** one primary user,
+  one core problem, one demonstrable flow, and a low-risk local-first implementation. Login,
+  databases, multi-user sync, payments, sensitive data, and outbound automation are deferred.
+- **The optional GitHub Actions reference still requires both `workflow_dispatch` and
+  `permissions: contents: write`.** It is no longer part of the required class sequence.
 
-## Insight segments: experience first, then name it
+## Open-project sequence: progressively release control
 
-Each 🧠 interlude discusses only what the students physically did ten minutes earlier — Lab 1's
-re-prompting, Lab 2's scheduled run, Lab 3's red X and 404. **Order is load-bearing.** This
-audience has no background to evaluate abstract claims about AI and software, but it has total
-authority over what it just felt. Moving any of this material to the opening as a "philosophy"
-section turns it into noise, so don't — no matter how much it looks like framing.
+The common exercise establishes the mechanics. After the break, students generate their own
+problems, define a minimum scope, write acceptance criteria, plan 2–4 steps, and build two
+iterations. **This order is load-bearing.** Do not ask AI for solutions before students have
+written a problem statement, and do not let implementation begin before acceptance criteria exist.
 
-Two consequences when editing:
+When editing, preserve these gates:
 
-- A lab step that an interlude depends on is **not** trimmable. Lab 1's "change one thing" step
-  is the fuel for interlude 1; cut it and the segment three minutes later has nothing to point at.
-- The closing argument's honest-limits section (four named limitations) is **not** optional. It
-  is what separates the talk from a sales pitch, and students who hit the 80/20 wall at home
-  without having been warned will conclude they were misled.
+- Students list three problems before selecting one.
+- The brief contains no more than three required features and at least two explicit exclusions.
+- Every implementation step has an observable acceptance method.
+- The first build produces a usable core flow and is saved before the second iteration.
+- The last segment stops feature work and shifts to demonstration, evidence, and the next version.
 
 ## `variant-free/`: a second, complete workshop — not a patch on this one
 
@@ -109,29 +110,27 @@ for.
 Treat it as sibling material with its own drift rules, not a downstream copy to keep patched:
 
 - Its `timeline.md` and `insights.md` are independent documents with a **different thesis**.
-  This workshop's argument is "translation got cheap"; the free variant's is "translation didn't
-  get cheap today, and doing it by hand is what let you see what it actually consists of."
-  Porting an insights edit from one to the other without rereading it will likely contradict the
-  variant's argument rather than support it.
+  Both versions use the same project process. The free variant additionally teaches the manual
+  full-file replacement cycle and separates repeatable file operations from user judgment.
 - Its prompts are **not** required to match this workshop's verbatim — every prompt there ends
   with an extra sentence demanding the complete file, which is load-bearing there and pointless
   here. Judge `variant-free/` prompt changes against its own workbook/site pair, per its own
   `README.md`, not against this repo's.
-- When a Lab's *scope* changes here (a feature added or cut, not just wording), check whether
+- When a project phase's *scope* changes here (a requirement added or cut, not just wording), check whether
   `variant-free/` needs the same scope change — but expect the prompt text and step mechanics to
   diverge, not match.
 
 ## Student repo shape
 
-Everything students build goes in **one** repo (`my-life-tools`) with one folder per lab, so
-GitHub setup is paid once and the three labs stay independent:
+Everything students build goes in **one** repo (`my-life-tools`). The common exercise and personal
+project stay separate, while optional examples remain available for reference:
 
 ```
 my-life-tools/
-├── index.html      # landing page linking the three tools (built in Lab 3)
-├── expenses/       # Lab 1 — local, localStorage, no build step
-├── digest/         # Lab 2 — GitHub Actions writes dated Markdown files here
-└── habits/         # Lab 3 — localStorage, published via Pages
+├── expenses/       # shared practice — localStorage, no build step
+├── project/        # student's individual minimum viable project
+├── digest/         # optional reference — GitHub Actions output
+└── habits/         # optional reference — localStorage and Pages
 ```
 
 `starter/` is the template students clone at the start. Keep it nearly empty on purpose: the
@@ -146,11 +145,11 @@ lesson the student doesn't get to have.
 - Use neutral, direct prose. Avoid jokes, slang, exaggerated claims, anthropomorphic judgments,
   or wording that frames the reader as incapable. Prefer 「常見問題」, 「疑難排解」,
   「需要追上進度」, 「錯誤訊息」, and 「發布成公開網站」 over playful metaphors.
-- Every lab step a student performs is written as an imperative with a **verifiable end state**
+- Every project step a student performs is written as an imperative with a **verifiable end state**
   (「你應該會看到…」). Steps a beginner cannot self-check are how a room silently falls behind.
 - Prompts students paste into Claude Code are fenced as `text`, never `bash` — they are not
   shell commands, and beginners genuinely make that mistake.
-- Each lab ends with a **✅ 檢查點** and a **需要追上進度？** section, so falling behind in Lab 1
-  never cascades into Lab 2.
+- Each phase ends with a **✅ 檢查點**. Falling behind means preserving the current usable version
+  and moving unfinished work to the next-version list, not skipping ideation or acceptance criteria.
 - Reference implementations live in `instructor/reference/` and are for the *instructor* to
   use when resolving student issues. Do not link them from the workbook.

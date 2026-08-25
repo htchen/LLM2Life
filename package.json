@@ -2,7 +2,7 @@
   "name": "llm2life",
   "version": "1.0.0",
   "private": true,
-  "description": "三小時工作坊教材：用 Claude Code + GitHub 打造生活小工具",
+  "description": "三小時開放式專題工作坊：用 Claude Code + GitHub 把發想做成可操作工具",
   "scripts": {
     "slides": "marp slides/deck.md --html --allow-local-files -o dist/deck.html",
     "slides:pdf": "marp slides/deck.md --pdf --allow-local-files -o dist/deck.pdf",
