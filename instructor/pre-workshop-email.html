@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>課前通知信</title>
+
+<style>
+  :root {
+    --ground: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef0f4;
+    --ink: #151a21;
+    --ink-2: #3d4753;
+    --muted: #6b7684;
+    --line: #dde1e8;
+    --line-2: #c9cfda;
+    --accent: #2f4a7c;
+    --accent-soft: #e6ecf7;
+    --accent-ink: #23395e;
+    --ok: #2b7a4b;
+    --ok-soft: #e3f2e8;
+    --warn: #b4531c;
+    --warn-soft: #fcece1;
+    --shadow: 0 1px 2px rgba(20, 26, 34, .05), 0 8px 24px -12px rgba(20, 26, 34, .18);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0e1116; --surface: #161b22; --surface-2: #1d232c;
+      --ink: #e8ecf2; --ink-2: #b9c2ce; --muted: #8b96a5;
+      --line: #262d38; --line-2: #333c49;
+      --accent: #92aee2; --accent-soft: #1b2534; --accent-ink: #b9ccf0;
+      --ok: #63c089; --ok-soft: #14251b;
+      --warn: #e2905b; --warn-soft: #2a1c12;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0e1116; --surface: #161b22; --surface-2: #1d232c;
+    --ink: #e8ecf2; --ink-2: #b9c2ce; --muted: #8b96a5;
+    --line: #262d38; --line-2: #333c49;
+    --accent: #92aee2; --accent-soft: #1b2534; --accent-ink: #b9ccf0;
+    --ok: #63c089; --ok-soft: #14251b;
+    --warn: #e2905b; --warn-soft: #2a1c12;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans TC", system-ui, sans-serif;
+    font-size: 17px; line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 96px; }
+
+  header.mast { padding: 52px 0 8px; }
+  .eyebrow {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin: 0 0 14px;
+  }
+  h1 {
+    margin: 0 0 12px; font-size: clamp(1.9rem, 6vw, 2.5rem); font-weight: 800;
+    letter-spacing: -.025em; line-height: 1.2; text-wrap: balance;
+  }
+  .lede { margin: 0; max-width: 58ch; color: var(--ink-2); font-size: 1.03rem; }
+
+  section { padding-top: 40px; }
+  section > h2 {
+    margin: 0 0 6px; font-size: clamp(1.2rem, 3vw, 1.4rem); font-weight: 800;
+    letter-spacing: -.02em;
+  }
+  .lede2 { margin: 0 0 18px; color: var(--muted); font-size: .96rem; }
+  p { margin: 0 0 14px; }
+  strong { font-weight: 700; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .89em; background: var(--surface-2); border: 1px solid var(--line);
+    padding: 1px 6px; border-radius: 5px;
+  }
+
+  .note { border-radius: var(--radius); padding: 16px 20px; margin: 0 0 8px; border: 1px solid; }
+  .note > :last-child { margin-bottom: 0; }
+  .note h3 { margin: 0 0 8px; font-size: .96rem; font-weight: 800; }
+  .accent-box { background: var(--accent-soft); border-color: var(--line-2); color: var(--ink); }
+  .accent-box h3 { color: var(--accent-ink); }
+
+  /* ---- letter card ---- */
+  .letter {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); margin: 18px 0; overflow: hidden;
+  }
+  .letter-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 20px; background: var(--surface-2); border-bottom: 1px solid var(--line);
+  }
+  .letter-head .tag { font-size: .85rem; font-weight: 700; color: var(--ink-2); }
+  .letter-head .when { font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .field { padding: 16px 20px 0; }
+  .field-label {
+    font-size: .74rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 6px;
+  }
+  .field-row { display: flex; align-items: flex-start; gap: 12px; }
+  .field-row .field-text { flex: 1; min-width: 0; font-weight: 700; }
+  .field.subject { padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
+
+  .body-wrap { padding: 4px 20px 20px; }
+  .letter pre {
+    margin: 0; padding: 18px 20px; background: var(--surface); color: var(--ink);
+    white-space: pre-wrap; word-break: break-word; font-family: inherit;
+    font-size: .97rem; line-height: 1.85; border: 1px solid var(--line); border-radius: 10px;
+  }
+
+  .copy {
+    font: inherit; font-size: .82rem; font-weight: 700; cursor: pointer; flex: none;
+    background: var(--accent); color: #fff; border: 1px solid var(--accent);
+    padding: 5px 14px; border-radius: 8px; white-space: nowrap;
+  }
+  :root[data-theme="dark"] .copy, :root:not([data-theme="light"]) .copy { color: #0e1116; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .copy { color: #0e1116; } }
+  .copy:hover { filter: brightness(1.08); }
+  .copy:active { transform: translateY(1px); }
+  .copy.done { background: var(--ok); border-color: var(--ok); }
+
+  /* ---- instructor notes ---- */
+  .notes { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow); }
+  .notes ul { margin: 0; padding-left: 1.3em; }
+  .notes li { margin-bottom: 10px; }
+  .notes li:last-child { margin-bottom: 0; }
+
+  footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+
+  :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px 72px; }
+    .letter-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .field-row { flex-direction: column; align-items: stretch; }
+    .field-row .copy { align-self: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">用 Claude Code 把發想做成可操作工具 · 講師用</p>
+    <h1>課前通知信</h1>
+    <p class="lede">第一封在課前 5–7 天寄出，第二封在課前 1 天寄出提醒。每個欄位都有複製按鈕，可直接貼進信件。</p>
+  </header>
+
+  <section id="note">
+    <div class="note accent-box">
+      <h3>若改由主辦方統一付費</h3>
+      <p style="margin-bottom:0">下面兩封信是「學員自行訂閱」的預設版本。若改成由主辦方用 Console 額度統一付費，請先參考同資料夾的 <code>provisioning-tokens.md</code>，裡面說明這封信該怎麼改。</p>
+    </div>
+  </section>
+
+  <section id="mail1">
+    <h2>第一封</h2>
+    <p class="lede2">課前 5–7 天寄出</p>
+
+    <div class="letter">
+      <div class="letter-head">
+        <span class="tag">主要通知信</span>
+        <span class="when">課前 5–7 天</span>
+      </div>
+
+      <div class="field subject">
+        <div class="field-label">主旨</div>
+        <div class="field-row">
+          <div class="field-text" id="subj1">【課前必做，約 20 分鐘】用 Claude Code 把發想做成可操作工具 — 上課前請完成這三件事</div>
+          <button class="copy" type="button" data-target="#subj1">複製</button>
+        </div>
+      </div>
+
+      <div class="body-wrap">
+        <div class="field-label" style="margin:14px 0 6px">內文</div>
+        <div class="field-row" style="align-items:flex-start">
+          <pre id="body1">嗨，
+
+這是一堂全程動手做的課。你會從生活或工作中的問題出發，完成發想、規劃與兩輪實作，並展示一個可操作的最小版本。
+
+你不需要任何程式背景。但你需要在上課前準備好環境，否則課堂前段需要先處理安裝，會減少實作時間。
+
+請在上課前完成以下三件事，大約 20 分鐘。
+
+
+① 準備一個付費的 Claude 帳號 ⚠️
+
+這是唯一沒有替代方案的一項，請務必先確認。
+
+Claude Code 需要 Pro、Max、Team 或 Enterprise 方案。免費的 Claude 帳號無法使用，這一點沒有例外。
+
+到 https://claude.com/pricing 訂閱 Pro 方案；若課後不繼續使用，可依方案規定取消。
+
+訂閱費用補助：上課當天出示訂閱證明（收據或訂閱確認畫面），現場補助新台幣 500 元。
+
+怎麼確認你的方案可以用：完成下面第 ② 步之後，打開 Claude 桌面版，點最上方中間的 Code 分頁。
+
+看到可以輸入文字的畫面 → 你可以用
+跳出要你「升級方案」→ 你的帳號還不能用，請回來訂閱
+
+如果你的公司/學校帳號有限制，或不確定，請在上課前回信告訴我，我會幫你安排課堂上兩人一組共用。
+
+
+② 安裝 Claude 桌面版
+
+我們不會使用終端機，全程使用桌面版。
+
+Mac：https://claude.ai/download
+Windows：https://claude.com/download
+
+下載後安裝、打開、用你第 ① 步的帳號登入。
+
+Windows 使用者請額外裝 Git for Windows：https://git-scm.com/downloads/win
+（可使用安裝程式的預設選項；Mac 通常已內建，不需另外安裝。）
+
+
+③ 準備一個 GitHub 帳號
+
+到 https://github.com/signup 註冊，免費方案就夠了。
+
+註冊完請收信點開驗證信完成驗證——沒驗證的帳號沒辦法建立儲存庫，如果沒有收到驗證信，請檢查垃圾郵件匣。
+
+請把你的帳號名稱記起來，上課時會用到。
+
+
+上課當天請帶
+
+・筆電（不是 iPad 或平板，需要能安裝軟體）
+・電源線
+・手機（若專題發布成網站，可用手機驗證）
+
+
+課前 30 秒自我檢查
+
+全部確認就準備好了：
+
+・打開 Claude 桌面版，點 Code 分頁，沒有跳出要我升級
+・我能登入 github.com，而且信箱已驗證
+・筆電電源線在包包裡了
+
+有任何一項無法完成，請直接回這封信，不要等到上課當天。
+
+課堂見！</pre>
+          <button class="copy" type="button" data-target="#body1">複製</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mail2">
+    <h2>第二封</h2>
+    <p class="lede2">課前 1 天寄出，簡短提醒</p>
+
+    <div class="letter">
+      <div class="letter-head">
+        <span class="tag">提醒信</span>
+        <span class="when">課前 1 天</span>
+      </div>
+
+      <div class="field subject">
+        <div class="field-label">主旨</div>
+        <div class="field-row">
+          <div class="field-text" id="subj2">明天見！最後確認一件事（30 秒）</div>
+          <button class="copy" type="button" data-target="#subj2">複製</button>
+        </div>
+      </div>
+
+      <div class="body-wrap">
+        <div class="field-label" style="margin:14px 0 6px">內文</div>
+        <div class="field-row" style="align-items:flex-start">
+          <pre id="body2">嗨，明天上課前請花 30 秒確認：
+
+打開 Claude 桌面版 → 點最上方的 Code 分頁 → 有沒有跳出要你升級付費方案？
+
+沒跳出 → 你準備好了，明天見。
+跳出來了 → Claude Code 需要付費方案（Pro 以上），免費帳號無法使用。可在 https://claude.com/pricing 訂閱；若未能及時完成，也請照常出席，我會安排你跟其他同學兩人一組。
+
+記得帶筆電、電源線、手機。
+
+明天見！</pre>
+          <button class="copy" type="button" data-target="#body2">複製</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="notes">
+    <h2>講師備註</h2>
+    <p class="lede2">不寄給學員，留在這裡自己看</p>
+    <div class="notes">
+      <ul>
+        <li><strong>訂閱費用補助：</strong>每位學員最高新台幣 500 元，10 人上限為新台幣 5,000 元。請當天備妥現金，並在報到處確認每位學員的訂閱證明後再給付，避免重複請領。</li>
+        <li>可預留 10–20% 的學員尚未完成訂閱，事先安排兩人一組的分組方式。</li>
+        <li>收到「我用公司電腦裝不了軟體」的回覆時，回覆他們用 <code>claude.ai/code</code>（只要瀏覽器，不用安裝），並提醒他們仍然需要付費方案。</li>
+        <li>課前信不需提到終端機、Node.js 或 npm，因為這堂課不會使用這些工具。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>內容與 <code>instructor/pre-workshop-email.md</code> 同步；改動時請兩邊一起更新。</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  function flash(btn, ok) {
+    var original = btn.dataset.label || btn.textContent;
+    btn.dataset.label = original;
+    btn.textContent = ok ? "已複製 ✓" : "請手動選取";
+    btn.classList.toggle("done", ok);
+    clearTimeout(btn._t);
+    btn._t = setTimeout(function () {
+      btn.textContent = btn.dataset.label;
+      btn.classList.remove("done");
+    }, 1600);
+  }
+
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "-1000px";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest(".copy");
+    if (!btn) return;
+    var target = btn.getAttribute("data-target");
+    var el = target && document.querySelector(target);
+    if (!el) return;
+    var text = el.textContent;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(
+        function () { flash(btn, true); },
+        function () { flash(btn, fallbackCopy(text)); }
+      );
+    } else {
+      flash(btn, fallbackCopy(text));
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
