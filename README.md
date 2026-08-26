@@ -4,6 +4,8 @@
 學員用自己的 GitHub 帳號和 Claude 帳號，從生活或工作中的真實問題出發，
 逐步完成發想、規劃、實作與驗證，最後展示一個可操作的最小版本。
 
+**專案網站：** https://htchen.github.io/LLM2Life/ ｜ **課前準備：** https://htchen.github.io/LLM2Life/pre-workshop.html
+
 **隨堂網站（學員用，付費版）：** https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289
 
 > 🆓 **免費版本：** 若學員沒有付費方案、場地限制安裝軟體，或沒有工具預算，

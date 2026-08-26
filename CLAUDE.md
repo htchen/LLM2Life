@@ -63,6 +63,29 @@ webfonts, no remote images) — it must work on lecture-hall wifi that blocks ha
 and on a phone. No webfont is loaded on purpose: CJK faces are megabytes and the CSP blocks font
 CDNs, so the type personality comes from weight, scale, and spacing on the system TC stack.
 
+## `web/`: the public front door, not a second companion site
+
+`web/index.html` is the project's **landing page**, published to GitHub Pages at
+`https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow copies it to
+`/index.html` and `site/pre-workshop.html` to `/pre-workshop.html`; nothing else is published.
+
+Keep the two roles apart, because collapsing them is how the student link gets orphaned:
+
+- **The 隨堂網站 is the Artifact URL, and only that.** The landing page *links* to
+  `07d306ff…` (paid) and `f9e2701f…` (free); it must never host a copy of `site/index.html`.
+  A second address for the same handbook means half the room is reading a stale one.
+- **`site/pre-workshop.html` is the source of truth for the pre-workshop page.** Pages serves a
+  copy. Never edit the copy — there is no copy in the repo to edit, and hand-editing the
+  published output is silently overwritten on the next push.
+- **The landing page deliberately carries no numbers that drift** — no slide count, no
+  per-segment minutes, no total page counts. It links to `instructor/timeline.md` instead. When
+  you change timings, you should not need to touch `web/`. Keep it that way.
+- It follows the same self-contained rule as `site/index.html` (no CDN, no webfonts, no remote
+  images) and reuses that file's exact CSS custom properties, so the two read as one project.
+
+Only the two Artifact URLs are duplicated between `README.md` and `web/index.html`. If either
+ever changes, both files need the edit.
+
 ## Load-bearing facts
 
 These are verified against the current docs and shape the whole design. Do not soften them:

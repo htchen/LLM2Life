@@ -1,0 +1,55 @@
+name: 發布專案網站
+
+# 專案首頁（web/index.html）與課前準備頁（site/pre-workshop.html）發布到 GitHub Pages。
+# 隨堂網站不在這裡發布——它有自己的固定網址，見 CLAUDE.md。
+#
+# 首次啟用需要在 GitHub 上設定一次：
+#   Settings → Pages → Build and deployment → Source 選 "GitHub Actions"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - 'site/pre-workshop.html'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時只跑一個發布，且不中斷進行中的部署
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 組合要發布的檔案
+        run: |
+          set -euo pipefail
+          mkdir -p public
+          cp web/index.html public/index.html
+          cp site/pre-workshop.html public/pre-workshop.html
+          touch public/.nojekyll
+          ls -l public
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
