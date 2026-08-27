@@ -8,6 +8,10 @@ name: 發布專案網站
 #
 # 首次啟用需要在 GitHub 上設定一次：
 #   Settings → Pages → Build and deployment → Source 選 "GitHub Actions"
+#
+# 要手動重新發布時，請用 Actions → 本 workflow → "Run workflow"（branch: main）。
+# 不要用舊 run 的 "Re-run jobs"：重跑會沿用那次 run 原本的 commit 重建，
+# 完成得比較晚時會把新版蓋掉。下面的「確認發布的是 main 最新 commit」就是擋這件事。
 
 on:
   push:
@@ -34,6 +38,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: 確認發布的是 main 的最新 commit
+        run: |
+          set -euo pipefail
+          TIP=$(git ls-remote origin refs/heads/main | cut -f1)
+          HERE=$(git rev-parse HEAD)
+          echo "這次 run 的 commit : $HERE"
+          echo "main 目前的 commit : $TIP"
+          if [ "$TIP" != "$HERE" ]; then
+            echo "::error::這次 run 帶的是舊的 commit，發布會覆蓋掉較新的版本，因此中止。"
+            echo "::error::如果你是用舊 run 的 Re-run jobs，請改用 Run workflow（branch: main）觸發新的 run。"
+            exit 1
+          fi
 
       - name: 組合要發布的檔案
         run: |
