@@ -5,11 +5,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this repo is
 
 Teaching material for a **three-hour, hands-on workshop** (in Traditional Chinese) that shows
-**non-programmers** how to use Claude Code + GitHub to build small tools for daily life.
+**non-programmers** how to use AI + GitHub to build small tools for daily life.
 There is no application to ship here — the deliverable is the material itself.
 
-Students attend with their own GitHub account and their own paid Claude account, and leave with
-one public URL hosting three working tools they built during the session.
+**The default track is the free one, in `variant-free/`**: claude.ai's free chat plus the GitHub
+web UI, no subscription and no install. The repo root holds the **Claude Code (paid) version**,
+kept for sessions where the host pays or students already have Pro or above. The folders were
+deliberately NOT swapped when the free version became primary — root is still the paid material —
+so read the version label before editing, not the path.
+
+Students attend with their own GitHub account and their own Claude account (free is enough on the
+default track), and leave with a public URL hosting the working tool they built during the session.
 
 ## Commands
 
@@ -40,6 +46,10 @@ others is the main way this repo breaks:
 | Companion site | the student, on a second screen | `site/index.html` |
 | Instructor notes | whoever is teaching | `instructor/` |
 
+**Both versions have all four.** The paths above are the paid version's; the free version's are
+the same names under `variant-free/`. Every drift rule below applies within a version, never
+across the two.
+
 `instructor/timeline.md` is the **source of truth for timings and lab order**. If a lab grows or
 shrinks, update the timeline first, then propagate — including the slide-number column, which is
 easy to leave stale. When you change what students actually type, the prompt must match verbatim
@@ -66,17 +76,30 @@ CDNs, so the type personality comes from weight, scale, and spacing on the syste
 ## `web/`: the public front door, not a second companion site
 
 `web/index.html` is the project's **landing page**, published to GitHub Pages at
-`https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow copies it to
-`/index.html` and `site/pre-workshop.html` to `/pre-workshop.html`; nothing else is published.
+`https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow publishes
+exactly three files, and nothing else:
+
+| Published as | Source |
+| --- | --- |
+| `/` | `web/index.html` |
+| `/pre-workshop.html` | `variant-free/site/pre-workshop.html` (free — the default track) |
+| `/pre-workshop-paid.html` | `site/pre-workshop.html` (Claude Code) |
+
+The unqualified `/pre-workshop.html` is the free one on purpose: it is the link students are
+given. Both prep pages share the `htchen.github.io` origin, so they must keep **different
+`localStorage` keys** (`llm2life-preworkshop-free-v1` vs `…-v1`) or the checklists overwrite each
+other.
 
 Keep the two roles apart, because collapsing them is how the student link gets orphaned:
 
 - **The 隨堂網站 is the Artifact URL, and only that.** The landing page *links* to
   `07d306ff…` (paid) and `f9e2701f…` (free); it must never host a copy of `site/index.html`.
   A second address for the same handbook means half the room is reading a stale one.
-- **`site/pre-workshop.html` is the source of truth for the pre-workshop page.** Pages serves a
-  copy. Never edit the copy — there is no copy in the repo to edit, and hand-editing the
-  published output is silently overwritten on the next push.
+- **The two `site/pre-workshop.html` files are the source of truth for the prep pages.** Pages
+  serves copies. Never edit a copy — there is none in the repo to edit, and hand-editing the
+  published output is silently overwritten on the next push. The free page is a content rewrite
+  of the paid one that keeps its entire stylesheet and component classes; restyle both together
+  or neither.
 - **The landing page deliberately carries no numbers that drift** — no slide count, no
   per-segment minutes, no total page counts. It links to `instructor/timeline.md` instead. When
   you change timings, you should not need to touch `web/`. Keep it that way.
@@ -90,12 +113,17 @@ ever changes, both files need the edit.
 
 These are verified against the current docs and shape the whole design. Do not soften them:
 
+- **The default track needs no payment and no install.** Free claude.ai plus the GitHub web UI.
+  Its cost is mechanical, not conceptual: students hand-execute the "turn text into a file" step,
+  which is why every prompt there ends with 「請給我完整程式碼」 and why it runs 195 minutes
+  rather than 180.
 - **Claude Code requires a paid plan** (Pro / Max / Team / Enterprise). A free Claude account
-  cannot use it. This is the single biggest way to lose students in the first fifteen minutes,
-  which is why it leads `instructor/pre-workshop-email.md`.
-- **The Desktop app is the primary path**, not the terminal. It bundles Claude Code, needs no
-  Node.js and no CLI, and gives beginners a visual diff. The terminal is presented as optional.
-- **`claude.ai/code` (web) is the rescue path** for anyone whose install fails. It needs a GitHub
+  cannot use it. On the paid track this is the single biggest way to lose students in the first
+  fifteen minutes, which is why it leads `instructor/pre-workshop-email.md`. It is also the whole
+  reason the free track is the default.
+- **On the paid track, the Desktop app is the primary path**, not the terminal. It bundles Claude
+  Code, needs no Node.js and no CLI, and gives beginners a visual diff. The terminal is optional.
+- **`claude.ai/code` (web) is the rescue path** for a failed paid-track install. It needs a GitHub
   repo and is research-preview for Pro/Max/Team.
 - **GitHub Pages needs a public repo** on free accounts. Students are told to make
   `my-life-tools` public at creation time — flipping it later mid-lab costs five minutes.
@@ -120,17 +148,22 @@ When editing, preserve these gates:
 - The first build produces a usable core flow and is saved before the second iteration.
 - The last segment stops feature work and shifts to demonstration, evidence, and the next version.
 
-## `variant-free/`: a second, complete workshop — not a patch on this one
+## `variant-free/`: the default track, living in a non-default folder
 
 `variant-free/` is the free-account version: claude.ai chat + the GitHub web UI instead of
-Claude Code, for students on free accounts, locked-down lab computers, or zero-budget/remote
-delivery. It duplicates the four-surface structure (slides/workbook/site/instructor) rather than
-branching off this one, because the two versions genuinely disagree at the mechanical level —
-students there hand-execute the "turn text into a file" step this workshop automates — and a
-shared template would force every edit here to be re-justified for a workflow it wasn't written
-for.
+Claude Code. **It is what gets taught by default** — students on free accounts, locked-down lab
+computers, or zero-budget/remote delivery are the normal case, not the exception. It duplicates
+the four-surface structure (slides/workbook/site/instructor) rather than branching off the root
+material, because the two versions genuinely disagree at the mechanical level — students there
+hand-execute the "turn text into a file" step the paid version automates — and a shared template
+would force every edit to be re-justified for a workflow it wasn't written for.
 
-Treat it as sibling material with its own drift rules, not a downstream copy to keep patched:
+**The folder name understates its status.** Primacy was flipped in the documents (README, the
+landing page, this file), not by moving files, so that the change stays reversible and no link
+breaks. Do not "fix" this by assuming the root is authoritative: when a reader asks how the
+workshop runs, the answer comes from `variant-free/instructor/timeline.md`.
+
+Treat the two as sibling material with their own drift rules, neither a downstream copy of the other:
 
 - Its `timeline.md` and `insights.md` are independent documents with a **different thesis**.
   Both versions use the same project process. The free variant additionally teaches the manual

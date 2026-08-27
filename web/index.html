@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>用 Claude Code 把發想做成可操作工具</title>
-<meta name="description" content="三小時實作工作坊的完整教材。對象是沒有程式背景的一般人，從自己的真實問題出發，完成一個可操作的最小版本。">
+<title>用 AI 和 GitHub 把發想做成可操作工具</title>
+<meta name="description" content="三小時實作工作坊的完整教材。對象是沒有程式背景的一般人，只需要免費帳號，從自己的真實問題出發，完成一個可操作的最小版本。">
 
 <style>
   :root {
@@ -172,43 +172,47 @@
 
   <header class="mast">
     <p class="eyebrow">LLM2Life · 開放式專題工作坊</p>
-    <h1>用 Claude Code<br>把發想做成可操作工具</h1>
+    <h1>用 AI 和 GitHub<br>把發想做成可操作工具</h1>
     <p>三小時實作工作坊的完整教材。對象是<b>沒有程式背景</b>的一般人：用自己的 GitHub 帳號和
        Claude 帳號，從生活或工作中的真實問題出發，完成發想、規劃、實作與驗證，
        最後展示一個可以操作的最小版本。</p>
     <p class="arc">
       <b>三小時</b><span aria-hidden="true">·</span>
       <b>不需要程式背景</b><span aria-hidden="true">·</span>
-      <b>題目由學員自己決定</b><span aria-hidden="true">·</span>
+      <b>免費帳號即可，不必安裝軟體</b><span aria-hidden="true">·</span>
       <b>結束時要有可操作的成果</b>
     </p>
   </header>
 
   <section>
     <h2>學員從這裡開始</h2>
-    <p class="lede">上課當天會直接動手做。請先完成課前準備，再打開對應版本的隨堂手冊。</p>
+    <p class="lede">上課當天會直接動手做。課堂使用 claude.ai 免費帳號搭配 GitHub 網頁介面，
+       <b>不必訂閱、不必安裝任何軟體</b>。請先完成課前準備，再打開隨堂手冊。</p>
     <div class="cards">
       <div class="card lead">
         <span class="tag">上課前</span>
         <h3>課前準備</h3>
-        <p>帳號、安裝與權限確認。大約需要 20 分鐘，請務必在上課前完成。</p>
+        <p>兩個免費帳號，用瀏覽器就能完成，大約需要 10 分鐘。請務必在上課前完成。</p>
         <a class="go" href="pre-workshop.html">打開課前準備
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="card">
-        <span class="tag">上課中 · 付費版</span>
+      <div class="card lead">
+        <span class="tag">上課中</span>
         <h3>隨堂手冊</h3>
-        <p>使用 Claude Code（桌面版）的主線版本。課堂上跟著這一份操作。</p>
-        <a class="go" href="https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289">打開隨堂手冊
+        <p>課堂上跟著這一份操作：描述需求、取得完整程式碼、自己存檔打開，再發布到 GitHub。</p>
+        <a class="go" href="https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1">打開隨堂手冊
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
       </div>
       <div class="card">
-        <span class="tag">上課中 · 免費版</span>
-        <h3>隨堂手冊（免費版）</h3>
-        <p>改用 claude.ai 聊天介面搭配 GitHub 網頁操作，流程相同、步驟不同。</p>
-        <a class="go" href="https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1">打開免費版
+        <span class="tag">付費場次專用</span>
+        <h3>Claude Code 版本</h3>
+        <p>主辦方統一付費、或學員已有 Pro 以上方案時使用。流程與成果相同，由工具直接建立檔案。</p>
+        <a class="go" href="pre-workshop-paid.html">課前準備（付費版）
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="go" href="https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289" style="padding-top:0">隨堂手冊（付費版）
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
       </div>
@@ -239,14 +243,15 @@
     <h2>開課前必須知道的三件事</h2>
     <p class="lede">這三項是最常在課程前十五分鐘造成落隊的原因。</p>
     <div class="note">
-      <h3>Claude Code 需要付費方案</h3>
-      <p>Pro / Max / Team / Enterprise 皆可，<b>免費帳號無法使用</b>。這不是模型的限制，是方案的限制。
-         沒有付費方案時，改用上面的免費版教材。</p>
+      <h3>學員只需要免費帳號</h3>
+      <p>claude.ai 免費方案加上 GitHub 免費方案就夠，<b>不必訂閱，也不必安裝任何軟體</b>。
+         課前只要確認兩個帳號都能登入、GitHub 信箱已完成驗證。</p>
     </div>
     <div class="note">
-      <h3>主要路線是桌面版，不是終端機</h3>
-      <p>桌面版內建 Claude Code，不需要安裝 Node.js、不必操作指令列，而且看得到視覺化的變更對照。
-         終端機是選配；安裝失敗時改用瀏覽器版 <code>claude.ai/code</code>。</p>
+      <h3>學員要自己把 AI 回覆存成檔案</h3>
+      <p>這是免費版唯一的機制差異：複製完整程式碼、貼進文字編輯器、存檔、打開。
+         也因此<b>每個提示詞結尾都要寫「請給我完整程式碼」</b>——AI 用「⋯」省略內容時，
+         學員會存出一個壞掉的檔案。</p>
     </div>
     <div class="note">
       <h3>學員的 repo 必須是 Public</h3>
@@ -257,16 +262,18 @@
 
   <section>
     <h2>教材結構</h2>
-    <p class="lede">同一套內容分布在四個介面：投影片、手冊、隨堂網站、講師文件。原始檔全部在 GitHub 上。</p>
+    <p class="lede">同一套內容分布在四個介面：投影片、手冊、隨堂網站、講師文件。
+       課堂主線是免費版，整套在 <code>variant-free/</code>；根目錄保留 Claude Code 付費版。
+       原始檔全部在 GitHub 上。</p>
     <div class="scroll">
       <table class="tbl">
-        <tr><th>資料夾</th><th>給誰</th><th>內容</th></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/slides">slides/</a></td><td>講師</td><td>Marp 投影片，含備忘稿</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/workbook">workbook/</a></td><td>學員</td><td>共同練習、專題發想、規劃與實作手冊</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/site">site/</a></td><td>學員</td><td>隨堂網站與課前準備網頁的原始檔</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/instructor">instructor/</a></td><td>講師</td><td>流程表、講稿、課前通知信、疑難排解、參考解</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/starter">starter/</a></td><td>選配</td><td>學員 repo 的範本</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/variant-free">variant-free/</a></td><td>講師</td><td>免費變體的完整教材，自成一套</td></tr>
+        <tr><th>資料夾</th><th>版本</th><th>內容</th></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/variant-free">variant-free/</a></td><td>免費版 · 主線</td><td>投影片、手冊、隨堂網站、講師文件，自成一套</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/slides">slides/</a></td><td>付費版</td><td>Marp 投影片，含備忘稿</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/workbook">workbook/</a></td><td>付費版</td><td>共同練習、專題發想、規劃與實作手冊</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/site">site/</a></td><td>付費版</td><td>隨堂網站與課前準備網頁的原始檔</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/instructor">instructor/</a></td><td>付費版</td><td>流程表、講稿、課前通知信、疑難排解、參考解</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/starter">starter/</a></td><td>兩版共用</td><td>學員 repo 的範本</td></tr>
       </table>
     </div>
   </section>
@@ -274,22 +281,26 @@
   <section>
     <h2>要開這門課的人，先讀這幾份</h2>
     <ul class="links">
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/timeline.md">流程表
-        <small>時間與順序的唯一真實來源。改動任何一段的長度，都先從這裡開始。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/insights.md">講師說明與帶領原則
-        <small>各階段的教學目的、提問方式、範圍判斷，以及補充段落的完整論證與追問回應。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/pre-workshop-email.md">課前通知信
-        <small>一定要寄。沒有寄，課程前段就得用來處理安裝與帳號問題。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/troubleshooting.md">疑難排解
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/timeline.md">流程表（免費版）
+        <small>時間與順序的唯一真實來源，195 分鐘完整版與 180 分鐘縮短方式。改動任何一段的長度，都先從這裡開始。</small></a></li>
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/insights.md">免費版講師說明
+        <small>免費版特有的三件事：判斷與檔案操作的分工、單一檔案原則、每一輪都要保存完整版本。</small></a></li>
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/insights.md">論證與帶領原則
+        <small>兩版共用。各階段的教學目的、提問方式、範圍判斷，以及補充段落「AI 演進與人的判斷」的完整推導與追問回應。</small></a></li>
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/pre-workshop-email.md">課前通知信（免費版）
+        <small>一定要寄。免費版沒有安裝問題，但仍要確認兩個帳號都能登入。</small></a></li>
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/troubleshooting.md">疑難排解（免費版）
         <small>現場最常出現的錯誤與處理順序。</small></a></li>
       <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/provisioning-tokens.md">帳號與費用估算
-        <small>學員自備方案、Console 額度與免費變體的取捨比較。</small></a></li>
+        <small>改用付費版時才需要：學員自備方案、Console 額度與免費變體的取捨比較。</small></a></li>
     </ul>
   </section>
 
   <footer>
     <p>教材原始檔：<a href="https://github.com/htchen/LLM2Life">github.com/htchen/LLM2Life</a></p>
-    <p>本頁由 <code>web/index.html</code> 發布，課前準備頁面由 <code>site/pre-workshop.html</code> 產生。</p>
+    <p>本頁由 <code>web/index.html</code> 發布；課前準備頁由
+       <code>variant-free/site/pre-workshop.html</code>（免費版）與
+       <code>site/pre-workshop.html</code>（付費版）產生。</p>
   </footer>
 
 </div>

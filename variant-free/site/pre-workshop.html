@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>課前準備（免費版）</title>
+
+<style>
+  :root {
+    --ground: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef0f4;
+    --ink: #151a21;
+    --ink-2: #3d4753;
+    --muted: #6b7684;
+    --line: #dde1e8;
+    --line-2: #c9cfda;
+    --accent: #2f4a7c;
+    --accent-soft: #e6ecf7;
+    --accent-ink: #23395e;
+    --ok: #2b7a4b;
+    --ok-soft: #e3f2e8;
+    --warn: #b4531c;
+    --warn-soft: #fcece1;
+    --shadow: 0 1px 2px rgba(20, 26, 34, .05), 0 8px 24px -12px rgba(20, 26, 34, .18);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0e1116;
+      --surface: #161b22;
+      --surface-2: #1d232c;
+      --ink: #e8ecf2;
+      --ink-2: #b9c2ce;
+      --muted: #8b96a5;
+      --line: #262d38;
+      --line-2: #333c49;
+      --accent: #92aee2;
+      --accent-soft: #1b2534;
+      --accent-ink: #b9ccf0;
+      --ok: #63c089;
+      --ok-soft: #14251b;
+      --warn: #e2905b;
+      --warn-soft: #2a1c12;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0e1116; --surface: #161b22; --surface-2: #1d232c;
+    --ink: #e8ecf2; --ink-2: #b9c2ce; --muted: #8b96a5;
+    --line: #262d38; --line-2: #333c49;
+    --accent: #92aee2; --accent-soft: #1b2534; --accent-ink: #b9ccf0;
+    --ok: #63c089; --ok-soft: #14251b;
+    --warn: #e2905b; --warn-soft: #2a1c12;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans TC", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px 96px; }
+
+  header.mast { padding: 56px 0 8px; }
+  .eyebrow {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin: 0 0 14px;
+  }
+  h1 {
+    margin: 0 0 14px; font-size: clamp(1.9rem, 6vw, 2.6rem); font-weight: 800;
+    letter-spacing: -.025em; line-height: 1.2; text-wrap: balance;
+  }
+  .lede { margin: 0; max-width: 56ch; color: var(--ink-2); font-size: 1.05rem; }
+
+  .info {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2px; margin: 28px 0 0; border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; background: var(--line);
+  }
+  .info div { background: var(--surface); padding: 14px 18px; }
+  .info b {
+    display: block; font-size: .74rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin-bottom: 4px;
+  }
+  .info span { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .info .fill { color: var(--muted); font-weight: 500; font-style: normal; }
+
+  section { padding-top: 44px; }
+  section > h2 {
+    margin: 0 0 6px; font-size: clamp(1.3rem, 3vw, 1.55rem); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  .lede2 { margin: 0 0 20px; color: var(--muted); font-size: .98rem; }
+
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 14px; padding-left: 1.35em; }
+  li { margin-bottom: 6px; }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  strong { font-weight: 700; }
+
+  .step { display: flex; gap: 16px; margin: 0 0 28px; }
+  .step:last-child { margin-bottom: 0; }
+  .sn {
+    flex: none; width: 34px; height: 34px; margin-top: 2px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent-ink); border: 1px solid var(--line-2);
+    display: grid; place-items: center; font-size: .95rem; font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  .step-body { min-width: 0; }
+  .step-body h3 { margin: 4px 0 8px; font-size: 1.08rem; font-weight: 700; letter-spacing: -.01em; }
+  .step-body > p:last-child { margin-bottom: 0; }
+
+  .btnrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    background: var(--accent); color: var(--surface); font-weight: 700; font-size: .93rem;
+    padding: 9px 16px; border-radius: 9px; border: 1px solid var(--accent);
+  }
+  .btn:hover { filter: brightness(1.08); }
+  :root[data-theme="dark"] .btn, :root:not([data-theme="light"]) .btn { color: #0e1116; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn { color: #0e1116; }
+  }
+
+  .note { border-radius: var(--radius); padding: 16px 20px; margin: 14px 0; border: 1px solid; }
+  .note > :first-child { margin-top: 0; }
+  .note > :last-child { margin-bottom: 0; }
+  .note h3 { margin: 0 0 8px; font-size: .98rem; font-weight: 800; letter-spacing: -.01em; }
+  .warn-box { background: var(--warn-soft); border-color: var(--warn); }
+  .warn-box h3 { color: var(--warn); }
+  .ok-box { background: var(--ok-soft); border-color: var(--ok); }
+  .ok-box h3 { color: var(--ok); }
+
+  .verify {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 18px; margin: 14px 0 0; font-size: .95rem; box-shadow: var(--shadow);
+  }
+  .verify b { display: block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+
+  .bring { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 6px 0 0; }
+  .bring div {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .bring div span { display: block; font-size: 1.5rem; margin-bottom: 6px; }
+
+  .check {
+    background: var(--surface); border: 1px solid var(--ok); border-radius: var(--radius);
+    padding: 20px 24px; margin: 0; box-shadow: var(--shadow);
+  }
+  .check h3 { margin: 0 0 4px; font-size: 1.02rem; font-weight: 800; color: var(--ok); }
+  .check .lede2 { margin: 0 0 14px; }
+  .check label {
+    display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+    padding: 10px 0; border-top: 1px solid var(--line); line-height: 1.6;
+  }
+  .check label:first-of-type { border-top: 0; }
+  .check input {
+    flex: none; width: 20px; height: 20px; margin: 3px 0 0;
+    accent-color: var(--ok); cursor: pointer;
+  }
+  .check input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-2); }
+  #allset {
+    margin-top: 16px; padding: 12px 16px; border-radius: 9px; background: var(--ok-soft);
+    color: var(--ok); font-weight: 700; font-size: .93rem; display: none;
+  }
+  #allset.show { display: block; }
+
+  footer {
+    margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .93rem;
+  }
+  footer p { margin: 0 0 6px; }
+
+  :focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 18px 72px; }
+    header.mast { padding-top: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">用 AI 和 GitHub 把發想做成可操作工具</p>
+    <h1>課前準備</h1>
+    <p class="lede">上課當天會直接動手做。請在課前完成以下設定，大約需要 10 分鐘。<strong>不需要付費，也不需要安裝任何軟體。</strong></p>
+
+    <div class="info">
+      <div><b>日期</b><span class="fill">〔請填入日期〕</span></div>
+      <div><b>時間</b><span class="fill">〔請填入時間〕</span></div>
+      <div><b>地點</b><span class="fill">〔請填入地點〕</span></div>
+      <div><b>有問題請聯絡</b><span class="fill">〔請填入信箱〕</span></div>
+    </div>
+  </header>
+
+  <section id="steps">
+    <h2>需要準備的兩個帳號</h2>
+    <p class="lede2">兩個步驟，都用瀏覽器完成。</p>
+
+    <div class="step">
+      <div class="sn">1</div>
+      <div class="step-body">
+        <h3>claude.ai 帳號</h3>
+        <p>用 Email 或 Google 帳號註冊即可。<strong>免費方案就夠了，請不要訂閱付費方案。</strong></p>
+        <div class="btnrow">
+          <a class="btn" href="https://claude.ai" target="_blank" rel="noopener">前往註冊 ↗</a>
+        </div>
+        <div class="verify">
+          <b>確認方式</b>
+          登入 claude.ai 之後，畫面下方會出現可以打字的輸入框，隨便輸入一句話並送出，能收到回覆就完成了。
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="sn">2</div>
+      <div class="step-body">
+        <h3>GitHub 帳號</h3>
+        <p>用來存放與發布你做出來的工具，免費方案就夠用。</p>
+        <div class="btnrow">
+          <a class="btn" href="https://github.com/signup" target="_blank" rel="noopener">註冊 GitHub ↗</a>
+        </div>
+        <p>註冊後請<strong>收信點開驗證信</strong>完成驗證——未驗證的帳號無法建立儲存庫，而且驗證信有時候會躺在垃圾郵件匣。請記住你的帳號名稱，上課時會用到。</p>
+        <div class="verify">
+          <b>確認方式</b>
+          能登入 github.com，右上角點開頭像會看到你的帳號名稱，而且沒有出現要求驗證信箱的提示。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="note ok-box">
+      <h3>這堂課不需要花錢，也不需要安裝</h3>
+      <p style="margin-bottom:0">全程使用瀏覽器：在 claude.ai 描述需求、取得完整程式碼，自己存成檔案打開來看，再用 GitHub 網頁介面發布。<strong>把 AI 的回覆存成檔案這一步由你自己做</strong>，這是課堂上會反覆練習的操作，不需要事先學。</p>
+    </div>
+  </section>
+
+  <section id="bring">
+    <h2>上課當天請帶</h2>
+    <div class="bring">
+      <div><span>💻</span>筆電（不是平板，會用到記事本／文字編輯）</div>
+      <div><span>🔌</span>電源線</div>
+      <div><span>📱</span>手機（用來開啟你發布的網站）</div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <h2>課前 30 秒自我檢查</h2>
+    <div class="check" data-cp>
+      <h3>✅ 全部打勾就準備好了</h3>
+      <p class="lede2">勾選會留在這個頁面上，離開再回來也還在。</p>
+      <label><input type="checkbox" id="c1"><span>能登入 claude.ai，看得到可以打字的聊天畫面</span></label>
+      <label><input type="checkbox" id="c2"><span>能登入 github.com，信箱已完成驗證</span></label>
+      <label><input type="checkbox" id="c3"><span>筆電電源線已經放進包包</span></label>
+      <div id="allset">三項都完成了，課堂見。</div>
+    </div>
+  </section>
+
+  <footer>
+    <p>任一項無法完成，請在上課前直接聯絡，不要等到當天。</p>
+    <p>課堂見。</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "llm2life-preworkshop-free-v1";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+
+  var boxes = Array.prototype.slice.call(document.querySelectorAll(".check input[type=checkbox]"));
+  boxes.forEach(function (box) {
+    if (saved[box.id]) box.checked = true;
+  });
+
+  function refresh() {
+    var all = boxes.every(function (b) { return b.checked; });
+    var banner = document.getElementById("allset");
+    if (banner) banner.className = all ? "show" : "";
+  }
+
+  boxes.forEach(function (box) {
+    box.addEventListener("change", function () {
+      saved[box.id] = box.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* 無痕模式，略過 */ }
+      refresh();
+    });
+  });
+
+  refresh();
+})();
+</script>
+
+</body>
+</html>
