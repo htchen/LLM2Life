@@ -5,8 +5,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this repo is
 
 Teaching material for a **three-hour, hands-on workshop** (in Traditional Chinese) that shows
-**non-programmers** how to use AI + GitHub to build small tools for daily life.
+**non-programmers** how to use AI + GitHub to build small working tools.
 There is no application to ship here — the deliverable is the material itself.
+
+**The audience is high-school teachers, attending as seed teachers.** That sets up a
+teacher-to-teacher bootstrap with two returns:
+
+1. They re-run this workshop for other teachers at their own school — which is why the
+   `instructor/` layer (timeline, insights, troubleshooting, pre-workshop email) is part of the
+   deliverable, not backstage material, and why the repo is CC BY 4.0.
+2. They use what they learned to build tools that support their own teaching — 高中教材製作與
+   輔助教學 is the project domain, not a generic personal-productivity tool.
+
+**Students never need an account.** The tool a teacher builds is a web page their students
+*use*; the students do not use Claude or GitHub. This is a deliberate design decision that
+sidesteps the age and consent restrictions on both services — do not introduce a step that
+requires a student to sign up for anything.
 
 **The default track is the free one, in `variant-free/`**: claude.ai's free chat plus the GitHub
 web UI, no subscription and no install. The repo root holds the **Claude Code (paid) version**,
