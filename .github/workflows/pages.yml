@@ -7,6 +7,8 @@ name: 發布專案網站
 #   /handbook.html           ← variant-free/site/index.html（免費版 · 主線）
 #   /handbook-paid.html      ← site/index.html（付費版）
 #   /seed-teacher.html       ← web/seed-teacher.html（種子教師指南）
+#   /slides.html             ← variant-free/slides/deck.md（免費版 · 主線，Marp 建置）
+#   /slides-paid.html        ← slides/deck.md（付費版，Marp 建置）
 # 隨堂網站改由這裡發布：教師要能把連結給自己的學生，Artifact 需登入與分享權限。
 #
 # 首次啟用需要在 GitHub 上設定一次：
@@ -25,6 +27,10 @@ on:
       - 'site/index.html'
       - 'variant-free/site/pre-workshop.html'
       - 'variant-free/site/index.html'
+      - 'slides/deck.md'
+      - 'variant-free/slides/deck.md'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -57,6 +63,14 @@ jobs:
             exit 1
           fi
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 安裝 Marp
+        run: npm ci
+
       - name: 組合要發布的檔案
         run: |
           set -euo pipefail
@@ -68,6 +82,12 @@ jobs:
           cp site/index.html public/handbook-paid.html
           cp web/seed-teacher.html public/seed-teacher.html
           touch public/.nojekyll
+
+      - name: 建置投影片（可翻頁的網頁簡報）
+        run: |
+          set -euo pipefail
+          npx marp variant-free/slides/deck.md --html --bespoke.progress -o public/slides.html
+          npx marp slides/deck.md --html --bespoke.progress -o public/slides-paid.html
           ls -l public
 
       - uses: actions/upload-pages-artifact@v3

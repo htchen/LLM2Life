@@ -5,6 +5,7 @@
 逐步完成發想、規劃、實作與驗證，最後展示一個可操作的最小版本。
 
 **專案網站：** https://htchen.github.io/LLM2Life/
+｜ **上課投影片：** https://htchen.github.io/LLM2Life/slides.html （可直接翻頁瀏覽）
 
 > ## 主線是免費版
 >
