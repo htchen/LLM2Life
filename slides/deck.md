@@ -190,7 +190,7 @@ style: |
 
 ```text
 請設定 GitHub 登入。
-在 README.md 加一行「我的生活小工具」，
+在 README.md 加一行「我的教學小工具」，
 然後 commit 並 push 上去。
 ```
 

@@ -53,7 +53,7 @@ Pro 約 US$17–20／人，30 人就是 $510–600；Console 額度按用量算�
 
 **適合使用免費版的情況：** 場地是限制安裝軟體的電腦教室、沒有工具預算、
 或線上開課且無法確認學員裝置。這時可改用另一套課程名稱：
-「用 AI 和 GitHub 做出你的第一個網站」，而不是「用 Claude Code 打造生活小工具」。
+「用 AI 和 GitHub 做出你的第一個教學小工具」，而不是「用 Claude Code…」。
 
 **這個版本已經完整寫好了**，見 [`../variant-free/`](../variant-free/)——
 完整的 slides／workbook／site／instructor 自成一套，不是這份教材改幾個字。
