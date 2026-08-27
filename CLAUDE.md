@@ -61,14 +61,16 @@ their work against the workbook, and a mismatch reads as a bug in the material.
 reasoning, the evidence, and the Q&A rebuttals live there. Never edit an insight slide without
 reconciling it with that file, or the speaker ends up defending a claim the notes don't support.
 
-`site/index.html` is published as an Artifact at:
+Both `site/index.html` files are published to **GitHub Pages**, not as Artifacts — see the
+`web/` section for the mapping. The Artifact URLs they used to live at (`07d306ff…` paid,
+`f9e2701f…` free) are **superseded**; do not republish to them and do not cite them.
 
-    https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289
+The move was forced by the bootstrap use case: teachers take this material back to their own
+schools and hand the link to their students. An Artifact is private by default and needs a login
+plus sharing permissions, so a classroom of students mostly cannot open one. A Pages URL is
+plain, public, and needs no account.
 
-**Republish to that same URL** (pass it as the `url` parameter from a conversation that didn't
-publish it) — students are given the link ahead of the session, and a new URL orphans it.
-
-It is deliberately a single self-contained file with no external subresources (no CDN, no
+Each companion site is deliberately a single self-contained file with no external subresources (no CDN, no
 webfonts, no remote images) — it must work on lecture-hall wifi that blocks half the internet,
 and on a phone. No webfont is loaded on purpose: CJK faces are megabytes and the CSP blocks font
 CDNs, so the type personality comes from weight, scale, and spacing on the system TC stack.
@@ -77,24 +79,26 @@ CDNs, so the type personality comes from weight, scale, and spacing on the syste
 
 `web/index.html` is the project's **landing page**, published to GitHub Pages at
 `https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow publishes
-exactly three files, and nothing else:
+exactly five files, and nothing else:
 
 | Published as | Source |
 | --- | --- |
 | `/` | `web/index.html` |
 | `/pre-workshop.html` | `variant-free/site/pre-workshop.html` (free — the default track) |
 | `/pre-workshop-paid.html` | `site/pre-workshop.html` (Claude Code) |
+| `/handbook.html` | `variant-free/site/index.html` (free — the default track) |
+| `/handbook-paid.html` | `site/index.html` (Claude Code) |
 
-The unqualified `/pre-workshop.html` is the free one on purpose: it is the link students are
-given. Both prep pages share the `htchen.github.io` origin, so they must keep **different
-`localStorage` keys** (`llm2life-preworkshop-free-v1` vs `…-v1`) or the checklists overwrite each
-other.
+The unqualified names are the free ones on purpose: those are the links students are given.
+All four student-facing pages share the `htchen.github.io` origin, so each must keep a
+**distinct `localStorage` key** — currently `llm2life-preworkshop-free-v1`, `…-v1`,
+`llm2life-free.progress`, `llm2life.progress`. Two pages sharing a key silently overwrite each
+other's checkboxes and progress.
 
-Keep the two roles apart, because collapsing them is how the student link gets orphaned:
+Keep the roles apart:
 
-- **The 隨堂網站 is the Artifact URL, and only that.** The landing page *links* to
-  `07d306ff…` (paid) and `f9e2701f…` (free); it must never host a copy of `site/index.html`.
-  A second address for the same handbook means half the room is reading a stale one.
+- **Pages is the only home for the 隨堂網站.** Publishing a second copy anywhere — an Artifact,
+  a personal site — means half the room reads a stale one. The old Artifact URLs are retired.
 - **The two `site/pre-workshop.html` files are the source of truth for the prep pages.** Pages
   serves copies. Never edit a copy — there is none in the repo to edit, and hand-editing the
   published output is silently overwritten on the next push. The free page is a content rewrite

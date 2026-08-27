@@ -57,7 +57,7 @@ Pro 約 US$17–20／人，30 人就是 $510–600；Console 額度按用量算�
 
 **這個版本已經完整寫好了**，見 [`../variant-free/`](../variant-free/)——
 完整的 slides／workbook／site／instructor 自成一套，不是這份教材改幾個字。
-隨堂網站：https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1
+隨堂網站：https://htchen.github.io/LLM2Life/handbook.html
 
 ---
 

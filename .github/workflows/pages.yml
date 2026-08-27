@@ -4,7 +4,9 @@ name: 發布專案網站
 #   /                        ← web/index.html
 #   /pre-workshop.html       ← variant-free/site/pre-workshop.html（免費版 · 主線）
 #   /pre-workshop-paid.html  ← site/pre-workshop.html（付費版）
-# 隨堂網站不在這裡發布——兩個版本各有自己的固定網址，見 CLAUDE.md。
+#   /handbook.html           ← variant-free/site/index.html（免費版 · 主線）
+#   /handbook-paid.html      ← site/index.html（付費版）
+# 隨堂網站改由這裡發布：教師要能把連結給自己的學生，Artifact 需登入與分享權限。
 #
 # 首次啟用需要在 GitHub 上設定一次：
 #   Settings → Pages → Build and deployment → Source 選 "GitHub Actions"
@@ -19,7 +21,9 @@ on:
     paths:
       - 'web/**'
       - 'site/pre-workshop.html'
+      - 'site/index.html'
       - 'variant-free/site/pre-workshop.html'
+      - 'variant-free/site/index.html'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -59,6 +63,8 @@ jobs:
           cp web/index.html public/index.html
           cp variant-free/site/pre-workshop.html public/pre-workshop.html
           cp site/pre-workshop.html public/pre-workshop-paid.html
+          cp variant-free/site/index.html public/handbook.html
+          cp site/index.html public/handbook-paid.html
           touch public/.nojekyll
           ls -l public
 

@@ -12,14 +12,14 @@
 > 不必訂閱、不必安裝任何軟體。教材在 [`variant-free/`](variant-free/)。
 >
 > **課前準備：** https://htchen.github.io/LLM2Life/pre-workshop.html
-> ｜ **隨堂網站：** https://claude.ai/code/artifact/f9e2701f-c4e4-4638-9e78-a7d778ae1bd1
+> ｜ **隨堂網站：** https://htchen.github.io/LLM2Life/handbook.html
 >
 > 專題流程、題目範圍與驗收方式與付費版完全相同，成果也相同：一個可操作的最小版本。
 > 差別只有兩項——學員自行把 AI 回覆存成檔案，以及總長 195 分鐘（附 180 分鐘縮短方式）。
 
 **付費版（Claude Code）** 保留給主辦方統一付費或學員已有 Pro 以上方案的場次，
 教材在根目錄的 `slides/`、`workbook/`、`site/`、`instructor/`
-（[隨堂網站](https://claude.ai/code/artifact/07d306ff-7de3-4224-96e8-74e007d1d289)、
+（[隨堂網站](https://htchen.github.io/LLM2Life/handbook-paid.html)、
 [課前準備](https://htchen.github.io/LLM2Life/pre-workshop-paid.html)）。
 **免費帳號無法使用 Claude Code**——換任何模型都一樣，這不是模型的限制，是方案的限制，
 見 [`instructor/provisioning-tokens.md`](instructor/provisioning-tokens.md)。
@@ -118,6 +118,20 @@
 
 改用付費版時，第 1 與第 2 點改為：Claude Code 需要 Pro 以上方案（免費帳號無法使用），
 主要路線是桌面版而非終端機。
+
+---
+
+## 授權：這份教材可以帶回去教
+
+以 [CC BY 4.0](LICENSE) 授權釋出。**教師可以把整份教材帶回自己的學校開給學生**，
+包含刪改內容、更換題目、複製隨堂網站改成自己的版本、印製手冊發給學生，
+也可用於商業用途。唯一的要求是標示出處。
+
+> 本教材改編自 htchen「用 AI 和 GitHub 把發想做成可操作工具」
+> （https://github.com/htchen/LLM2Life），依 CC BY 4.0 授權使用。
+
+學員與學生在課堂上做出來的工具屬於製作者本人，不受本授權拘束。
+Claude、Anthropic、GitHub 等名稱與標誌屬各自權利人所有，不在授權範圍內。
 
 ---
 
