@@ -41,6 +41,10 @@
 | `starter/` | 兩版共用 | 學員 repo 的範本（含 `CLAUDE.md`） |
 | `web/` | 兩版共用 | 專案首頁（發布到 GitHub Pages） |
 
+**上完課要自己開一場？** 先讀
+[`instructor/seed-teacher-guide.md`](instructor/seed-teacher-guide.md) ——
+你手上已經有的東西、開課前要決定的三件事、可以改什麼與不建議改什麼。
+
 **要開課，先讀這三份：**
 
 - [`variant-free/instructor/timeline.md`](variant-free/instructor/timeline.md) —
