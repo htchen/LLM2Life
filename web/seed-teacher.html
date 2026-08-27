@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>種子教師指南 — 把工作坊帶回自己的學校</title>
+<meta name="description" content="給上完課要回校自己開一場的老師：現成的教材清單、開課前要決定的三件事、可以改什麼與不建議改什麼。">
+
+<style>
+  :root {
+    --ground: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef0f4;
+    --ink: #151a21;
+    --ink-2: #3d4753;
+    --muted: #6b7684;
+    --line: #dde1e8;
+    --line-2: #c9cfda;
+    --accent: #2f4a7c;
+    --accent-soft: #e6ecf7;
+    --accent-ink: #23395e;
+    --ok: #2b7a4b;
+    --ok-soft: #e3f2e8;
+    --warn: #b4531c;
+    --warn-soft: #fcece1;
+    --code-bg: #171c24;
+    --code-ink: #e9edf3;
+    --shadow: 0 1px 2px rgba(20, 26, 34, .05), 0 8px 24px -12px rgba(20, 26, 34, .18);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0e1116;
+      --surface: #161b22;
+      --surface-2: #1d232c;
+      --ink: #e8ecf2;
+      --ink-2: #b9c2ce;
+      --muted: #8b96a5;
+      --line: #262d38;
+      --line-2: #333c49;
+      --accent: #92aee2;
+      --accent-soft: #1b2534;
+      --accent-ink: #b9ccf0;
+      --ok: #63c089;
+      --ok-soft: #14251b;
+      --warn: #e2905b;
+      --warn-soft: #2a1c12;
+      --code-bg: #0a0d12;
+      --code-ink: #e4e9f0;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans TC", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px 88px; }
+
+  a { color: var(--accent-ink); }
+  a:hover { color: var(--accent); }
+
+  /* ---------- masthead ---------- */
+  .mast { padding: 60px 0 40px; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin: 0 0 14px;
+  }
+  .mast h1 {
+    margin: 0 0 18px; font-size: clamp(2rem, 5.2vw, 3.05rem); font-weight: 800;
+    letter-spacing: -.025em; line-height: 1.2; text-wrap: balance;
+  }
+  .mast p { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 1.08rem; }
+  .arc {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-top: 26px; font-size: .96rem; color: var(--muted);
+  }
+  .arc b { color: var(--ink); font-weight: 700; }
+  .arc span[aria-hidden] { color: var(--line-2); }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 52px; }
+  section > h2 {
+    margin: 0 0 6px; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  .lede { margin: 0 0 26px; color: var(--muted); font-size: 1rem; max-width: 68ch; }
+
+  /* ---------- cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px 26px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .card.lead { border-color: var(--line-2); background: var(--accent-soft); }
+  .card h3 { margin: 0; font-size: 1.16rem; font-weight: 800; letter-spacing: -.01em; }
+  .card p { margin: 0; color: var(--ink-2); font-size: .97rem; }
+  .card .go {
+    margin-top: auto; padding-top: 8px; font-weight: 700; font-size: .97rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .card .go svg { flex: none; }
+  .tag {
+    align-self: flex-start; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
+    font-weight: 800; color: var(--muted);
+  }
+
+  /* ---------- flow ---------- */
+  .flow { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .flow li {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 18px 8px 10px; font-weight: 700; font-size: .97rem;
+  }
+  .flow .n {
+    flex: none; width: 24px; height: 24px; border-radius: 50%;
+    display: grid; place-items: center; font-size: .76rem; font-weight: 800;
+    background: var(--accent); color: #fff; font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- tables ---------- */
+  .tbl { width: 100%; border-collapse: collapse; font-size: .97rem; }
+  .tbl th, .tbl td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .tbl th { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .tbl td:first-child { font-weight: 700; white-space: nowrap; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  code {
+    background: var(--surface-2); border: 1px solid var(--line);
+    padding: 1px 7px; border-radius: 6px; font-size: .88em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  /* ---------- notes ---------- */
+  .note {
+    border: 1px solid var(--line); border-left: 4px solid var(--warn);
+    background: var(--warn-soft); border-radius: var(--radius);
+    padding: 18px 22px; margin: 0 0 16px;
+  }
+  .note:last-child { margin-bottom: 0; }
+  .note b { color: var(--ink); }
+  .note p { margin: 0; color: var(--ink-2); font-size: .97rem; }
+  .note h3 { margin: 0 0 6px; font-size: 1.02rem; font-weight: 800; }
+
+  .links { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+  .links a {
+    display: block; padding: 10px 14px; border-radius: 9px; text-decoration: none;
+    color: var(--ink); font-weight: 700; font-size: .99rem; border: 1px solid transparent;
+  }
+  .links a:hover { background: var(--surface-2); border-color: var(--line); }
+  .links small { display: block; font-weight: 500; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+  footer {
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .93rem;
+  }
+  footer p { margin: 0 0 6px; }
+</style>
+<style>
+  .back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+          font-weight: 700; font-size: .95rem; margin-bottom: 22px; }
+  ol.steps { margin: 0; padding-left: 0; list-style: none; counter-reset: s; display: grid; gap: 14px; }
+  ol.steps > li { counter-increment: s; display: grid; grid-template-columns: 30px minmax(0,1fr); gap: 14px; }
+  ol.steps > li::before {
+    content: counter(s); grid-row: span 2; width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center; font-size: .84rem; font-weight: 800;
+    background: var(--accent); color: #fff; font-variant-numeric: tabular-nums;
+  }
+  ol.steps b { display: block; font-size: 1.02rem; }
+  ol.steps span { color: var(--ink-2); font-size: .97rem; }
+  .keep { border-left-color: var(--ok); background: var(--ok-soft); }
+  .free-list { margin: 0; padding-left: 1.3em; color: var(--ink-2); }
+  .free-list li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="mast">
+    <a class="back" href="./">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 18l-6-6 6-6"/></svg>
+      回到專案首頁
+    </a>
+    <p class="eyebrow">給種子教師</p>
+    <h1>把這場工作坊<br>帶回自己的學校</h1>
+    <p>你在工作坊裡是學員；這一頁是給「回去之後要自己開一場」的你。
+       預設你要開的是<b>免費版</b>：參加的老師只要免費帳號，不必訂閱也不必安裝。</p>
+    <p class="arc">
+      <b>教材可自由改編</b><span aria-hidden="true">·</span>
+      <b>不需事先告知</b><span aria-hidden="true">·</span>
+      <b>學生不需要任何帳號</b>
+    </p>
+  </header>
+
+  <section>
+    <h2>一、你手上已經有的東西</h2>
+    <p class="lede">不需要自己重寫一套。四個介面加上講師文件都是現成的。</p>
+    <div class="scroll">
+      <table class="tbl">
+        <tr><th>你需要</th><th>用這個</th></tr>
+        <tr><td>投影片</td><td><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/slides/deck.md">variant-free/slides/deck.md</a>（Marp，含備忘稿）</td></tr>
+        <tr><td>學員手冊</td><td><a href="https://github.com/htchen/LLM2Life/tree/main/variant-free/workbook">variant-free/workbook/</a></td></tr>
+        <tr><td>隨堂網站</td><td><a href="handbook.html">handbook.html</a>（公開網址，免登入）</td></tr>
+        <tr><td>課前準備頁</td><td><a href="pre-workshop.html">pre-workshop.html</a>（公開網址，免登入）</td></tr>
+        <tr><td>時間與順序</td><td><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/timeline.md">variant-free/instructor/timeline.md</a></td></tr>
+        <tr><td>帶領原則</td><td><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/insights.md">variant-free/instructor/insights.md</a> 與 <a href="https://github.com/htchen/LLM2Life/blob/main/instructor/insights.md">instructor/insights.md</a></td></tr>
+        <tr><td>課前通知信</td><td><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/pre-workshop-email.md">variant-free/instructor/pre-workshop-email.md</a></td></tr>
+        <tr><td>現場疑難排解</td><td><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/troubleshooting.md">variant-free/instructor/troubleshooting.md</a></td></tr>
+      </table>
+    </div>
+    <p class="lede" style="margin-top:20px">隨堂網站與課前準備頁是<b>公開網址、免登入</b>，直接把連結給參加的老師即可。
+       想改成自己的版本，複製 <code>variant-free/site/</code> 底下的檔案自行發布——那兩個檔案各自獨立，不依賴任何外部資源。</p>
+  </section>
+
+  <section>
+    <h2>二、開課前要先決定的三件事</h2>
+    <ol class="steps">
+      <li><b>時間</b><span>完整版 195 分鐘。場地只有 180 分鐘時，依 <code>timeline.md</code>「180 分鐘場地的調整」逐項縮，不要臨場自己抓。</span></li>
+      <li><b>人數</b><span>建議 12–20 人。超過 20 人時，發想與實作階段需要第二位協助巡場，否則卡住的人要等太久。</span></li>
+      <li><b>網路</b><span>全程需要連 claude.ai 與 github.com。場地若有網路白名單，<b>務必在課前確認這兩個網域可通</b>——這是最常見、也最無法臨場補救的問題。</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>三、課前一定要做的兩件事</h2>
+    <div class="note">
+      <h3>寄課前通知信</h3>
+      <p>用 <code>pre-workshop-email.md</code>，把日期、時間、地點與聯絡信箱填進去，信裡附上
+         <a href="pre-workshop.html">課前準備頁</a>的連結。沒有寄信，課程前段就得用來處理帳號與登入問題。</p>
+    </div>
+    <div class="note">
+      <h3>自己先走一次共同練習</h3>
+      <p>至少把「探究提問卡」做出來一次。你會知道 AI 這次會回什麼、學員大概卡在哪，
+         比讀十遍講稿有用。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>四、當天最容易出問題的三件事</h2>
+    <ol class="steps">
+      <li><b>登入 claude.ai 之後點到 Code 分頁</b><span>那是付費功能。免費版只用中間的一般聊天視窗。</span></li>
+      <li><b>AI 回覆的程式碼被「⋯」省略</b><span>學員會存出一個壞掉的檔案。這就是每個提示詞結尾都要寫「請給我完整程式碼」的原因。</span></li>
+      <li><b>repo 建成 Private</b><span>免費帳號要用 GitHub Pages 就必須是 Public，建立時就要選對，中途才改會多花五分鐘。</span></li>
+    </ol>
+    <p class="lede" style="margin-top:20px">其餘狀況查
+       <a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/troubleshooting.md">疑難排解</a>。</p>
+  </section>
+
+  <section>
+    <h2>五、可以改什麼，不建議改什麼</h2>
+    <div class="note keep">
+      <h3>放心改</h3>
+      <p>共同練習的題目（現在是探究提問卡，換成你這一科的都可以）、備用題目、範例、配色、
+         投影片用語、段落長度——只要總長對得起來。</p>
+    </div>
+    <p class="lede">以下六個檢查點是課程能不能收尾的關鍵。拿掉任何一個，
+       學員多半會做出一個看起來很忙、但無法驗收的東西。</p>
+    <ol class="steps">
+      <li><b>先列三個問題，再選一個</b><span>直接決定題目的人，通常選到自己講不清楚的那一個。</span></li>
+      <li><b>必要功能不超過三項，且至少兩項「這次不做」</b><span>寫不出「不做」，代表題目還太大。</span></li>
+      <li><b>每一個實作步驟都有可操作的驗收方式</b><span>「做完了」不是驗收，「輸入 X 會看到 Y」才是。</span></li>
+      <li><b>第一輪先做出可用的核心流程，並且先保存</b><span>不是先做空白框架，也不是做到一半才存。</span></li>
+      <li><b>最後一段停止新增功能</b><span>改為展示與規劃下一版。時間到就停，未完成的列入下一版。</span></li>
+      <li><b>先讓學員自己寫出判斷，再請 AI 協助</b><span>順序顛倒的話，學員會拿到一個自己無法評估的答案。</span></li>
+    </ol>
+    <div class="note">
+      <h3>不要改</h3>
+      <p>任何需要學生自行註冊帳號的步驟。原因見下一節。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>六、學生那一層：他們不需要任何帳號</h2>
+    <p class="lede">這是課程刻意的設計。<b>做出工具的是你，學生只是打開網頁使用它。</b>
+       學生本人不需要註冊 claude.ai，也不需要 GitHub 帳號，因此不會遇到未成年帳號與家長同意的問題。</p>
+    <ul class="free-list">
+      <li>你的專題發布在 <code>https://你的帳號.github.io/my-life-tools/project/</code>，把網址或 QR code 給學生</li>
+      <li>或直接投影出來，全班共用一份</li>
+      <li>學生填寫的內容存在<b>他們自己的瀏覽器裡</b>，不會傳到任何地方，也不會傳給你</li>
+    </ul>
+    <div class="note" style="margin-top:18px">
+      <h3>想收集學生填寫的結果？</h3>
+      <p>那已經超出課堂版本的技術範圍（需要後端與個資處理）。請列入下一版，
+         不要在三小時的場次裡嘗試。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>七、收束時要說的話</h2>
+    <p class="lede">參加的老師最後帶走的不是一個工具，而是一套可以重複使用的流程。
+       完整說法在 <a href="https://github.com/htchen/LLM2Life/blob/main/instructor/insights.md">insights.md</a>
+       的「補充段落」，最短的版本是：</p>
+    <div class="note keep">
+      <p style="font-size:1.05rem"><b>能自主驗證的事，會愈來愈快；不能自主驗證的事，仍然靠人。</b><br>
+         你今天走的六個步驟，和你要學生做的探究歷程是同一套。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>教材以 <a href="https://github.com/htchen/LLM2Life/blob/main/LICENSE">CC BY 4.0</a> 授權：
+       可刪改、可換題目、可自行發布，也可用於商業用途，唯一要求是標示出處。不需事先告知。</p>
+    <p>原始檔：<a href="https://github.com/htchen/LLM2Life">github.com/htchen/LLM2Life</a>
+       ｜ 本頁由 <code>web/seed-teacher.html</code> 發布。</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

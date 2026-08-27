@@ -42,8 +42,9 @@
 | `web/` | 兩版共用 | 專案首頁（發布到 GitHub Pages） |
 
 **上完課要自己開一場？** 先讀
-[`instructor/seed-teacher-guide.md`](instructor/seed-teacher-guide.md) ——
+[種子教師指南](https://htchen.github.io/LLM2Life/seed-teacher.html) ——
 你手上已經有的東西、開課前要決定的三件事、可以改什麼與不建議改什麼。
+（原始檔 [`web/seed-teacher.html`](web/seed-teacher.html)）
 
 **要開課，先讀這三份：**
 

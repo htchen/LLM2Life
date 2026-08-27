@@ -93,7 +93,7 @@ CDNs, so the type personality comes from weight, scale, and spacing on the syste
 
 `web/index.html` is the project's **landing page**, published to GitHub Pages at
 `https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow publishes
-exactly five files, and nothing else:
+exactly six files, and nothing else:
 
 | Published as | Source |
 | --- | --- |
@@ -102,6 +102,7 @@ exactly five files, and nothing else:
 | `/pre-workshop-paid.html` | `site/pre-workshop.html` (Claude Code) |
 | `/handbook.html` | `variant-free/site/index.html` (free — the default track) |
 | `/handbook-paid.html` | `site/index.html` (Claude Code) |
+| `/seed-teacher.html` | `web/seed-teacher.html` (guide for teachers re-running the workshop) |
 
 The unqualified names are the free ones on purpose: those are the links students are given.
 All four student-facing pages share the `htchen.github.io` origin, so each must keep a

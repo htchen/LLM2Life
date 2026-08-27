@@ -6,6 +6,7 @@ name: 發布專案網站
 #   /pre-workshop-paid.html  ← site/pre-workshop.html（付費版）
 #   /handbook.html           ← variant-free/site/index.html（免費版 · 主線）
 #   /handbook-paid.html      ← site/index.html（付費版）
+#   /seed-teacher.html       ← web/seed-teacher.html（種子教師指南）
 # 隨堂網站改由這裡發布：教師要能把連結給自己的學生，Artifact 需登入與分享權限。
 #
 # 首次啟用需要在 GitHub 上設定一次：
@@ -65,6 +66,7 @@ jobs:
           cp site/pre-workshop.html public/pre-workshop-paid.html
           cp variant-free/site/index.html public/handbook.html
           cp site/index.html public/handbook-paid.html
+          cp web/seed-teacher.html public/seed-teacher.html
           touch public/.nojekyll
           ls -l public
 
