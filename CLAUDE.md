@@ -201,7 +201,7 @@ project stay separate, while optional examples remain available for reference:
 
 ```
 my-life-tools/
-├── expenses/       # shared practice — localStorage, no build step
+├── inquiry/        # shared practice — localStorage, no build step
 ├── project/        # student's individual minimum viable project
 ├── digest/         # optional reference — GitHub Actions output
 └── habits/         # optional reference — localStorage and Pages

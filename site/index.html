@@ -399,8 +399,8 @@
 
       <!-- ============ Lab 1 ============ -->
       <section id="lab1">
-        <h2>共同練習 · 記帳小工具<span class="mins">25 分鐘</span></h2>
-        <p class="lede">使用共同題目練習<strong>描述、修改、驗證與保存版本</strong>。個人專題會在休息後開始。</p>
+        <h2>共同練習 · 探究提問卡<span class="mins">25 分鐘</span></h2>
+        <p class="lede">使用共同題目練習<strong>描述、修改、驗證與保存版本</strong>。做出來的是一個學生打開就能用的網頁，學生本人不需要任何帳號。個人專題會在休息後開始。</p>
 
         <div class="card">
           <h3>描述需求的格式</h3>
@@ -411,20 +411,21 @@
         <div class="step-h"><span class="sn">步驟 1</span>做出第一版</div>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
-          <pre>在 expenses/ 資料夾做一個記帳小工具，單一個 index.html 檔案就好，不要用任何套件。
+          <pre>在 inquiry/ 資料夾做一個「探究提問卡」小工具，單一個 index.html 檔案就好，不要用任何套件。
+用途：學生輸入一個自己觀察到的現象，工具幫他把現象變成可以追問的問題。
 功能：
-1. 可以輸入金額、項目名稱，按一下就新增一筆
-2. 下面列出所有紀錄，每一筆可以刪掉
-3. 最上面顯示這個月的總花費
+1. 可以輸入一個觀察現象，按一下就新增一張卡
+2. 每張卡自動列出三個提問方向：為什麼會這樣、如果改變一個條件會怎樣、可以怎麼測量
+3. 下面列出所有卡片，每一張可以刪掉
 4. 資料存在瀏覽器裡，關掉再打開還在
 畫面請做得乾淨好看，中文介面，手機上也要能用。
 做好之後幫我在瀏覽器打開來看。</pre>
         </div>
         <p>如果處理時間較長，可以查看它目前正在讀取或修改哪些檔案，也可以按停止或補充說明。等待時可先決定下一步要增加的功能。</p>
-        <p>實際輸入幾筆、刪掉一筆，再重新整理。確認第一版能動後，先留一個安全存檔點：</p>
+        <p>實際輸入一個觀察現象（例如「同一株植物靠窗那側長得比較快」）、刪掉一張卡，再重新整理。確認第一版能動後，先留一個安全存檔點：</p>
         <div class="prompt">
           <div class="prompt-bar"><span>第一版測試通過後</span><button class="copy" type="button">複製</button></div>
-          <pre>先把目前能正常運作的第一版 commit，commit 訊息寫「完成記帳工具第一版」，先不要改其他東西。</pre>
+          <pre>先把目前能正常運作的第一版 commit，commit 訊息寫「完成探究提問卡第一版」，先不要改其他東西。</pre>
         </div>
 
         <div class="step-h"><span class="sn">步驟 2</span>改成你想要的樣子 ⭐</div>
@@ -433,11 +434,12 @@
           <p style="margin-bottom:0">結果不符合需求時，補充條件後再修改。如果修改後無法正常運作，可以要求 Claude 還原剛才的改動。</p>
         </div>
         <div class="prompt">
-          <div class="prompt-bar"><span>例如加分類</span><button class="copy" type="button">複製</button></div>
-          <pre>幫我加上「分類」功能：新增的時候可以選餐飲、交通、購物、其他，
-列表上用不同顏色的標籤顯示，最上面再加一個各分類的小計。</pre>
+          <div class="prompt-bar"><span>例如加上學生自己的提問欄</span><button class="copy" type="button">複製</button></div>
+          <pre>幫我在每張卡片上加一個「我想檢驗的問題」輸入欄，
+學生可以自己寫一句話，寫完會跟著卡片一起存起來，重新整理後還在。
+最上面顯示目前有幾張卡，其中幾張已經寫了要檢驗的問題。</pre>
         </div>
-        <p>或換成你自己想要的：加圖表、改成暖色系、金額加千分位、匯出 CSV……都可以。</p>
+        <p>或換成你自己想要的：提問方向改成適合你這一科、加列印按鈕做成學習單、卡片加日期、匯出 CSV……都可以。</p>
         <p>修改後不要只看 Claude 回覆「完成了」。回到瀏覽器，<strong>實際測試新增的功能</strong>，再確認原本的新增、刪除、重新整理都還能用。</p>
 
         <div class="step-h"><span class="sn">步驟 3</span>存回 GitHub</div>
@@ -450,7 +452,7 @@
         <div class="check" data-cp>
           <h3>✅ Lab 1 檢查點</h3>
           <label><input type="checkbox" id="c-1a"><span>能新增、能刪除，<strong>重新整理後資料還在</strong></span></label>
-          <label><input type="checkbox" id="c-1b"><span>GitHub 上看得到 <code>expenses/</code> 資料夾</span></label>
+          <label><input type="checkbox" id="c-1b"><span>GitHub 上看得到 <code>inquiry/</code> 資料夾</span></label>
           <label><input type="checkbox" id="c-1c"><span>GitHub 上看得到<strong>兩個分開的 commit</strong>：第一版，以及後來改的那一塊</span></label>
         </div>
 
@@ -459,8 +461,8 @@
           <div class="details-body">
             <div class="prompt">
               <div class="prompt-bar"><span>追進度</span><button class="copy" type="button">複製</button></div>
-              <pre>在 expenses/ 資料夾做一個記帳小工具，單一 index.html，不用套件。
-可以新增金額和項目、可以刪除、最上面顯示總花費、資料存在瀏覽器裡。
+              <pre>在 inquiry/ 資料夾做一個探究提問卡小工具，單一 index.html，不用套件。
+可以輸入一個觀察現象並新增一張卡，每張卡列出三個提問方向、可以刪除，資料存在瀏覽器裡。
 中文介面、手機能用。做好之後 commit 並 push 到 GitHub，然後幫我打開來看。</pre>
             </div>
           </div>
@@ -680,7 +682,7 @@
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 Claude Code</span><button class="copy" type="button">複製</button></div>
           <pre>在 repo 根目錄做一個 index.html 當首頁，用卡片的方式連到我做的工具：
-- expenses/ 記帳小工具
+- inquiry/ 探究提問卡
 - habits/ 習慣追蹤表
 - digest/ 每日摘要
 風格要跟那兩個工具一致，中文介面，手機上要清楚易讀。
@@ -718,7 +720,7 @@
         <div class="check" data-cp>
           <h3>✅ Lab 3 檢查點</h3>
           <label><input type="checkbox" id="c-3a"><span>我的網址打得開</span></label>
-          <label><input type="checkbox" id="c-3b"><span>首頁點得到記帳工具</span></label>
+          <label><input type="checkbox" id="c-3b"><span>首頁點得到探究提問卡</span></label>
           <label><input type="checkbox" id="c-3c"><span>首頁點得到習慣追蹤表</span></label>
           <label><input type="checkbox" id="c-3d"><span><strong>我用手機打開過了</strong> 📱</span></label>
         </div>

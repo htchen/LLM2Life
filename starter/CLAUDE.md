@@ -29,7 +29,7 @@
 
 ```
 my-life-tools/
-├── expenses/    # 共同練習
+├── inquiry/     # 共同練習
 ├── project/     # 個人專題
 ├── digest/      # 選配的 GitHub Actions 案例
 └── habits/      # 選配的習慣追蹤案例

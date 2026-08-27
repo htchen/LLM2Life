@@ -41,16 +41,16 @@
 
 ```text
 做一個首頁 index.html，用卡片的方式連到我的三個工具：
-- expenses/index.html 記帳小工具
+- inquiry/index.html 探究提問卡
 - habits/index.html 習慣追蹤表
 - digest/ 每日摘要
-連結請用相對路徑，例如 href="expenses/index.html"，不要用完整網址。
+連結請用相對路徑，例如 href="inquiry/index.html"，不要用完整網址。
 風格要跟前面的工具一致，中文介面，手機上要清楚易讀。
 最上面放一個標題「我的生活小工具」。
 請給我完整、可以存成 index.html 直接使用的程式碼。
 ```
 
-> ⚠️ **這裡連結一定要用相對路徑**（像 `expenses/index.html`），
+> ⚠️ **這裡連結一定要用相對路徑**（像 `inquiry/index.html`），
 > 不能是本機路徑（像 `C:\Users\...`）。發布之後，
 > 只有相對路徑才找得到正確的檔案。
 
@@ -68,11 +68,11 @@
 | `habits.html` | `habits/index.html` |
 | `home.html`（首頁） | `index.html`（**不要加資料夾，直接放根目錄**） |
 
-`expenses/index.html` 應該在 Lab 1 已經放好了，這裡不用重做。
+`inquiry/index.html` 應該在 Lab 1 已經放好了，這裡不用重做。
 
 每一次都是：**Add file → Create new file → 打路徑 → 貼內容 → Commit changes**。
 
-**你應該會看到**：repo 首頁除了 `expenses/`、`digest/`，現在多了 `habits/` 資料夾，
+**你應該會看到**：repo 首頁除了 `inquiry/`、`digest/`，現在多了 `habits/` 資料夾，
 而且根目錄直接有一個 `index.html`（不在任何資料夾裡）。
 
 ---
@@ -110,7 +110,7 @@
 ## ✅ Lab 3 檢查點
 
 - [ ] 我的網址打得開
-- [ ] 首頁點得到記帳工具
+- [ ] 首頁點得到探究提問卡
 - [ ] 首頁點得到習慣追蹤表
 - [ ] **我用手機打開過了** 📱
 

@@ -465,8 +465,8 @@
 
       <!-- ============ Lab 1 ============ -->
       <section id="lab1">
-        <h2>共同練習 · 記帳小工具<span class="mins">30 分鐘</span></h2>
-        <p class="lede">這一段練習清楚描述需求，並把 AI 回覆建立成可操作的檔案。</p>
+        <h2>共同練習 · 探究提問卡<span class="mins">30 分鐘</span></h2>
+        <p class="lede">這一段練習清楚描述需求，並把 AI 回覆建立成可操作的檔案。做出來的是一個學生打開就能用的網頁，學生本人不需要任何帳號。</p>
 
         <div class="card">
           <h3>描述需求的格式（免費版多一句）</h3>
@@ -477,16 +477,17 @@
         <div class="step-h"><span class="sn">步驟 1</span>問 → 貼 → 存 → 開</div>
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 claude.ai</span><button class="copy" type="button">複製</button></div>
-          <pre>做一個記帳小工具，單一個 index.html 檔案就好，不要用任何套件。
+          <pre>做一個「探究提問卡」小工具，單一個 index.html 檔案就好，不要用任何套件。
+用途：學生輸入一個自己觀察到的現象，工具幫他把現象變成可以追問的問題。
 功能：
-1. 可以輸入金額、項目名稱，按一下就新增一筆
-2. 下面列出所有紀錄，每一筆可以刪掉
-3. 最上面顯示這個月的總花費
+1. 可以輸入一個觀察現象，按一下就新增一張卡
+2. 每張卡自動列出三個提問方向：為什麼會這樣、如果改變一個條件會怎樣、可以怎麼測量
+3. 下面列出所有卡片，每一張可以刪掉
 4. 資料存在瀏覽器裡，關掉再打開還在
 畫面請做得乾淨好看，中文介面，手機上也要能用。
 請直接給我完整、可以存成 index.html 直接打開使用的程式碼，不要省略任何部分。</pre>
         </div>
-        <p>存成 <code>expenses.html</code>，雙擊打開，實際輸入幾筆試試看，重新整理確認資料還在。</p>
+        <p>存成 <code>inquiry.html</code>，雙擊打開，實際輸入一個觀察現象試試看（例如「同一株植物靠窗那側長得比較快」），重新整理確認卡片還在。</p>
 
         <div class="step-h"><span class="sn">步驟 2</span>改成你想要的樣子 ⭐</div>
         <div class="note warn-box">
@@ -495,9 +496,10 @@
           你只要「全選蓋掉、存檔、重新整理」——不用自己找哪個字要改。</p>
         </div>
         <div class="prompt">
-          <div class="prompt-bar"><span>例如加分類</span><button class="copy" type="button">複製</button></div>
-          <pre>幫我加上「分類」功能：新增的時候可以選餐飲、交通、購物、其他，
-列表上用不同顏色的標籤顯示，最上面再加一個各分類的小計。
+          <div class="prompt-bar"><span>例如加上學生自己的提問欄</span><button class="copy" type="button">複製</button></div>
+          <pre>幫我在每張卡片上加一個「我想檢驗的問題」輸入欄，
+學生可以自己寫一句話，寫完會跟著卡片一起存起來，重新整理後還在。
+最上面顯示目前有幾張卡，其中幾張已經寫了要檢驗的問題。
 請一樣給我完整、可以直接存成檔案使用的程式碼，不要只給片段。</pre>
         </div>
 
@@ -509,7 +511,7 @@
         <div class="step-h"><span class="sn">步驟 3</span>存回 GitHub</div>
         <ol>
           <li>你的 repo → <strong>Add file → Create new file</strong></li>
-          <li>檔名打 <code>expenses/index.html</code>（打斜線自動建資料夾）</li>
+          <li>檔名打 <code>inquiry/index.html</code>（打斜線自動建資料夾）</li>
           <li>把電腦裡檔案的內容整段貼進編輯框</li>
           <li><strong>Commit changes</strong></li>
         </ol>
@@ -517,7 +519,7 @@
         <div class="check" data-cp>
           <h3>✅ Lab 1 檢查點</h3>
           <label><input type="checkbox" id="c-1a"><span>能新增、能刪除，<strong>重新整理後資料還在</strong></span></label>
-          <label><input type="checkbox" id="c-1b"><span>GitHub 上看得到 <code>expenses/index.html</code></span></label>
+          <label><input type="checkbox" id="c-1b"><span>GitHub 上看得到 <code>inquiry/index.html</code></span></label>
         </div>
 
         <details>
@@ -525,9 +527,10 @@
           <div class="details-body">
             <div class="prompt">
               <div class="prompt-bar"><span>追進度</span><button class="copy" type="button">複製</button></div>
-              <pre>做一個記帳小工具，單一個 index.html 檔案，不用套件。
-可以新增金額和項目、可以刪除、最上面顯示總花費、資料存在瀏覽器裡。
-中文介面、手機能用。請給我完整、可以直接存成檔案使用的程式碼，不要省略。</pre>
+              <pre>做一個探究提問卡小工具，單一個 index.html 檔案，不用套件。
+可以輸入一個觀察現象並新增一張卡，每張卡列出三個提問方向、可以刪除，
+資料存在瀏覽器裡。中文介面、手機能用。
+請給我完整、可以直接存成檔案使用的程式碼，不要省略。</pre>
             </div>
           </div>
         </details>
@@ -720,10 +723,10 @@
         <div class="prompt">
           <div class="prompt-bar"><span>貼給 claude.ai</span><button class="copy" type="button">複製</button></div>
           <pre>做一個首頁 index.html，用卡片的方式連到我的三個工具：
-- expenses/index.html 記帳小工具
+- inquiry/index.html 探究提問卡
 - habits/index.html 習慣追蹤表
 - digest/ 每日摘要
-連結請用相對路徑，例如 href="expenses/index.html"，不要用完整網址。
+連結請用相對路徑，例如 href="inquiry/index.html"，不要用完整網址。
 風格要跟前面的工具一致，中文介面，手機上要清楚易讀。
 最上面放一個標題「我的生活小工具」。
 請給我完整、可以存成 index.html 直接使用的程式碼。</pre>
@@ -738,7 +741,7 @@
             <tr><td>首頁（<code>home.html</code>）</td><td><code>index.html</code>（<strong>根目錄，不要放進資料夾</strong>）</td></tr>
           </tbody>
         </table></div>
-        <p><code>expenses/index.html</code> Lab 1 已經放好了，不用重做。</p>
+        <p><code>inquiry/index.html</code> Lab 1 已經放好了，不用重做。</p>
 
         <div class="step-h" id="lab3-pages"><span class="sn">步驟 4</span>發布成公開網站</div>
         <ol>
@@ -764,7 +767,7 @@
         <div class="check" data-cp>
           <h3>✅ Lab 3 檢查點</h3>
           <label><input type="checkbox" id="c-3a"><span>我的網址打得開</span></label>
-          <label><input type="checkbox" id="c-3b"><span>首頁點得到記帳工具</span></label>
+          <label><input type="checkbox" id="c-3b"><span>首頁點得到探究提問卡</span></label>
           <label><input type="checkbox" id="c-3c"><span>首頁點得到習慣追蹤表</span></label>
           <label><input type="checkbox" id="c-3d"><span><strong>我用手機打開過了</strong> 📱</span></label>
         </div>
