@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正弦和角公式的幾何證明</title>
+<style>
+  :root {
+    --ground:#f5f6f8; --surface:#fff; --ink:#151a21; --ink-2:#3d4753; --muted:#6b7684;
+    --line:#dde1e8; --accent:#2f4a7c; --accent-soft:#e6ecf7; --warm:#b4531c; --warm-soft:#fcece1;
+    --ok:#2b7a4b; --ok-soft:#e3f2e8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ground:#0e1116; --surface:#161b22; --ink:#e8ecf2; --ink-2:#b9c2ce; --muted:#8b96a5;
+            --line:#262d38; --accent:#92aee2; --accent-soft:#1b2534; --warm:#e2905b; --warm-soft:#2a1c12;
+            --ok:#63c089; --ok-soft:#14251b; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+         font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; line-height:1.7; }
+  .wrap { max-width:880px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:clamp(1.5rem,4vw,2.1rem); margin:0 0 6px; letter-spacing:-.02em; }
+  .lede { color:var(--muted); margin:0 0 24px; }
+  .formula { font-size:clamp(1rem,2.6vw,1.3rem); font-weight:800; margin:0 0 24px; line-height:2; }
+  .formula .a { color:var(--accent); }
+  .formula .b { color:var(--warm); }
+  .panel { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  svg { display:block; width:100%; height:auto; }
+  .ctrls { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:20px; }
+  .ctrl-top { display:flex; justify-content:space-between; align-items:baseline; }
+  .ctrl label { font-weight:700; }
+  .val { font-variant-numeric:tabular-nums; font-weight:800; }
+  input[type=range] { width:100%; height:44px; }
+  #alpha { accent-color:var(--accent); }
+  #beta { accent-color:var(--warm); }
+  .check { margin-top:20px; background:var(--ok-soft); border:1px solid var(--line);
+           border-left:4px solid var(--ok); border-radius:10px; padding:14px 18px;
+           font-variant-numeric:tabular-nums; }
+  .check div { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .check .tot { font-weight:800; border-top:1px solid var(--line); margin-top:8px; padding-top:8px; }
+  .note { margin-top:22px; background:var(--surface); border:1px solid var(--line);
+          border-left:4px solid var(--warm); border-radius:10px; padding:14px 18px; }
+  .note p { margin:0; color:var(--ink-2); font-size:.95rem; }
+  .note b { color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>正弦和角公式的幾何證明</h1>
+  <p class="lede">拉動 α 和 β，看右邊那條高度永遠等於兩段的和。</p>
+
+  <p class="formula">
+    sin(α+β) &nbsp;=&nbsp; <span class="a">sin α · cos β</span> &nbsp;+&nbsp; <span class="b">cos α · sin β</span>
+  </p>
+
+  <div class="panel">
+    <svg viewBox="0 0 560 330" role="img" aria-label="兩個直角三角形疊起來，證明正弦和角公式">
+      <g id="fig">
+        <!-- 座標軸 -->
+        <line id="axis" stroke="var(--line)" stroke-width="1.5"/>
+        <!-- 輔助線 -->
+        <line id="oq" stroke="var(--muted)" stroke-width="1.5"/>
+        <line id="op" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line id="qp" stroke="var(--muted)" stroke-width="1.5"/>
+        <line id="tq" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <!-- 兩段高度 -->
+        <line id="seg1" stroke="var(--accent)" stroke-width="7" stroke-linecap="round"/>
+        <line id="seg2" stroke="var(--warm)" stroke-width="7" stroke-linecap="round"/>
+        <!-- 角度弧 -->
+        <path id="arcA" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        <path id="arcB" fill="none" stroke="var(--warm)" stroke-width="2"/>
+        <!-- 點 -->
+        <circle id="ptP" r="5" fill="var(--ink)"/>
+        <circle id="ptQ" r="5" fill="var(--muted)"/>
+        <!-- 標籤 -->
+        <text id="lblO" font-size="14" font-weight="700" fill="var(--muted)">O</text>
+        <text id="lblP" font-size="14" font-weight="700" fill="var(--ink)">P</text>
+        <text id="lblQ" font-size="14" font-weight="700" fill="var(--muted)">Q</text>
+        <text id="lblA" font-size="14" font-weight="800" fill="var(--accent)">α</text>
+        <text id="lblB" font-size="14" font-weight="800" fill="var(--warm)">β</text>
+        <text id="lbl1" font-size="13" font-weight="700" fill="var(--accent)">sin α · cos β</text>
+        <text id="lbl2" font-size="13" font-weight="700" fill="var(--warm)">cos α · sin β</text>
+        <text id="lblH" font-size="13" font-weight="700" fill="var(--muted)">OP = 1</text>
+      </g>
+    </svg>
+
+    <div class="ctrls">
+      <div>
+        <div class="ctrl-top"><label for="alpha">α</label><span class="val" style="color:var(--accent)"><span id="av">35</span>°</span></div>
+        <input id="alpha" type="range" min="5" max="80" step="1" value="35">
+      </div>
+      <div>
+        <div class="ctrl-top"><label for="beta">β</label><span class="val" style="color:var(--warm)"><span id="bv">25</span>°</span></div>
+        <input id="beta" type="range" min="5" max="80" step="1" value="25">
+      </div>
+    </div>
+
+    <div class="check">
+      <div><span style="color:var(--accent)">sin α · cos β</span><span id="n1">0.520</span></div>
+      <div><span style="color:var(--warm)">cos α · sin β</span><span id="n2">0.346</span></div>
+      <div class="tot"><span>相加</span><span id="nsum">0.866</span></div>
+      <div class="tot" style="border:none;margin:0;padding:0"><span>sin(α+β) = sin 60°</span><span id="ntot">0.866</span></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>這張圖只證明了銳角的情況。</b>α、β 與 α+β 都必須是銳角，圖形才成立，
+       所以滑桿限制在 α+β ≤ 85°。恆等式本身對所有角度都成立，但需要另外用旋轉或複數證明。
+       課堂上值得對學生講明這件事——<b>看得到的證明有適用範圍</b>。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var OX = 70, OY = 285, S = 210, MAXSUM = 85;
+  var A = document.getElementById('alpha'), B = document.getElementById('beta');
+  var g = function (id) { return document.getElementById(id); };
+
+  function X(u) { return OX + u * S; }
+  function Y(v) { return OY - v * S; }
+  function set(el, attrs) { for (var k in attrs) el.setAttribute(k, attrs[k]); }
+
+  function draw() {
+    var a = +A.value, b = +B.value;
+    var ra = a * Math.PI / 180, rb = b * Math.PI / 180, rs = ra + rb;
+
+    // 關鍵點（數學座標，OP = 1）
+    var Px = Math.cos(rs),            Py = Math.sin(rs);
+    var Qx = Math.cos(rb) * Math.cos(ra), Qy = Math.cos(rb) * Math.sin(ra);
+    var Ty = Math.cos(rb) * Math.sin(ra);          // T 與 Q 同高，落在 PR 上
+    var seg1 = Math.sin(ra) * Math.cos(rb);        // R→T
+    var seg2 = Math.cos(ra) * Math.sin(rb);        // T→P
+
+    set(g('axis'), { x1: X(0), y1: Y(0), x2: X(1.08), y2: Y(0) });
+    set(g('oq'),   { x1: X(0), y1: Y(0), x2: X(Qx),  y2: Y(Qy) });
+    set(g('op'),   { x1: X(0), y1: Y(0), x2: X(Px),  y2: Y(Py) });
+    set(g('qp'),   { x1: X(Qx), y1: Y(Qy), x2: X(Px), y2: Y(Py) });
+    set(g('tq'),   { x1: X(Px), y1: Y(Ty), x2: X(Qx), y2: Y(Qy) });
+
+    set(g('seg1'), { x1: X(Px), y1: Y(0),  x2: X(Px), y2: Y(Ty) });
+    set(g('seg2'), { x1: X(Px), y1: Y(Ty), x2: X(Px), y2: Y(Py) });
+
+    // 角度弧
+    var r1 = 44, r2 = 66;
+    set(g('arcA'), { d: 'M ' + X(r1 / S) + ' ' + Y(0) +
+      ' A ' + r1 + ' ' + r1 + ' 0 0 0 ' + (OX + r1 * Math.cos(ra)) + ' ' + (OY - r1 * Math.sin(ra)) });
+    set(g('arcB'), { d: 'M ' + (OX + r2 * Math.cos(ra)) + ' ' + (OY - r2 * Math.sin(ra)) +
+      ' A ' + r2 + ' ' + r2 + ' 0 0 0 ' + (OX + r2 * Math.cos(rs)) + ' ' + (OY - r2 * Math.sin(rs)) });
+
+    set(g('ptP'), { cx: X(Px), cy: Y(Py) });
+    set(g('ptQ'), { cx: X(Qx), cy: Y(Qy) });
+
+    set(g('lblO'), { x: OX - 18, y: OY + 6 });
+    set(g('lblP'), { x: X(Px) + 10, y: Y(Py) - 6 });
+    set(g('lblQ'), { x: X(Qx) + 9,  y: Y(Qy) - 8 });
+    set(g('lblA'), { x: OX + 52 * Math.cos(ra / 2), y: OY - 52 * Math.sin(ra / 2) + 5 });
+    set(g('lblB'), { x: OX + 76 * Math.cos(ra + rb / 2), y: OY - 76 * Math.sin(ra + rb / 2) + 5 });
+    set(g('lbl1'), { x: X(Px) + 14, y: Y(Ty / 2) + 4 });
+    set(g('lbl2'), { x: X(Px) + 14, y: Y((Ty + Py) / 2) + 4 });
+    set(g('lblH'), { x: X(Px / 2) - 26, y: Y(Py / 2) - 10 });
+
+    g('av').textContent = a; g('bv').textContent = b;
+    g('n1').textContent = seg1.toFixed(3);
+    g('n2').textContent = seg2.toFixed(3);
+    g('nsum').textContent = (seg1 + seg2).toFixed(3);
+    g('ntot').textContent = Math.sin(rs).toFixed(3);
+    g('ntot').previousElementSibling.textContent = 'sin(α+β) = sin ' + (a + b) + '°';
+  }
+
+  function clamp(moved, other) {
+    if (+moved.value + +other.value > MAXSUM) other.value = MAXSUM - +moved.value;
+    draw();
+  }
+  A.addEventListener('input', function () { clamp(A, B); });
+  B.addEventListener('input', function () { clamp(B, A); });
+  draw();
+})();
+</script>
+</body>
+</html>
