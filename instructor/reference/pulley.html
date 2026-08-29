@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>動滑輪：省力，但費距離</title>
+<style>
+  :root {
+    --ground:#f5f6f8; --surface:#fff; --ink:#151a21; --ink-2:#3d4753; --muted:#6b7684;
+    --line:#dde1e8; --accent:#2f4a7c; --accent-soft:#e6ecf7; --warm:#b4531c; --warm-soft:#fcece1;
+    --ok:#2b7a4b; --ok-soft:#e3f2e8; --steel:#8b96a5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ground:#0e1116; --surface:#161b22; --ink:#e8ecf2; --ink-2:#b9c2ce; --muted:#8b96a5;
+            --line:#262d38; --accent:#92aee2; --accent-soft:#1b2534; --warm:#e2905b; --warm-soft:#2a1c12;
+            --ok:#63c089; --ok-soft:#14251b; --steel:#6b7684; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+         font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; line-height:1.7; }
+  .wrap { max-width:880px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:clamp(1.5rem,4vw,2.1rem); margin:0 0 6px; letter-spacing:-.02em; }
+  .lede { color:var(--muted); margin:0 0 24px; }
+  .panel { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .stage { display:grid; grid-template-columns:minmax(0,1fr); gap:18px; }
+  @media (min-width:680px) { .stage { grid-template-columns:minmax(0,300px) minmax(0,1fr); align-items:start; } }
+  svg { display:block; width:100%; height:auto; }
+  .ctrls { display:grid; gap:16px; }
+  .ctrl-top { display:flex; justify-content:space-between; align-items:baseline; }
+  .ctrl label { font-weight:700; }
+  .val { font-variant-numeric:tabular-nums; font-weight:800; }
+  input[type=range] { width:100%; height:44px; }
+  #pull { accent-color:var(--accent); }
+  #load { accent-color:var(--warm); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; }
+  .cell { background:var(--accent-soft); border-radius:9px; padding:10px 13px; }
+  .cell b { display:block; font-size:.75rem; letter-spacing:.06em; color:var(--muted); font-weight:700; }
+  .cell span { font-size:1.1rem; font-weight:800; font-variant-numeric:tabular-nums; }
+  .work { margin-top:16px; background:var(--ok-soft); border:1px solid var(--line);
+          border-left:4px solid var(--ok); border-radius:10px; padding:13px 17px; font-variant-numeric:tabular-nums; }
+  .work div { display:flex; justify-content:space-between; gap:14px; }
+  .work .eq { font-weight:800; border-top:1px solid var(--line); margin-top:7px; padding-top:7px; }
+  .note { margin-top:22px; background:var(--surface); border:1px solid var(--line);
+          border-left:4px solid var(--warm); border-radius:10px; padding:14px 18px; }
+  .note p { margin:0; color:var(--ink-2); font-size:.95rem; }
+  .note b { color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>動滑輪：省力，但費距離</h1>
+  <p class="lede">拉動繩子，看重物只上升一半的高度——而你只需要一半的力。</p>
+
+  <div class="panel">
+    <div class="stage">
+      <svg viewBox="0 0 320 430" role="img" aria-label="一個動滑輪與一個定滑輪，繩子一端固定在天花板">
+        <!-- 天花板 -->
+        <rect x="10" y="24" width="300" height="12" fill="var(--line)"/>
+        <line x1="10" y1="36" x2="310" y2="36" stroke="var(--steel)" stroke-width="2"/>
+        <!-- 繩：固定端 -->
+        <line id="rope1" x1="100" y1="36" x2="100" stroke="var(--accent)" stroke-width="3"/>
+        <!-- 繩：動滑輪 → 定滑輪 -->
+        <line id="rope2" x1="156" x2="156" y2="96" stroke="var(--accent)" stroke-width="3"/>
+        <!-- 定滑輪 -->
+        <circle cx="180" cy="96" r="24" fill="none" stroke="var(--steel)" stroke-width="5"/>
+        <circle cx="180" cy="96" r="4" fill="var(--steel)"/>
+        <line x1="180" y1="36" x2="180" y2="72" stroke="var(--steel)" stroke-width="3"/>
+        <path d="M 156 96 A 24 24 0 0 1 204 96" fill="none" stroke="var(--accent)" stroke-width="3"/>
+        <!-- 繩：自由端 -->
+        <line id="rope3" x1="204" y1="96" x2="204" stroke="var(--accent)" stroke-width="3"/>
+        <!-- 動滑輪 -->
+        <g id="movable">
+          <path d="M 100 0 A 28 28 0 0 0 156 0" fill="none" stroke="var(--accent)" stroke-width="3"/>
+          <circle cx="128" cy="0" r="28" fill="none" stroke="var(--steel)" stroke-width="5"/>
+          <circle cx="128" cy="0" r="4" fill="var(--steel)"/>
+          <line x1="128" y1="28" x2="128" y2="46" stroke="var(--steel)" stroke-width="3"/>
+          <rect x="98" y="46" width="60" height="44" rx="5" fill="var(--warm)" opacity=".9"/>
+          <text x="128" y="74" font-size="15" font-weight="800" fill="#fff" text-anchor="middle">W</text>
+        </g>
+        <!-- 施力箭頭 -->
+        <g id="hand">
+          <line x1="204" y1="0" x2="204" y2="30" stroke="var(--warm)" stroke-width="3"/>
+          <path d="M 198 24 L 204 34 L 210 24" fill="none" stroke="var(--warm)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <text id="flabel" x="216" y="24" font-size="13" font-weight="800" fill="var(--warm)">F</text>
+        </g>
+        <!-- 每段繩的張力 -->
+        <text x="84" y="150" font-size="11" font-weight="700" fill="var(--accent)" text-anchor="middle">W/2</text>
+        <text x="172" y="150" font-size="11" font-weight="700" fill="var(--accent)" text-anchor="middle">W/2</text>
+      </svg>
+
+      <div>
+        <div class="ctrls">
+          <div>
+            <div class="ctrl-top"><label for="pull">拉繩距離</label><span class="val" style="color:var(--accent)"><span id="pv">0</span> cm</span></div>
+            <input id="pull" type="range" min="0" max="60" step="1" value="0">
+          </div>
+          <div>
+            <div class="ctrl-top"><label for="load">重物重量</label><span class="val" style="color:var(--warm)"><span id="lv">100</span> N</span></div>
+            <input id="load" type="range" min="20" max="200" step="10" value="100">
+          </div>
+        </div>
+
+        <div class="grid" style="margin-top:18px">
+          <div class="cell"><b>你的施力 F</b><span id="f">50</span> N</div>
+          <div class="cell"><b>重物上升 h</b><span id="h">0</span> cm</div>
+        </div>
+
+        <div class="work">
+          <div><span>施力做的功　F × 拉繩距離</span><span id="w1">0</span></div>
+          <div><span>重物得到的功　W × h</span><span id="w2">0</span></div>
+          <div class="eq"><span id="verdict">兩者相等 ✓</span><span>N·cm</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>這張圖忽略了摩擦力、繩重與滑輪本身的重量。</b>真實的動滑輪要再多花一點力。
+       課堂上值得問學生：<b>如果滑輪本身也有重量，施力會變大還是變小？</b>
+       這個問題不必改程式就能討論，是很好的延伸。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var SCALE = 2.4;        // 每公分幾個 px
+  var M0 = 250;           // 拉繩 0 cm 時，動滑輪中心的 y
+  var HAND0 = 150;        // 拉繩 0 cm 時，自由端末端的 y
+  var pull = document.getElementById('pull'), load = document.getElementById('load');
+  var g = function (id) { return document.getElementById(id); };
+
+  function draw() {
+    var d = +pull.value, W = +load.value;
+    var h = d / 2;                        // 動滑輪：重物只上升一半
+    var F = W / 2;                        // 動滑輪：施力只需一半
+    var my = M0 - h * SCALE;              // 動滑輪中心
+    var hy = HAND0 + d * SCALE;           // 自由端末端
+
+    g('movable').setAttribute('transform', 'translate(0,' + my.toFixed(1) + ')');
+    g('rope1').setAttribute('y2', my.toFixed(1));
+    g('rope2').setAttribute('y1', my.toFixed(1));
+    g('rope3').setAttribute('y2', hy.toFixed(1));
+    g('hand').setAttribute('transform', 'translate(0,' + hy.toFixed(1) + ')');
+
+    var w1 = F * d, w2 = W * h;
+    g('pv').textContent = d;
+    g('lv').textContent = W;
+    g('f').textContent = F;
+    g('h').textContent = h;
+    g('w1').textContent = w1;
+    g('w2').textContent = w2;
+    g('flabel').textContent = 'F = ' + F + ' N';
+    g('verdict').textContent = (w1 === w2) ? '兩者相等 ✓' : '兩者不相等 ✗';
+  }
+
+  pull.addEventListener('input', draw);
+  load.addEventListener('input', draw);
+  draw();
+})();
+</script>
+</body>
+</html>
