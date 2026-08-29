@@ -8,7 +8,13 @@ AI 產生第一版這件事，現在很多工具都做得到。這門課教的�
 怎麼把它變成留得住、改得動、傳得出去的教材資產。
 
 **專案網站：** https://htchen.github.io/LLM2Life/
-｜ **上課投影片：** https://htchen.github.io/LLM2Life/slides.html （可直接翻頁瀏覽）
+｜ **三小時上課投影片：** https://htchen.github.io/LLM2Life/slides.html
+｜ **60 分鐘演講版：** https://htchen.github.io/LLM2Life/talk.html
+
+> **兩種場次，兩份投影片。** 60 分鐘的**種子教師場次不動手**，用兩段現場示範說明
+> 這套流程值得帶回去（流程表：[`instructor/talk-60.md`](instructor/talk-60.md)）。
+> 三小時是**種子教師回校後開給同事**的完整工作坊，全程動手，教材在 `variant-free/`。
+> 三小時的教材不因為短場次而縮減——它是那場演講的交付物。
 
 > ## 主線是免費版
 >

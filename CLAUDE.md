@@ -93,7 +93,7 @@ CDNs, so the type personality comes from weight, scale, and spacing on the syste
 
 `web/index.html` is the project's **landing page**, published to GitHub Pages at
 `https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow publishes
-exactly eight files, and nothing else:
+exactly nine files, and nothing else:
 
 | Published as | Source |
 | --- | --- |
@@ -105,6 +105,7 @@ exactly eight files, and nothing else:
 | `/seed-teacher.html` | `web/seed-teacher.html` (guide for teachers re-running the workshop) |
 | `/slides.html` | `variant-free/slides/deck.md` — **built by Marp in CI**, not copied |
 | `/slides-paid.html` | `slides/deck.md` — built by Marp in CI |
+| `/talk.html` | `slides/talk-60.md` — built by Marp in CI |
 
 The unqualified names are the free ones on purpose: those are the links students are given.
 All four student-facing pages share the `htchen.github.io` origin, so each must keep a
@@ -168,6 +169,29 @@ When editing, preserve these gates:
 - Every implementation step has an observable acceptance method.
 - The first build produces a usable core flow and is saved before the second iteration.
 - The last segment stops feature work and shifts to demonstration, evidence, and the next version.
+
+## Two formats: a 60-minute talk and a three-hour workshop
+
+`slides/talk-60.md` (26 slides) is the **seed-teacher talk**: 60 minutes, **no hands-on**, two
+live demos. `instructor/talk-60.md` is its timing source of truth. The three-hour workshop in
+`variant-free/` is what the seed teachers deliver afterwards.
+
+**The short deck is not an abridged version of the long one.** The two have different goals:
+
+| | 60-minute talk | three-hour workshop |
+| --- | --- | --- |
+| Goal | decide whether to give three hours to colleagues | each person ships a working minimum version |
+| Audience does | watches | builds |
+| Prep required | none | two free accounts, before the session |
+
+So **do not shrink the three-hour material to fit the talk** — the workshop is the talk's
+*deliverable*, and shrinking it destroys what the talk is offering.
+
+**Third deck, third drift surface.** `talk-60.md` restates content that also lives in
+`variant-free/slides/deck.md` (the demo prompt, the four viewpoints, the claim, the inquiry
+mapping, the GitHub benefits). When you change one of those in the workshop deck, check the talk
+deck too. It is not required to match verbatim — the talk compresses and rewrites for a
+listening audience — but the *claims* must not diverge.
 
 ## `variant-free/`: the default track, living in a non-default folder
 
