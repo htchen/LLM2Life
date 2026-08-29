@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>單位圓與正弦波</title>
+<style>
+  :root {
+    --ground:#f5f6f8; --surface:#fff; --ink:#151a21; --ink-2:#3d4753; --muted:#6b7684;
+    --line:#dde1e8; --accent:#2f4a7c; --accent-soft:#e6ecf7; --warm:#b4531c; --ok:#2b7a4b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ground:#0e1116; --surface:#161b22; --ink:#e8ecf2; --ink-2:#b9c2ce; --muted:#8b96a5;
+            --line:#262d38; --accent:#92aee2; --accent-soft:#1b2534; --warm:#e2905b; --ok:#63c089; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+         font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+         line-height:1.7; }
+  .wrap { max-width: 860px; margin:0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: clamp(1.6rem,4vw,2.2rem); margin:0 0 6px; letter-spacing:-.02em; }
+  .lede { color:var(--muted); margin:0 0 28px; }
+  .panel { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  svg { display:block; width:100%; height:auto; }
+  .ctrl { margin-top:20px; display:flex; flex-direction:column; gap:6px; }
+  .ctrl-top { display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+  .ctrl label { font-weight:700; }
+  .val { font-variant-numeric:tabular-nums; color:var(--accent); font-weight:800; }
+  input[type=range] { width:100%; height:44px; accent-color:var(--accent); }
+  .btns { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  button { font:inherit; font-weight:700; padding:11px 20px; min-height:44px; border-radius:9px;
+           border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .readout { margin-top:16px; display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+  .cell { background:var(--accent-soft); border-radius:9px; padding:10px 14px; }
+  .cell b { display:block; font-size:.78rem; letter-spacing:.08em; color:var(--muted); font-weight:700; }
+  .cell span { font-size:1.15rem; font-weight:800; font-variant-numeric:tabular-nums; }
+  .note { margin-top:22px; border-left:4px solid var(--ok); background:var(--surface);
+          border:1px solid var(--line); border-left-width:4px; border-radius:10px; padding:14px 18px; }
+  .note p { margin:0; color:var(--ink-2); font-size:.96rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>單位圓與正弦波</h1>
+  <p class="lede">拖動角度，看圓上那個點的<b>高度</b>怎麼畫出正弦波。</p>
+
+  <div class="panel">
+    <svg viewBox="0 0 720 260" role="img" aria-label="左邊是單位圓，右邊是對應的正弦波">
+      <!-- 單位圓 -->
+      <g transform="translate(120,130)">
+        <line x1="-100" y1="0" x2="100" y2="0" stroke="var(--line)" stroke-width="1.5"/>
+        <line x1="0" y1="-100" x2="0" y2="100" stroke="var(--line)" stroke-width="1.5"/>
+        <circle cx="0" cy="0" r="90" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+        <path id="arc" fill="var(--accent-soft)" stroke="none"/>
+        <line id="radius" x1="0" y1="0" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+        <line id="drop" stroke="var(--warm)" stroke-width="2" stroke-dasharray="4 4"/>
+        <circle id="pt" r="6" fill="var(--accent)"/>
+      </g>
+      <!-- 連接線 -->
+      <line id="link" stroke="var(--warm)" stroke-width="1.5" stroke-dasharray="3 5" opacity=".8"/>
+      <!-- 波形 -->
+      <g transform="translate(250,130)">
+        <line x1="0" y1="0" x2="440" y2="0" stroke="var(--line)" stroke-width="1.5"/>
+        <path id="wave" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle id="wpt" r="6" fill="var(--warm)"/>
+        <text x="0" y="118" font-size="13" fill="var(--muted)">0</text>
+        <text x="105" y="118" font-size="13" fill="var(--muted)">90°</text>
+        <text x="215" y="118" font-size="13" fill="var(--muted)">180°</text>
+        <text x="325" y="118" font-size="13" fill="var(--muted)">270°</text>
+        <text x="415" y="118" font-size="13" fill="var(--muted)">360°</text>
+      </g>
+    </svg>
+
+    <div class="ctrl">
+      <div class="ctrl-top">
+        <label for="ang">角度</label>
+        <span class="val"><span id="angv">45</span>°</span>
+      </div>
+      <input id="ang" type="range" min="0" max="360" step="1" value="45">
+    </div>
+
+    <div class="btns">
+      <button id="play" class="primary" type="button">自動播放</button>
+      <button id="reset" type="button">回到 0°</button>
+    </div>
+
+    <div class="readout">
+      <div class="cell"><b>SIN（高度）</b><span id="s">0.707</span></div>
+      <div class="cell"><b>COS（水平）</b><span id="c">0.707</span></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>課堂用法：</b>先把角度拉到 90°，問學生「這時候高度是多少？」再拉到 180°、270°。
+       學生會自己看出正弦波不是憑空來的，它就是圓上那個點的高度隨角度變化的紀錄。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var R = 90, W = 440, AMP = 90;
+  var ang = document.getElementById('ang');
+  var els = {
+    angv: document.getElementById('angv'), s: document.getElementById('s'), c: document.getElementById('c'),
+    radius: document.getElementById('radius'), pt: document.getElementById('pt'), drop: document.getElementById('drop'),
+    arc: document.getElementById('arc'), wave: document.getElementById('wave'), wpt: document.getElementById('wpt'),
+    link: document.getElementById('link')
+  };
+
+  function draw(deg) {
+    var rad = deg * Math.PI / 180;
+    var x = Math.cos(rad) * R, y = -Math.sin(rad) * R;
+
+    els.radius.setAttribute('x2', x); els.radius.setAttribute('y2', y);
+    els.pt.setAttribute('cx', x); els.pt.setAttribute('cy', y);
+    els.drop.setAttribute('x1', x); els.drop.setAttribute('y1', y);
+    els.drop.setAttribute('x2', x); els.drop.setAttribute('y2', 0);
+
+    // 扇形
+    var large = deg > 180 ? 1 : 0;
+    var ex = Math.cos(rad) * 42, ey = -Math.sin(rad) * 42;
+    els.arc.setAttribute('d', deg === 0 ? '' :
+      'M 0 0 L 42 0 A 42 42 0 ' + large + ' 0 ' + ex.toFixed(2) + ' ' + ey.toFixed(2) + ' Z');
+
+    // 波形：只畫到目前角度
+    var d = '', n = Math.max(1, Math.round(deg));
+    for (var i = 0; i <= n; i++) {
+      var t = i / 360 * W, h = -Math.sin(i * Math.PI / 180) * AMP;
+      d += (i === 0 ? 'M ' : ' L ') + t.toFixed(2) + ' ' + h.toFixed(2);
+    }
+    els.wave.setAttribute('d', d);
+
+    var wx = deg / 360 * W, wy = -Math.sin(rad) * AMP;
+    els.wpt.setAttribute('cx', wx); els.wpt.setAttribute('cy', wy);
+    els.link.setAttribute('x1', 120 + x); els.link.setAttribute('y1', 130 + y);
+    els.link.setAttribute('x2', 250 + wx); els.link.setAttribute('y2', 130 + wy);
+
+    els.angv.textContent = deg;
+    els.s.textContent = Math.sin(rad).toFixed(3);
+    els.c.textContent = Math.cos(rad).toFixed(3);
+  }
+
+  ang.addEventListener('input', function () { stop(); draw(+ang.value); });
+
+  var timer = null;
+  function stop() { if (timer) { clearInterval(timer); timer = null; document.getElementById('play').textContent = '自動播放'; } }
+  document.getElementById('play').addEventListener('click', function () {
+    if (timer) { stop(); return; }
+    this.textContent = '暫停';
+    timer = setInterval(function () {
+      var v = (+ang.value + 1) % 361;
+      ang.value = v; draw(v);
+    }, 24);
+  });
+  document.getElementById('reset').addEventListener('click', function () { stop(); ang.value = 0; draw(0); });
+
+  draw(45);
+})();
+</script>
+</body>
+</html>
