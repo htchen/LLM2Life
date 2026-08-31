@@ -131,6 +131,19 @@ Keep the roles apart:
 Only the two Artifact URLs are duplicated between `README.md` and `web/index.html`. If either
 ever changes, both files need the edit.
 
+## QR codes on slides are inline SVG, never fetched
+
+Slides that name a URL carry a QR code so the room can open it on a phone. Those QR codes are
+**inline `<svg>` written into the Markdown**, generated once at authoring time — never an
+`<img src="https://api.qrserver.com/…">` or any other remote service. The decks must stay
+self-contained for the same reason the companion sites do: lecture-hall wifi.
+
+To add or change one, generate the SVG with a throwaway tool (e.g. `segno` in a temp venv —
+do **not** add a QR library to `package.json`; CI does not need one) and paste the result in.
+Then **verify it actually decodes from the rendered slide**, not just from the source SVG: a QR
+that does not scan is worse than no QR. Currently on three slides — the talk's closing slide
+(project home) and each workshop deck's 「現在請打開」 (its own 隨堂網站).
+
 ## Load-bearing facts
 
 These are verified against the current docs and shape the whole design. Do not soften them:
