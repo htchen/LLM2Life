@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雙人單字對決</title>
+<style>
+  :root {
+    --ground:#f5f6f8; --surface:#fff; --ink:#151a21; --ink-2:#3d4753; --muted:#6b7684;
+    --line:#dde1e8; --accent:#2f4a7c; --accent-soft:#e6ecf7; --warm:#b4531c; --warm-soft:#fcece1;
+    --ok:#2b7a4b; --ok-soft:#e3f2e8;
+    --hit:#2b7a4b; --near:#c08a1e; --miss:#8b96a5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ground:#0e1116; --surface:#161b22; --ink:#e8ecf2; --ink-2:#b9c2ce; --muted:#8b96a5;
+            --line:#262d38; --accent:#92aee2; --accent-soft:#1b2534; --warm:#e2905b; --warm-soft:#2a1c12;
+            --ok:#63c089; --ok-soft:#14251b; --hit:#3f9c63; --near:#a8791b; --miss:#4a5563; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+         font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif; line-height:1.7; }
+  .wrap { max-width:760px; margin:0 auto; padding:28px 18px 64px; }
+  h1 { font-size:clamp(1.5rem,4vw,2.1rem); margin:0 0 6px; letter-spacing:-.02em; }
+  .lede { color:var(--muted); margin:0 0 24px; }
+  .panel { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px; }
+  .hide { display:none !important; }
+
+  label { display:block; font-weight:700; margin-bottom:8px; }
+  input[type=text], input[type=password] {
+    width:100%; font:inherit; font-size:1.4rem; letter-spacing:.4em; text-transform:uppercase;
+    padding:12px 16px; min-height:52px; border-radius:10px; border:1px solid var(--line);
+    background:var(--ground); color:var(--ink); font-variant-numeric:tabular-nums;
+  }
+  input:focus { outline:2px solid var(--accent); outline-offset:1px; }
+  button { font:inherit; font-weight:700; padding:13px 26px; min-height:52px; border-radius:10px;
+           border:1px solid var(--accent); background:var(--accent); color:#fff; cursor:pointer; margin-top:14px; }
+  button.ghost { background:var(--surface); color:var(--ink); border-color:var(--line); }
+  button:disabled { opacity:.45; cursor:not-allowed; }
+  .err { color:var(--warm); font-weight:700; min-height:1.7em; margin:8px 0 0; }
+
+  .turn { font-size:1.15rem; font-weight:800; margin:0 0 16px; }
+  .turn b { color:var(--accent); }
+  .boards { display:grid; gap:18px; grid-template-columns:1fr; }
+  @media (min-width:620px) { .boards { grid-template-columns:1fr 1fr; } }
+  .board { background:var(--ground); border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .board h3 { margin:0 0 10px; font-size:.95rem; letter-spacing:.06em; color:var(--muted); }
+  .board.active { border-color:var(--accent); background:var(--accent-soft); }
+  .row { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:6px; }
+  .cell { aspect-ratio:1; display:grid; place-items:center; border-radius:7px;
+          font-size:1.25rem; font-weight:800; color:#fff; text-transform:uppercase; }
+  .cell.hit { background:var(--hit); }
+  .cell.near { background:var(--near); }
+  .cell.miss { background:var(--miss); }
+  .empty { border:1px dashed var(--line); border-radius:7px; aspect-ratio:1; }
+
+  .result { margin-top:20px; background:var(--ok-soft); border:1px solid var(--line);
+            border-left:4px solid var(--ok); border-radius:10px; padding:16px 20px; }
+  .result h2 { margin:0 0 6px; font-size:1.2rem; }
+  .result p { margin:0; color:var(--ink-2); }
+  .legend { display:flex; gap:16px; flex-wrap:wrap; margin-top:18px; font-size:.9rem; color:var(--muted); }
+  .legend span { display:inline-flex; align-items:center; gap:7px; }
+  .dot { width:15px; height:15px; border-radius:4px; display:inline-block; }
+  .note { margin-top:22px; background:var(--surface); border:1px solid var(--line);
+          border-left:4px solid var(--warm); border-radius:10px; padding:14px 18px; }
+  .note p { margin:0; color:var(--ink-2); font-size:.95rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>雙人單字對決</h1>
+  <p class="lede">兩人各出一個五個字母的英文單字給對方猜，輪流猜，先猜中的獲勝。</p>
+
+  <!-- 出題 -->
+  <div class="panel" id="setup">
+    <p class="turn" id="setupTurn">請 <b>玩家一</b> 輸入一個五個字母的單字</p>
+    <label for="secret">這個字要讓對方猜，輸入時不會顯示出來</label>
+    <input id="secret" type="password" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="latin">
+    <p class="err" id="setupErr"></p>
+    <button id="setupBtn" type="button">確定，換下一位</button>
+  </div>
+
+  <!-- 對戰 -->
+  <div class="panel hide" id="play">
+    <p class="turn" id="playTurn">輪到 <b>玩家一</b> 猜</p>
+    <label for="guess">輸入五個字母</label>
+    <input id="guess" type="text" maxlength="5" autocomplete="off" autocapitalize="characters" spellcheck="false" inputmode="latin">
+    <p class="err" id="playErr"></p>
+    <button id="guessBtn" type="button">送出這一猜</button>
+
+    <div class="boards" style="margin-top:22px">
+      <div class="board" id="b1"><h3>玩家一的猜測</h3><div id="rows1"></div></div>
+      <div class="board" id="b2"><h3>玩家二的猜測</h3><div id="rows2"></div></div>
+    </div>
+
+    <div class="legend">
+      <span><i class="dot" style="background:var(--hit)"></i>位置與字母都對</span>
+      <span><i class="dot" style="background:var(--near)"></i>有這個字母，位置不對</span>
+      <span><i class="dot" style="background:var(--miss)"></i>沒有這個字母</span>
+    </div>
+
+    <div class="result hide" id="result">
+      <h2 id="resultTitle"></h2>
+      <p id="resultBody"></p>
+      <button class="ghost" id="again" type="button">再玩一局</button>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>課堂用法：</b>把單字限定在這一課的生字範圍，學生就得在腦中反覆檢索該範圍的字。
+       輪流猜的設計讓兩人都要推理——看到對方的顏色回饋，也能反推自己出的字被猜到什麼程度。
+       <b>規則刻意做成同輪結束才判定</b>：玩家一先猜中時，玩家二仍可猜完該輪，同輪猜中即為平手，
+       避免先手一定佔便宜。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var LEN = 5;
+  var secrets = { 1: null, 2: null };
+  var solvedRound = { 1: null, 2: null };   // 於第幾輪猜中
+  var rounds = { 1: 0, 2: 0 };
+  var setupFor = 1, turn = 1, over = false;
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function clean(v) { return (v || '').toUpperCase().replace(/[^A-Z]/g, ''); }
+
+  // Wordle 配色：先標完全命中，再用剩下的字母數判斷「有但位置不對」
+  function score(guess, secret) {
+    var res = new Array(LEN).fill('miss');
+    var pool = {};
+    for (var i = 0; i < LEN; i++) {
+      if (guess[i] === secret[i]) res[i] = 'hit';
+      else pool[secret[i]] = (pool[secret[i]] || 0) + 1;
+    }
+    for (var j = 0; j < LEN; j++) {
+      if (res[j] === 'hit') continue;
+      var c = guess[j];
+      if (pool[c] > 0) { res[j] = 'near'; pool[c]--; }
+    }
+    return res;
+  }
+
+  function addRow(player, guess, marks) {
+    var row = document.createElement('div');
+    row.className = 'row';
+    for (var i = 0; i < LEN; i++) {
+      var d = document.createElement('div');
+      d.className = 'cell ' + marks[i];
+      d.textContent = guess[i];
+      row.appendChild(d);
+    }
+    $('rows' + player).appendChild(row);
+  }
+
+  // ---- 出題 ----
+  $('setupBtn').addEventListener('click', function () {
+    var v = clean($('secret').value);
+    if (v.length !== LEN) { $('setupErr').textContent = '請輸入剛好 5 個英文字母。'; return; }
+    $('setupErr').textContent = '';
+    secrets[setupFor === 1 ? 2 : 1] = v;      // 玩家一出的字給玩家二猜
+    $('secret').value = '';
+    if (setupFor === 1) {
+      setupFor = 2;
+      $('setupTurn').innerHTML = '請 <b>玩家二</b> 輸入一個五個字母的單字';
+      $('secret').focus();
+    } else {
+      $('setup').classList.add('hide');
+      $('play').classList.remove('hide');
+      render();
+      $('guess').focus();
+    }
+  });
+
+  // ---- 對戰 ----
+  $('guessBtn').addEventListener('click', function () {
+    if (over) return;
+    var v = clean($('guess').value);
+    if (v.length !== LEN) { $('playErr').textContent = '請輸入剛好 5 個英文字母。'; return; }
+    $('playErr').textContent = '';
+    $('guess').value = '';
+
+    var target = secrets[turn];               // 這位玩家要猜的字
+    rounds[turn]++;
+    var marks = score(v, target);
+    addRow(turn, v, marks);
+    if (v === target && solvedRound[turn] === null) solvedRound[turn] = rounds[turn];
+
+    // 兩人在同一輪都猜過之後才判定，先手不佔便宜
+    if (turn === 2) {
+      if (solvedRound[1] !== null || solvedRound[2] !== null) return finish();
+    }
+    turn = turn === 1 ? 2 : 1;
+    render();
+    $('guess').focus();
+  });
+
+  function finish() {
+    over = true;
+    var a = solvedRound[1], b = solvedRound[2];
+    var t, body;
+    if (a !== null && b !== null) {
+      t = '平手';
+      body = '兩位都在第 ' + a + ' 輪猜中。答案：玩家一猜的是 ' + secrets[1] + '，玩家二猜的是 ' + secrets[2] + '。';
+    } else {
+      var w = a !== null ? 1 : 2;
+      t = '玩家' + (w === 1 ? '一' : '二') + '獲勝';
+      body = '在第 ' + (w === 1 ? a : b) + ' 輪猜中。答案：玩家一猜的是 ' + secrets[1] + '，玩家二猜的是 ' + secrets[2] + '。';
+    }
+    $('resultTitle').textContent = t;
+    $('resultBody').textContent = body;
+    $('result').classList.remove('hide');
+    $('guessBtn').disabled = true;
+    $('guess').disabled = true;
+    $('playTurn').textContent = '本局結束';
+    $('b1').classList.remove('active'); $('b2').classList.remove('active');
+  }
+
+  function render() {
+    $('playTurn').innerHTML = '輪到 <b>玩家' + (turn === 1 ? '一' : '二') + '</b> 猜';
+    $('b1').classList.toggle('active', turn === 1);
+    $('b2').classList.toggle('active', turn === 2);
+  }
+
+  $('again').addEventListener('click', function () { location.reload(); });
+
+  [$('secret'), $('guess')].forEach(function (el) {
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') (el.id === 'secret' ? $('setupBtn') : $('guessBtn')).click();
+    });
+  });
+})();
+</script>
+</body>
+</html>
