@@ -2,8 +2,9 @@
 
 **這份檔案是這場 60 分鐘演講的時間唯一真實來源。** 投影片：`slides/talk-60.md`（26 頁）。
 
-**準備時請搭配 [`talk-60-script.md`](talk-60-script.md)** —— 逐張的講稿，
-含關鍵句、不要說什麼、以及兩段示範的操作細節。
+**準備時請搭配兩份：**
+[`talk-60-script.md`](talk-60-script.md) 是逐張的講稿（要說什麼），
+[`talk-60-demo-runbook.md`](talk-60-demo-runbook.md) 是三個示範的操作腳本（手怎麼動）。
 
 ## 這場的定位
 
@@ -41,7 +42,9 @@
 2. **開好兩個備援分頁**：`instructor/reference/sine-addition.html`（示範一備援）與
    `instructor/reference/wordle-duel.html`（投影片 21 要開一局）。
    現場產生失敗時直接切過去，**不要當場除錯**。
-3. **準備一個乾淨的 repo**，示範二要當場 push 並打開網址。
+3. **前一天就要建好示範 repo 並啟用 Pages，且確認網址真的打得開。**
+   Pages 第一次部署要等 1–10 分鐘，當天才開會在台上開出 404——
+   這是整場最大的操作風險，詳見 `talk-60-demo-runbook.md`。
 4. **手機準備好**，示範二最後要用手機打開那個網址給大家看。
 5. 最後一張投影片已內含 QR code，不必另外做；白板可再寫一次網址備用。
 
