@@ -28,6 +28,7 @@ style: |
   section.lead h1 { font-size: 76px; }
   section.dark { background: #14110e; color: #f4f1ec; }
   section.dark h1, section.dark h2 { color: #fff; }
+  section.dark h3 { color: #b5ada3; }
   section.dark strong { color: #ff9d7a; }
   section.dark :is(h1, h2, h3, h4, h5, h6) strong { color: #ff9d7a; }
   section.big { justify-content: center; text-align: center; }

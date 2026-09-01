@@ -214,7 +214,7 @@ When editing, preserve these gates:
 
 ## Two formats: a 60-minute talk and a three-hour workshop
 
-`talk/deck.md` (32 slides) is the **seed-teacher talk**: 60 minutes, **no hands-on**, two
+`talk/deck.md` (33 slides) is the **seed-teacher talk**: 60 minutes, **no hands-on**, two
 live demos. `talk/timeline.md` is its timing source of truth. The three-hour workshop in
 `workshop/` is what the seed teachers deliver afterwards.
 

@@ -5,11 +5,11 @@
   "description": "三小時開放式專題工作坊：用 Claude Code + GitHub 把發想做成可操作工具",
   "scripts": {
     "slides": "marp workshop/slides/deck.md --html --allow-local-files -o dist/deck.html",
-    "slides:pdf": "marp workshop/slides/deck.md --pdf --allow-local-files -o dist/deck.pdf",
+    "slides:pdf": "marp workshop/slides/deck.md --html --pdf --allow-local-files -o dist/deck.pdf",
     "slides:watch": "marp workshop/slides/deck.md --html --allow-local-files --preview --watch",
     "slides:paid": "marp workshop-paid/slides/deck.md --html --allow-local-files -o dist/deck-paid.html",
     "talk": "marp talk/deck.md --html --allow-local-files -o dist/talk.html",
-    "talk:pdf": "marp talk/deck.md --pdf --allow-local-files -o dist/talk.pdf",
+    "talk:pdf": "marp talk/deck.md --html --pdf --allow-local-files -o dist/talk.pdf",
     "site": "open workshop/site/index.html || xdg-open workshop/site/index.html"
   },
   "devDependencies": {
