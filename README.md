@@ -16,6 +16,7 @@
 | 隨堂網站 | https://htchen.github.io/LLM2Life/handbook.html |
 | 課前準備 | https://htchen.github.io/LLM2Life/pre-workshop.html |
 | 種子教師指南 | https://htchen.github.io/LLM2Life/seed-teacher.html |
+| 四個互動範例 | https://htchen.github.io/LLM2Life/examples/ |
 
 ---
 
