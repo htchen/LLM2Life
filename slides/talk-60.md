@@ -16,6 +16,7 @@ style: |
   h2 { font-size: 46px; color: #14110e; }
   h3 { font-size: 34px; color: #3a3530; }
   strong { color: #b8442a; }
+  section :is(h1, h2, h3, h4, h5, h6) strong { color: #b8442a; }
   code { background: #efece7; padding: 2px 8px; border-radius: 5px; font-size: 0.88em; }
   pre { background: #14110e; border-radius: 10px; padding: 22px 26px; font-size: 23px; line-height: 1.55; }
   pre code { background: transparent; color: #f4f1ec; padding: 0; }
@@ -28,6 +29,7 @@ style: |
   section.dark { background: #14110e; color: #f4f1ec; }
   section.dark h1, section.dark h2 { color: #fff; }
   section.dark strong { color: #ff9d7a; }
+  section.dark :is(h1, h2, h3, h4, h5, h6) strong { color: #ff9d7a; }
   section.big { justify-content: center; text-align: center; }
   section.big h1 { font-size: 82px; line-height: 1.25; }
   section.big h2 { font-size: 54px; line-height: 1.35; }
@@ -167,19 +169,17 @@ instructor/reference/sine-addition.html 繼續，不要當場除錯。
 
 ### 電腦、網路與程式構成一個可完全自主互動的環境
 
-# 產生 → 執行 → 讀取結果 → 修正
+<div style="margin: 26px 0 18px"><svg viewBox="0 0 1000 176" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="整個迴圈無須人介入"><rect x="0" y="0" width="220" height="82" rx="8" fill="#efece7" stroke="#ddd8d0" stroke-width="1.5"/><text x="110" y="50" text-anchor="middle" font-size="27" fill="#1c1a17" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">產生</text><rect x="260" y="0" width="220" height="82" rx="8" fill="#efece7" stroke="#ddd8d0" stroke-width="1.5"/><text x="370" y="50" text-anchor="middle" font-size="27" fill="#1c1a17" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">執行</text><rect x="520" y="0" width="220" height="82" rx="8" fill="#efece7" stroke="#ddd8d0" stroke-width="1.5"/><text x="630" y="50" text-anchor="middle" font-size="27" fill="#1c1a17" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">讀取結果</text><rect x="780" y="0" width="220" height="82" rx="8" fill="#efece7" stroke="#ddd8d0" stroke-width="1.5"/><text x="890" y="50" text-anchor="middle" font-size="27" fill="#1c1a17" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">修正</text><path d="M 233 30 l 11 11 l -11 11" fill="none" stroke="#b8442a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M 493 30 l 11 11 l -11 11" fill="none" stroke="#b8442a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M 753 30 l 11 11 l -11 11" fill="none" stroke="#b8442a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M 990 82 V 152 H 10 V 92" fill="none" stroke="#b8442a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M 3 100 L 10 90 L 17 100" fill="none" stroke="#b8442a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="400" y="136" width="201" height="32" fill="#fbfaf8"/><text x="500" y="159" text-anchor="middle" font-size="21" font-weight="700" fill="#b8442a" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">整個迴圈無須人介入</text></svg></div>
 
-### 驗證迴圈可在系統內部閉合，無須人介入
+### 驗證迴圈可在系統內部閉合
 
 ---
 
 ## 涉及物理世界時，驗證迴圈中斷
 
-### 提出做法 →（須由人）在現場執行<br>→（須由人）觀察實際結果 → 修正
+<div style="margin: 22px 0 16px"><svg viewBox="0 0 1000 176" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="回饋須由人帶回，且慢得多"><rect x="0" y="0" width="220" height="82" rx="8" fill="#efece7" stroke="#ddd8d0" stroke-width="1.5"/><text x="110" y="50" text-anchor="middle" font-size="27" fill="#1c1a17" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">提出做法</text><rect x="260" y="0" width="220" height="82" rx="8" fill="#14110e" stroke="none" stroke-width="1.5"/><text x="370" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#ff9d7a" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif" letter-spacing="1.5">須由人</text><text x="370" y="60" text-anchor="middle" font-size="26" fill="#f4f1ec" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">在現場執行</text><rect x="520" y="0" width="220" height="82" rx="8" fill="#14110e" stroke="none" stroke-width="1.5"/><text x="630" y="30" text-anchor="middle" font-size="17" font-weight="700" fill="#ff9d7a" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif" letter-spacing="1.5">須由人</text><text x="630" y="60" text-anchor="middle" font-size="26" fill="#f4f1ec" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">觀察實際結果</text><rect x="780" y="0" width="220" height="82" rx="8" fill="#efece7" stroke="#ddd8d0" stroke-width="1.5"/><text x="890" y="50" text-anchor="middle" font-size="27" fill="#1c1a17" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">修正</text><path d="M 233 30 l 11 11 l -11 11" fill="none" stroke="#b8442a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M 493 30 l 11 11 l -11 11" fill="none" stroke="#b8442a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M 753 30 l 11 11 l -11 11" fill="none" stroke="#b8442a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M 990 82 V 152 H 10 V 92" fill="none" stroke="#b8442a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 9"/><path d="M 3 100 L 10 90 L 17 100" fill="none" stroke="#b8442a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="371" y="136" width="258" height="32" fill="#fbfaf8"/><text x="500" y="159" text-anchor="middle" font-size="21" font-weight="700" fill="#b8442a" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif">回饋須由人帶回，且慢得多</text></svg></div>
 
-<br>
-
-### 程式錯誤的回饋以**秒**計<br>教學成效的回饋以**學期**計
+### 程式錯誤的回饋以**秒**計　　教學成效的回饋以**學期**計
 
 <!--
 教學正是回饋最慢的行業之一。講完這張，在座的人會知道你理解他們的工作。

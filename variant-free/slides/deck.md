@@ -16,6 +16,7 @@ style: |
   h2 { font-size: 46px; color: #14110e; }
   h3 { font-size: 34px; color: #3a3530; }
   strong { color: #b8442a; }
+  section :is(h1, h2, h3, h4, h5, h6) strong { color: #b8442a; }
   code { background: #efece7; padding: 2px 8px; border-radius: 5px; font-size: 0.88em; }
   pre { background: #14110e; border-radius: 10px; padding: 22px 26px; font-size: 23px; line-height: 1.55; }
   pre code { background: transparent; color: #f4f1ec; padding: 0; }
@@ -28,6 +29,7 @@ style: |
   section.dark { background: #14110e; color: #f4f1ec; }
   section.dark h1, section.dark h2 { color: #fff; }
   section.dark strong { color: #ff9d7a; }
+  section.dark :is(h1, h2, h3, h4, h5, h6) strong { color: #ff9d7a; }
   section.big { justify-content: center; text-align: center; }
   section.big h1 { font-size: 82px; line-height: 1.25; }
   section.big h2 { font-size: 54px; line-height: 1.35; }
