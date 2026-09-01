@@ -1,6 +1,6 @@
 # 60 分鐘演講：三個示範的操作腳本
 
-搭配 [`talk-60.md`](talk-60.md)（時間）與 [`talk-60-script.md`](talk-60-script.md)（講什麼）。
+搭配 [`timeline.md`](timeline.md)（時間）與 [`script.md`](script.md)（講什麼）。
 這一份只處理**手怎麼動**。
 
 ---

@@ -30,72 +30,69 @@
 | 目標 | 判斷是否值得為同事安排三小時 | 每位參與者產出可操作的最小版本 |
 | 形式 | 說明與兩段現場示範，不安排動手 | 全程實作 |
 | 事前準備 | 無 | 兩個免費帳號，課前完成 |
-| 教材 | `slides/talk-60.md`（27 頁） | `variant-free/`（195 分鐘） |
+| 教材 | `talk/deck.md`（27 頁） | `workshop/`（195 分鐘） |
 
 三小時教材不因短場次而縮減——**它是該場演講的交付物**。
-演講相關文件：[`instructor/talk-60.md`](instructor/talk-60.md)（時間）、
-[`talk-60-script.md`](instructor/talk-60-script.md)（講稿）、
-[`talk-60-demo-runbook.md`](instructor/talk-60-demo-runbook.md)（示範操作）。
+演講相關文件集中於 [`talk/`](talk/)：[`timeline.md`](talk/timeline.md)（時間）、
+[`script.md`](talk/script.md)（逐張講稿）、[`demo-runbook.md`](talk/demo-runbook.md)（示範操作）。
 
 ---
 
 ## 兩個版本
 
 **課堂預設使用免費版**：claude.ai 免費聊天介面搭配 GitHub 網頁介面，
-參與者僅需免費帳號，無須訂閱或安裝任何軟體。教材位於 [`variant-free/`](variant-free/)。
+參與者僅需免費帳號，無須訂閱或安裝任何軟體。教材位於 [`workshop/`](workshop/)。
 
 專題流程、題目範圍與驗收方式與付費版完全相同，產出亦相同。
 差異僅有兩項：參與者須自行將生成內容存為檔案，以及總長 195 分鐘
 （另附 180 分鐘之調整方式）。
 
 **付費版（Claude Code）** 適用於主辦單位統一付費、或參與者已具備 Pro 以上方案之場次，
-教材位於根目錄的 `slides/`、`workbook/`、`site/`、`instructor/`
+教材位於 [`workshop-paid/`](workshop-paid/)
 （[隨堂網站](https://htchen.github.io/LLM2Life/handbook-paid.html)、
 [課前準備](https://htchen.github.io/LLM2Life/pre-workshop-paid.html)）。
 **免費帳號無法使用 Claude Code**，此為方案限制而非模型限制，
-詳見 [`instructor/provisioning-tokens.md`](instructor/provisioning-tokens.md)。
+詳見 [`shared/provisioning-tokens.md`](shared/provisioning-tokens.md)。
 
 ---
 
 ## 教材結構
 
-資料夾未隨版本主次調整而搬動：根目錄仍為付費版，免費版整套位於 `variant-free/` 之下。
-**開課時請以 `variant-free/` 為準。**
+資料夾依**用途**劃分，而非依版本。名稱即適用範圍，取用前不需要再查對照表。
 
-| 資料夾 | 版本 | 內容 |
+| 資料夾 | 用途 | 內容 |
 | --- | --- | --- |
-| **`variant-free/`** | **免費版 · 主線** | **slides／workbook／site／instructor 自成一套** |
-| `slides/` | 付費版 | Marp 投影片，77 頁，含備忘稿；另含 60 分鐘演講版 |
-| `workbook/` | 付費版 | 共同練習、專題發想、規劃與實作手冊 |
-| `site/` | 付費版 | 隨堂網站與課前準備網頁原始檔 |
-| `instructor/` | **三類混放** | 付費版專用、演講場次與兩版共用文件並存，見下表 |
-| `starter/` | 兩版共用 | 學員 repo 範本（含 `CLAUDE.md`） |
-| `web/` | 兩版共用 | 專案首頁與種子教師指南（發布至 GitHub Pages） |
+| **[`workshop/`](workshop/)** | **三小時 · 免費版（主線）** | **slides／workbook／site／instructor 自成一套，195 分鐘** |
+| [`workshop-paid/`](workshop-paid/) | 三小時 · 付費版（Claude Code） | 相同四層結構，180 分鐘 |
+| [`talk/`](talk/) | 60 分鐘演講 | 投影片、時間、逐張講稿、示範操作腳本 |
+| [`shared/`](shared/) | 兩種場次共用 | 論證本體、參考實作、學員 repo 範本、統一付費作法 |
+| [`web/`](web/) | 專案網站 | 首頁與種子教師指南（發布至 GitHub Pages） |
 
-`instructor/` 並非全屬付費版，取用前請先對照：
+**開課時請以 [`workshop/`](workshop/) 為準。**
 
-| 檔案 | 適用範圍 |
+`shared/` 之內容為兩種場次、兩個版本共同依據，修改前請先確認影響範圍：
+
+| 檔案 | 內容 |
 | --- | --- |
-| [`insights.md`](instructor/insights.md)（**論證本體**）、[`reference/`](instructor/reference/)、[`provisioning-tokens.md`](instructor/provisioning-tokens.md)、[`ideas-backlog.md`](instructor/ideas-backlog.md) | **兩版共用** |
-| [`talk-60.md`](instructor/talk-60.md)、[`talk-60-script.md`](instructor/talk-60-script.md)、[`talk-60-demo-runbook.md`](instructor/talk-60-demo-runbook.md) | 60 分鐘演講 |
-| [`timeline.md`](instructor/timeline.md)、[`troubleshooting.md`](instructor/troubleshooting.md)、[`pre-workshop-email.md`](instructor/pre-workshop-email.md)（另有[可直接複製寄送的 HTML 版](instructor/pre-workshop-email.html)）、[`optional-template-repo.md`](instructor/optional-template-repo.md) | 付費版三小時場次 |
-
-[`instructor/LLM2Life_slide_deck.pptx`](instructor/LLM2Life_slide_deck.pptx) 為**教材走查簡報**（24 頁），
-供向主辦單位或協作者說明本教材之結構與維護方式，不供課堂使用。
-其內容為三小時教材之結構快照，未涵蓋 60 分鐘演講；資料夾結構若有調整，須重新產生。
+| [`insights.md`](shared/insights.md) | **論證本體**：各階段講稿，以及補充段落「AI 演進與人的判斷」之完整推導與追問回應。投影片僅呈現結論，理由記載於此 |
+| [`reference/`](shared/reference/) | 四個參考實作，供講師排除學員問題；另發布至 [`/examples/`](https://htchen.github.io/LLM2Life/examples/) |
+| [`starter/`](shared/starter/) | 學員 repo 範本（含 `CLAUDE.md`） |
+| [`provisioning-tokens.md`](shared/provisioning-tokens.md) | 統一付費之作法與成本估算 |
+| [`ideas-backlog.md`](shared/ideas-backlog.md) | 尚未納入正式教材之候選做法 |
+| [`LLM2Life_slide_deck.pptx`](shared/LLM2Life_slide_deck.pptx) | **教材走查簡報**（24 頁），供向主辦單位或協作者說明本教材之結構與維護方式，不供課堂使用。其內容為結構快照，資料夾或投影片頁數變動後須重新產生 |
 
 ### 開課前應先閱讀
 
-- [`variant-free/instructor/timeline.md`](variant-free/instructor/timeline.md) —
+- [`workshop/instructor/timeline.md`](workshop/instructor/timeline.md) —
   免費版時間與順序之唯一依據（195 分鐘完整版與 180 分鐘調整方式）
-- [`variant-free/instructor/insights.md`](variant-free/instructor/insights.md) —
+- [`workshop/instructor/insights.md`](workshop/instructor/insights.md) —
   免費版特有之三項說明；共通之教學理由指向下一份文件
-- [`instructor/insights.md`](instructor/insights.md) —
+- [`shared/insights.md`](shared/insights.md) —
   **論證本體**：各階段講稿，以及補充段落「AI 演進與人的判斷」之完整推導與追問回應。
   投影片僅呈現結論，理由記載於此。
 
-改用付費版時，另須閱讀 [`instructor/timeline.md`](instructor/timeline.md) 與
-[`instructor/provisioning-tokens.md`](instructor/provisioning-tokens.md)（統一付費之作法與成本估算）。
+改用付費版時，另須閱讀 [`workshop-paid/instructor/timeline.md`](workshop-paid/instructor/timeline.md) 與
+[`shared/provisioning-tokens.md`](shared/provisioning-tokens.md)（統一付費之作法與成本估算）。
 
 返校後自行開設課程者，請先閱讀
 [種子教師指南](https://htchen.github.io/LLM2Life/seed-teacher.html)
@@ -118,7 +115,7 @@
 
 免費版共 **195 分鐘**，多出之時間用於手動建立與更新檔案。
 下表為概覽，實際時間以
-[`variant-free/instructor/timeline.md`](variant-free/instructor/timeline.md) 為準。
+[`workshop/instructor/timeline.md`](workshop/instructor/timeline.md) 為準。
 
 | 段落 | 內容 | 長度 |
 | --- | --- | --- |
@@ -135,7 +132,7 @@
 | **實作第二輪** | 更新版本並重新驗證 | 15 分 |
 | **展示與回顧** | 問題、成果、驗證方式與下一步 | 6 分 |
 
-付費版為 180 分鐘，段落略有不同，見 [`instructor/timeline.md`](instructor/timeline.md)。
+付費版為 180 分鐘，段落略有不同，見 [`workshop-paid/instructor/timeline.md`](workshop-paid/instructor/timeline.md)。
 
 ### 編排原則：先形成判斷，再請生成工具協助
 
@@ -160,7 +157,7 @@
    生成內容若以省略符號略過部分片段，將產生不完整的檔案。
 3. **使用 GitHub Pages 時，參與者的 repo 必須為 Public**，應於 Lab 0 完成設定。
 4. **務必寄送課前通知信**，見
-   [`variant-free/instructor/pre-workshop-email.md`](variant-free/instructor/pre-workshop-email.md)。
+   [`workshop/instructor/pre-workshop-email.md`](workshop/instructor/pre-workshop-email.md)。
    免費版無安裝問題，仍須確認帳號可正常登入。
 
 改用付費版時，第 1、2 項調整為：Claude Code 需 Pro 以上方案（免費帳號無法使用），
@@ -187,11 +184,15 @@ Claude、Anthropic、GitHub 等名稱與標誌屬各自權利人所有，不在�
 ```bash
 npm install          # 僅建置投影片時需要
 
-npm run slides       # → dist/deck.html
-npm run slides:pdf   # → dist/deck.pdf（簡報使用）
-npm run slides:watch # 即時預覽
+npm run slides       # 免費版三小時（主線） → dist/deck.html
+npm run slides:pdf   # 同上，PDF（簡報使用）
+npm run slides:watch # 同上，即時預覽
+npm run slides:paid  # 付費版三小時        → dist/deck-paid.html
+npm run talk         # 60 分鐘演講          → dist/talk.html
+npm run talk:pdf     # 同上，PDF
 ```
 
+**預設建置的是主線（免費版）**，與課堂實際使用的版本一致。
 需要 Node.js。**課堂上不需要**，僅講師備課時使用。
 線上版本由 GitHub Actions 於推送後自動建置，見 `.github/workflows/pages.yml`。
 
@@ -203,7 +204,7 @@ npm run slides:watch # 即時預覽
 完整規則見 [`CLAUDE.md`](CLAUDE.md)，要點如下：
 
 - **變更時間或順序** → 先修改該版本的 `timeline.md`，再往下同步。
-  免費版為 `variant-free/instructor/timeline.md`，付費版為 `instructor/timeline.md`。
+  免費版為 `workshop/instructor/timeline.md`，付費版為 `workshop-paid/instructor/timeline.md`。
 - **變更參與者需複製的提示詞** → 同一版本的 `workbook/` 與 `site/index.html`
   **必須逐字一致**。
 - **變更任一 `site/index.html`** → 由 GitHub Actions 自動重新發布至 Pages，

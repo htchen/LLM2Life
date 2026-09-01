@@ -1,7 +1,7 @@
 # 開放式專題：免費版講師說明
 
 本版本沿用付費版的專題主線：提出問題、定義目標、拆解計畫、分段實作、驗證與下一步。
-完整教學理由見 [`../../instructor/insights.md`](../../instructor/insights.md)。
+完整教學理由見 [`../../shared/insights.md`](../../shared/insights.md)。
 
 ## 免費版需要另外說明的三件事
 
@@ -23,7 +23,7 @@
 ## 補充段落：AI 演進與人的判斷（1:15–1:27，投影片 31–42）
 
 完整推導、三個問題的回答與追問回應在
-[`../../instructor/insights.md`](../../instructor/insights.md)「補充段落：AI 演進與人的判斷」，
+[`../../shared/insights.md`](../../shared/insights.md)「補充段落：AI 演進與人的判斷」，
 兩版共用，不另外複製一份。以下只記免費版講法不同的地方。
 
 ### 觀點二在這裡要反過來講

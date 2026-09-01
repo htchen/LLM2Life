@@ -1,4 +1,4 @@
-# 選配：把 `starter/` 發布成範本 repo
+# 選配：把 `shared/starter/` 發布成範本 repo
 
 **預設流程不需要這個。** 準備階段讓學員從 https://github.com/new 建空的 repo，
 不依賴講師事先準備任何東西——少一個會在開課前壞掉的環節。
@@ -18,7 +18,7 @@ Claude Code 都知道「使用者沒有程式背景、要做單一檔案、要�
 
 ## 設定步驟（課前做）
 
-1. 把 `starter/` 的內容推成一個新的公開 repo，例如 `my-life-tools-starter`。
+1. 把 `shared/starter/` 的內容推成一個新的公開 repo，例如 `my-life-tools-starter`。
 2. 進入該 repo → **Settings** → 在 General 最上面勾選 **Template repository**。
 3. 用無痕視窗打開該 repo，確認看得到綠色的 **Use this template** 按鈕。
    如果看不到，代表設定尚未生效，請回到 Settings 再確認。

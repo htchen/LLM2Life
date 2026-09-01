@@ -55,7 +55,7 @@ Pro 約 US$17–20／人，30 人就是 $510–600；Console 額度按用量算�
 或線上開課且無法確認學員裝置。這時可改用另一套課程名稱：
 「用 AI 和 GitHub 做出第一個教學小工具」，而非「用 Claude Code…」。
 
-**這個版本已經完整寫好了**，見 [`../variant-free/`](../variant-free/)——
+**這個版本已經完整寫好了**，見 [`../workshop/`](../workshop/)——
 完整的 slides／workbook／site／instructor 自成一套，不是這份教材改幾個字。
 隨堂網站：https://htchen.github.io/LLM2Life/handbook.html
 

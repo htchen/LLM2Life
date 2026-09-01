@@ -1,12 +1,12 @@
 # 用 AI 和 GitHub 把發想做成可操作工具（免費版）
 
-**這是課堂預設使用的版本。** 根目錄的
-[Claude Code 付費版](../README.md)保留給主辦方統一付費或學員已有 Pro 以上方案的場次。
+**這是課堂預設使用的版本。**
+[Claude Code 付費版](../workshop-paid/)保留給主辦方統一付費或學員已有 Pro 以上方案的場次。
 兩者使用相同的開放式專題架構，主要差別如下：
 
 > **學員需要自行把 AI 回覆建立成檔案。**
 
-## 什麼時候用這個版本，而不是原版
+## 什麼時候用這個版本，而不是付費版
 
 | 情境 | 用哪個版本 |
 | --- | --- |
@@ -15,7 +15,7 @@
 | 沒有工具預算 | 這個版本 |
 | 線上開課、無法確認學員裝置 | 這個版本 |
 | 學員只有免費的 Claude 帳號 | 這個版本——**免費帳號本來就無法使用 Claude Code**，
-  換任何模型都一樣，見 [`../instructor/provisioning-tokens.md`](../instructor/provisioning-tokens.md) |
+  換任何模型都一樣，見 [`../shared/provisioning-tokens.md`](../shared/provisioning-tokens.md) |
 
 ## 跟原版的核心差異
 
@@ -43,7 +43,7 @@
 | `instructor/` | 流程表（含 195→180 分鐘的縮短方式）、洞見講稿、課前信、疑難排解 |
 
 `instructor/reference/` 沒有另外準備——備用的每日摘要案例直接複用
-[`../instructor/reference/`](../instructor/reference/) 裡的 workflow 和腳本，
+[`../shared/reference/`](../shared/reference/) 裡的 workflow 和腳本，
 因為那份參考解對這個版本完全通用。
 
 ## 先讀這兩份

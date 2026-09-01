@@ -237,7 +237,7 @@
       前段用共同題目建立基本操作能力，後段由學員提出自己的真實需求。
       每一個步驟都要有可以自己檢查的結果，未完成的功能列入下一版，不列為失敗。
       完整的段落與時間分配見
-      <a href="https://github.com/htchen/LLM2Life/blob/main/instructor/timeline.md"><code>instructor/timeline.md</code></a>。
+      <a href="https://github.com/htchen/LLM2Life/blob/main/workshop-paid/instructor/timeline.md"><code>workshop-paid/instructor/timeline.md</code></a>。
     </p>
   </section>
 
@@ -299,17 +299,16 @@
   <section>
     <h2>教材結構</h2>
     <p class="lede">同一套內容分布在四個介面：投影片、手冊、隨堂網站、講師文件。
-       課堂主線是免費版，整套在 <code>variant-free/</code>；根目錄保留 Claude Code 付費版。
+       資料夾依用途劃分，名稱即適用範圍。課堂主線是免費版，整套在 <code>workshop/</code>。
        原始檔全部在 GitHub 上。</p>
     <div class="scroll">
       <table class="tbl">
-        <tr><th>資料夾</th><th>版本</th><th>內容</th></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/variant-free">variant-free/</a></td><td>免費版 · 主線</td><td>投影片、手冊、隨堂網站、講師文件，自成一套</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/slides">slides/</a></td><td>付費版</td><td>Marp 投影片，含備忘稿</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/workbook">workbook/</a></td><td>付費版</td><td>共同練習、專題發想、規劃與實作手冊</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/site">site/</a></td><td>付費版</td><td>隨堂網站與課前準備網頁的原始檔</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/instructor">instructor/</a></td><td>付費版</td><td>流程表、講稿、課前通知信、疑難排解、參考解</td></tr>
-        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/starter">starter/</a></td><td>兩版共用</td><td>學員 repo 的範本</td></tr>
+        <tr><th>資料夾</th><th>用途</th><th>內容</th></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/workshop">workshop/</a></td><td>三小時 · 免費版 · 主線</td><td>投影片、手冊、隨堂網站、講師文件，自成一套</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/workshop-paid">workshop-paid/</a></td><td>三小時 · 付費版</td><td>相同四層結構，改用 Claude Code</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/talk">talk/</a></td><td>60 分鐘演講</td><td>投影片、時間、逐張講稿、示範操作腳本</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/shared">shared/</a></td><td>兩種場次共用</td><td>論證本體、參考實作、學員 repo 範本</td></tr>
+        <tr><td><a href="https://github.com/htchen/LLM2Life/tree/main/web">web/</a></td><td>專案網站</td><td>本頁與種子教師指南</td></tr>
       </table>
     </div>
   </section>
@@ -318,22 +317,22 @@
     <h2>要開這門課的人，先讀這幾份</h2>
     <ul class="links">
       <li><a href="talk.html">60 分鐘演講版投影片
-        <small>給種子教師場次：不動手，用兩段現場示範說明這套流程值得帶回去。流程表 <a href="https://github.com/htchen/LLM2Life/blob/main/instructor/talk-60.md">talk-60.md</a>，逐張講稿 <a href="https://github.com/htchen/LLM2Life/blob/main/instructor/talk-60-script.md">talk-60-script.md</a>。</small></a></li>
+        <small>給種子教師場次：不動手，用兩段現場示範說明這套流程值得帶回去。流程表 <a href="https://github.com/htchen/LLM2Life/blob/main/talk/timeline.md">talk/timeline.md</a>，逐張講稿 <a href="https://github.com/htchen/LLM2Life/blob/main/talk/script.md">talk/script.md</a>。</small></a></li>
       <li><a href="slides.html">三小時上課投影片（免費版 · 主線）
         <small>在瀏覽器直接翻頁瀏覽，可全螢幕。付費版在 <a href="slides-paid.html">slides-paid.html</a>。</small></a></li>
       <li><a href="seed-teacher.html">種子教師指南
         <small>上完課要自己開一場時從這裡開始：現成的教材、開課前的決定、可以改與不建議改的部分。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/timeline.md">流程表（免費版）
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/workshop/instructor/timeline.md">流程表（免費版）
         <small>時間與順序的唯一真實來源，195 分鐘完整版與 180 分鐘縮短方式。改動任何一段的長度，都先從這裡開始。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/insights.md">免費版講師說明
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/workshop/instructor/insights.md">免費版講師說明
         <small>免費版特有的三件事：判斷與檔案操作的分工、單一檔案原則、每一輪都要保存完整版本。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/insights.md">論證與帶領原則
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/shared/insights.md">論證與帶領原則
         <small>兩版共用。各階段的教學目的、提問方式、範圍判斷，以及補充段落「AI 演進與人的判斷」的完整推導與追問回應。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/pre-workshop-email.md">課前通知信（免費版）
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/workshop/instructor/pre-workshop-email.md">課前通知信（免費版）
         <small>一定要寄。免費版沒有安裝問題，但仍要確認兩個帳號都能登入。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/variant-free/instructor/troubleshooting.md">疑難排解（免費版）
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/workshop/instructor/troubleshooting.md">疑難排解（免費版）
         <small>現場最常出現的錯誤與處理順序。</small></a></li>
-      <li><a href="https://github.com/htchen/LLM2Life/blob/main/instructor/provisioning-tokens.md">帳號與費用估算
+      <li><a href="https://github.com/htchen/LLM2Life/blob/main/shared/provisioning-tokens.md">帳號與費用估算
         <small>改用付費版時才需要：學員自備方案、Console 額度與免費變體的取捨比較。</small></a></li>
     </ul>
   </section>

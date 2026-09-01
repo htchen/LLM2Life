@@ -23,7 +23,7 @@
 
 ## 1:15–1:27 回顧 + 補充段落：AI 演進與人的判斷
 
-→ 論證與追問回應見 [`../../instructor/insights.md`](../../instructor/insights.md)
+→ 論證與追問回應見 [`../../shared/insights.md`](../../shared/insights.md)
 「補充段落：AI 演進與人的判斷」；免費版特有的講法見
 [`insights.md`](insights.md)。
 
@@ -84,7 +84,7 @@
 
 ## 各階段帶領方式
 
-詳細內容與付費版 `../../instructor/timeline.md` 相同；操作提示詞使用免費版 `workbook/`。
+詳細內容與付費版 `../../workshop-paid/instructor/timeline.md` 相同；操作提示詞使用免費版 `workbook/`。
 
 - **發想：** 先用「你今天走的流程，就是探究歷程」那張定調，再寫三個問題，
   兩人互問釐清問題，最後選一題。教師是為了帶學生而來的，這個對應要在選題之前建立，
