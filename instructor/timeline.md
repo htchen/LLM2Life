@@ -70,6 +70,10 @@ sin 應顯示 1.000。備援實作在 `reference/sine-wave.html`，現場產生�
 完成 Public repo、下載與上傳驗證。repo 名稱仍使用 `my-life-tools`，共同練習放在 `inquiry/`，
 個人專題放在 `project/`。
 
+**務必在這一段就把 Pages 開起來**（Settings → Pages → Deploy from a branch → main）。
+第一次建置需 1–10 分鐘，此時開啟即可在背景完成；若留到實作第二輪才開，
+學員會在最需要網址的時刻等最久。
+
 **進度落後：** 兩人一組；repo 與 push 檢查點必須完成。
 
 ---

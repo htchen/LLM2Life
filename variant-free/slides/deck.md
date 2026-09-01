@@ -204,6 +204,8 @@ style: |
 | --- | --- |
 | Repository name | `my-life-tools` |
 | Visibility | **Public** |
+
+### 建好後立刻做：Settings → Pages → Deploy from a branch → main
 | Add a README | 勾選 |
 
 ---
@@ -230,6 +232,7 @@ style: |
 - claude.ai 可以使用
 - repo 是 Public
 - `test.html` 可以在瀏覽器開啟
+- **Pages 已開啟**（第一次建置要等，現在不用等它）
 
 ---
 
