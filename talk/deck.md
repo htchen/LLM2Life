@@ -283,7 +283,7 @@ shared/reference/sine-addition.html 繼續，不要當場除錯。
 
 > 「用最不守教條、最不拘一格的方式，<br>去研究你最感興趣的事物。」
 >
-> —— Richard Feynman，1965 年 11 月致 J. M. Szabados 函
+> —— Richard Feynman
 
 <!--
 費曼講的是動機，接下來這一段講的是把動機變成可驗收的流程。兩者互補，不衝突：
