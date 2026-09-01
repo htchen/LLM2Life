@@ -329,7 +329,7 @@ style: |
 <!--
 這一段只講觀點，不操作。四個觀點是主軸，三個問題從觀點推出來。
 完整論證與 Q&A 備援在 ../../instructor/insights.md「補充段落：AI 演進與人的判斷」，
-免費版特有的講法見 instructor/insights.md。
+免費版特有的講法見 workshop/instructor/insights.md。
 時間只剩 5 分鐘時：只留這張、觀點三、主張、問題三、接點。
 -->
 
@@ -531,7 +531,7 @@ style: |
 可以指出兩個對應最容易被忽略的地方：
 「驗收條件」對應的是「可檢驗」，不是「做完」；
 「決定下一步」對應的是「推論與下一輪」，不是「結案」。
-論證見 instructor/insights.md。
+論證見 shared/insights.md。
 -->
 
 ---

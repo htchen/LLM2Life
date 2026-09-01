@@ -91,7 +91,7 @@ sin 應顯示 1.000。備援實作在 `reference/sine-wave.html`，現場產生�
 
 ## 1:03–1:15 回顧 + 補充段落：AI 演進與人的判斷
 
-→ `instructor/insights.md`「補充段落：AI 演進與人的判斷」
+→ `shared/insights.md`「補充段落：AI 演進與人的判斷」
 
 **前 3 分鐘（回顧）：** 請學員寫下一項「看到第一版後才發現的需求」。用實際回答說明：
 

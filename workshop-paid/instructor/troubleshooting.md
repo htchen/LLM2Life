@@ -155,7 +155,7 @@ workflow 檔案裡缺 `workflow_dispatch`。
 workflow 推不回 repo，請加上 permissions: contents: write
 ```
 
-參考解：`instructor/reference/digest-workflow.yml`
+參考解：`shared/reference/digest-workflow.yml`
 
 ### 「綠色打勾了，但 repo 裡沒有新檔案」
 
