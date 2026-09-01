@@ -106,6 +106,7 @@ exactly nine files plus the reference examples:
 | `/slides.html` | `variant-free/slides/deck.md` — **built by Marp in CI**, not copied |
 | `/slides-paid.html` | `slides/deck.md` — built by Marp in CI |
 | `/talk.html` | `slides/talk-60.md` — built by Marp in CI |
+| `/examples/index.html` | `web/examples.html` — index of the four examples, each with its own QR |
 | `/examples/*.html` | `instructor/reference/*.html` — copied so a presenter can open a fallback without a local checkout |
 
 The unqualified names are the free ones on purpose: those are the links students are given.

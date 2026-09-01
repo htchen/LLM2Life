@@ -4,6 +4,7 @@
 或學員卡住時拿來比對與救援用的。
 
 四份 HTML 同時發布於 `htchen.github.io/LLM2Life/examples/`（檔名相同），
+該目錄另有索引頁 `web/examples.html`，列出四個範例並各附一個 QR code。
 講者無須先 clone repo 即可於任何一台電腦開啟。**發布不等於連結**——
 學員手冊與隨堂網站仍不指向這些檔案。
 
