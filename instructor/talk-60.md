@@ -39,8 +39,8 @@
 ## 講者事前準備
 
 1. **自己先跑一次兩段示範。** 知道 AI 這次大概會回什麼、花多久。
-2. **開好兩個備援分頁**：`instructor/reference/sine-addition.html`（示範一備援）與
-   `instructor/reference/wordle-duel.html`（投影片 21 要開一局）。
+2. **開好兩個備援分頁**：`htchen.github.io/LLM2Life/examples/sine-addition.html`（示範一備援）與
+   `.../examples/wordle-duel.html`（投影片 21 要開一局）。使用網址即可，無須先 clone repo。
    現場產生失敗時直接切過去，**不要當場除錯**。
 3. **前一天就要建好示範 repo 並啟用 Pages，且確認網址真的打得開。**
    Pages 第一次部署要等 1–10 分鐘，當天才開會在台上開出 404——

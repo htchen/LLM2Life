@@ -93,7 +93,7 @@ CDNs, so the type personality comes from weight, scale, and spacing on the syste
 
 `web/index.html` is the project's **landing page**, published to GitHub Pages at
 `https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow publishes
-exactly nine files, and nothing else:
+exactly nine files plus the reference examples:
 
 | Published as | Source |
 | --- | --- |
@@ -106,6 +106,7 @@ exactly nine files, and nothing else:
 | `/slides.html` | `variant-free/slides/deck.md` — **built by Marp in CI**, not copied |
 | `/slides-paid.html` | `slides/deck.md` — built by Marp in CI |
 | `/talk.html` | `slides/talk-60.md` — built by Marp in CI |
+| `/examples/*.html` | `instructor/reference/*.html` — copied so a presenter can open a fallback without a local checkout |
 
 The unqualified names are the free ones on purpose: those are the links students are given.
 All four student-facing pages share the `htchen.github.io` origin, so each must keep a
@@ -266,4 +267,6 @@ lesson the student doesn't get to have.
 - Each phase ends with a **✅ 檢查點**. Falling behind means preserving the current usable version
   and moving unfinished work to the next-version list, not skipping ideation or acceptance criteria.
 - Reference implementations live in `instructor/reference/` and are for the *instructor* to
-  use when resolving student issues. Do not link them from the workbook.
+  use when resolving student issues. They are also published to `/examples/` so a presenter can
+  open one from any machine. **Publishing is not linking** — the rule stands: never link them
+  from the workbook or the companion sites.

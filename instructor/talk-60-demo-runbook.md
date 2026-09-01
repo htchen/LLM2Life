@@ -57,8 +57,11 @@ Pages 一旦「暖機」過，之後每次 commit 大約 30–60 秒就會更新
 | 2 | claude.ai 新對話 | 示範一 |
 | 3 | 你的 `demo-live` repo | 示範二 |
 | 4 | 前一天已發布的 Pages 網址 | 示範二備援 |
-| 5 | `instructor/reference/sine-addition.html` | 示範一備援 |
-| 6 | `instructor/reference/wordle-duel.html` | 示範三 |
+| 5 | `htchen.github.io/LLM2Life/examples/sine-addition.html` | 示範一備援 |
+| 6 | `htchen.github.io/LLM2Life/examples/wordle-duel.html` | 示範三 |
+
+分頁 5、6 也可改開 repo 中 `instructor/reference/` 的同名檔案，內容相同。
+**使用網址的好處是不必事先 clone repo**，換一台電腦亦可開啟。
 
 另外準備：
 

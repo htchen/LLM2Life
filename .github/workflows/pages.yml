@@ -10,6 +10,7 @@ name: 發布專案網站
 #   /slides.html             ← variant-free/slides/deck.md（免費版 · 主線，Marp 建置）
 #   /slides-paid.html        ← slides/deck.md（付費版，Marp 建置）
 #   /talk.html               ← slides/talk-60.md（60 分鐘演講版，Marp 建置）
+#   /examples/*.html         ← instructor/reference/*.html（示範用參考實作）
 # 隨堂網站改由這裡發布：教師要能把連結給自己的學生，Artifact 需登入與分享權限。
 #
 # 首次啟用需要在 GitHub 上設定一次：
@@ -24,6 +25,7 @@ on:
     branches: [main]
     paths:
       - 'web/**'
+      - 'instructor/reference/*.html'
       - 'site/pre-workshop.html'
       - 'site/index.html'
       - 'variant-free/site/pre-workshop.html'
@@ -83,6 +85,8 @@ jobs:
           cp variant-free/site/index.html public/handbook.html
           cp site/index.html public/handbook-paid.html
           cp web/seed-teacher.html public/seed-teacher.html
+          mkdir -p public/examples
+          cp instructor/reference/*.html public/examples/
           touch public/.nojekyll
 
       - name: 建置投影片（可翻頁的網頁簡報）
