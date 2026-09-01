@@ -75,6 +75,21 @@ their work against the workbook, and a mismatch reads as a bug in the material.
 reasoning, the evidence, and the Q&A rebuttals live there. Never edit an insight slide without
 reconciling it with that file, or the speaker ends up defending a claim the notes don't support.
 
+**`instructor/` is not the paid version's folder**, despite sitting at the root next to the other
+paid-version folders. It holds three kinds of file, and mistaking one for another is how shared
+material gets edited as if only one track used it:
+
+- **Shared by both tracks** — `insights.md` (the argument itself; `variant-free/instructor/insights.md`
+  points back to it), `reference/`, `provisioning-tokens.md`, `ideas-backlog.md`
+- **The 60-minute talk** — `talk-60.md`, `talk-60-script.md`, `talk-60-demo-runbook.md`
+- **Paid version only** — `timeline.md`, `troubleshooting.md`, `pre-workshop-email.md` (plus a
+  standalone `.html` rendering for pasting into a mail client), `optional-template-repo.md`
+
+`instructor/LLM2Life_slide_deck.pptx` is a **walkthrough deck** for explaining this repo to an
+organiser or collaborator — it is not workshop material. It is a structural snapshot: it hard-codes
+the folder table, the deck page counts and the folder count, so **regenerate it whenever folders
+move or a deck changes length**. It does not cover the 60-minute talk.
+
 Both `site/index.html` files are published to **GitHub Pages**, not as Artifacts — see the
 `web/` section for the mapping. The Artifact URLs they used to live at (`07d306ff…` paid,
 `f9e2701f…` free) are **superseded**; do not republish to them and do not cite them.

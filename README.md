@@ -68,9 +68,21 @@
 | `slides/` | 付費版 | Marp 投影片，77 頁，含備忘稿；另含 60 分鐘演講版 |
 | `workbook/` | 付費版 | 共同練習、專題發想、規劃與實作手冊 |
 | `site/` | 付費版 | 隨堂網站與課前準備網頁原始檔 |
-| `instructor/` | 付費版 | 流程表、講稿、課前通知信、疑難排解、參考實作 |
+| `instructor/` | **三類混放** | 付費版專用、演講場次與兩版共用文件並存，見下表 |
 | `starter/` | 兩版共用 | 學員 repo 範本（含 `CLAUDE.md`） |
 | `web/` | 兩版共用 | 專案首頁與種子教師指南（發布至 GitHub Pages） |
+
+`instructor/` 並非全屬付費版，取用前請先對照：
+
+| 檔案 | 適用範圍 |
+| --- | --- |
+| [`insights.md`](instructor/insights.md)（**論證本體**）、[`reference/`](instructor/reference/)、[`provisioning-tokens.md`](instructor/provisioning-tokens.md)、[`ideas-backlog.md`](instructor/ideas-backlog.md) | **兩版共用** |
+| [`talk-60.md`](instructor/talk-60.md)、[`talk-60-script.md`](instructor/talk-60-script.md)、[`talk-60-demo-runbook.md`](instructor/talk-60-demo-runbook.md) | 60 分鐘演講 |
+| [`timeline.md`](instructor/timeline.md)、[`troubleshooting.md`](instructor/troubleshooting.md)、[`pre-workshop-email.md`](instructor/pre-workshop-email.md)（另有[可直接複製寄送的 HTML 版](instructor/pre-workshop-email.html)）、[`optional-template-repo.md`](instructor/optional-template-repo.md) | 付費版三小時場次 |
+
+[`instructor/LLM2Life_slide_deck.pptx`](instructor/LLM2Life_slide_deck.pptx) 為**教材走查簡報**（24 頁），
+供向主辦單位或協作者說明本教材之結構與維護方式，不供課堂使用。
+其內容為三小時教材之結構快照，未涵蓋 60 分鐘演講；資料夾結構若有調整，須重新產生。
 
 ### 開課前應先閱讀
 
