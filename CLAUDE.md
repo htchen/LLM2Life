@@ -164,6 +164,10 @@ also states, per case, what the case does *not* prove: the CS-course case was au
 with a programming background, so it cannot be cited as proof that non-programmers can do this.
 Dropping that qualifier would make the strongest evidence in the project into its weakest point.
 
+Screenshots of student work are **de-identified before publishing** — the first one carried a
+classmate's name from a screen-share overlay, cropped out before embedding. Student artefacts go in
+as `data:` URIs like every other asset on these pages, and the caption says what was removed.
+
 Only the two Artifact URLs are duplicated between `README.md` and `web/index.html`. If either
 ever changes, both files need the edit.
 
