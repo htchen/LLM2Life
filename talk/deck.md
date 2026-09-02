@@ -365,7 +365,7 @@ shared/reference/sine-addition.html 繼續，不要當場除錯。
 初版數值全部正確，但繩索未接於滑輪切點。
 **未列入驗收條件者，不會被檢查。**
 
-### 四個範例：htchen.github.io/LLM2Life/examples/
+### 五個範例：htchen.github.io/LLM2Life/examples/
 
 <!--
 兩個現成的參考實作在 shared/reference/，可以當場打開。

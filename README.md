@@ -17,7 +17,7 @@
 | 課前準備 | https://htchen.github.io/LLM2Life/pre-workshop.html |
 | 種子教師指南 | https://htchen.github.io/LLM2Life/seed-teacher.html |
 | 實際案例 | https://htchen.github.io/LLM2Life/cases.html |
-| 四個互動範例 | https://htchen.github.io/LLM2Life/examples/ |
+| 五個互動範例 | https://htchen.github.io/LLM2Life/examples/ |
 
 ---
 
@@ -76,7 +76,7 @@
 | 檔案 | 內容 |
 | --- | --- |
 | [`insights.md`](shared/insights.md) | **論證本體**：各階段講稿，以及補充段落「AI 演進與人的判斷」之完整推導與追問回應。投影片僅呈現結論，理由記載於此 |
-| [`reference/`](shared/reference/) | 四個參考實作，供講師排除學員問題；另發布至 [`/examples/`](https://htchen.github.io/LLM2Life/examples/) |
+| [`reference/`](shared/reference/) | 五個參考實作，供講師排除學員問題；另發布至 [`/examples/`](https://htchen.github.io/LLM2Life/examples/) |
 | [`starter/`](shared/starter/) | 學員 repo 範本（含 `CLAUDE.md`） |
 | [`provisioning-tokens.md`](shared/provisioning-tokens.md) | 統一付費之作法與成本估算 |
 | [`ideas-backlog.md`](shared/ideas-backlog.md) | 尚未納入正式教材之候選做法 |
