@@ -164,6 +164,18 @@ also states, per case, what the case does *not* prove: the CS-course case was au
 with a programming background, so it cannot be cited as proof that non-programmers can do this.
 Dropping that qualifier would make the strongest evidence in the project into its weakest point.
 
+**The three hours are framed as a 啟動場 (kickoff), not a course.** Nothing is "taught"; the room
+crosses the first hurdles together (accounts, first file, first public URL, first broken edit rolled
+back) and everyone leaves with a live first version to iterate on alone. This is what reconciles the
+talk's opening ("everyone can self-teach") with its ask ("run three hours for colleagues"). Keep the
+word in the positioning sentences (talk slides 2 and 32, the seed-teacher guide, both timelines'
+intros) — but never loosen the process gates because of it; a kickoff without gates is just a demo.
+
+**The kickoff has a return path.** `web/cases.html` and the seed-teacher guide ask each host to send
+one screenshot of a colleague's tool via a GitHub issue; it goes onto the cases page. Without this the
+"kickoff" framing is a course by another name. Intake follows the same rule as everything else on
+that page: something a reader can open, de-identified before publishing.
+
 Screenshots of student work are **de-identified before publishing** — the first one carried a
 classmate's name from a screen-share overlay, cropped out before embedding. Student artefacts go in
 as `data:` URIs like every other asset on these pages, and the caption says what was removed.
