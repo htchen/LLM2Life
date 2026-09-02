@@ -59,7 +59,7 @@ Pages 一旦「暖機」過，之後每次 commit 大約 30–60 秒就會更新
 | 4 | 前一天已發布的 Pages 網址 | 示範二備援 |
 | 5 | `htchen.github.io/LLM2Life/examples/sine-addition.html` | 示範一備援 |
 | 6 | `htchen.github.io/LLM2Life/examples/wordle-duel.html` | 示範三 |
-| 7 | `htchen.github.io/LLM2Life/examples/lunyu-mentor.html` | 第 1 頁全場掃描；示範四 |
+| 7 | `htchen.github.io/LLM2Life/examples/lunyu-mentor.html` | 第 2 頁全場掃描；示範四 |
 
 分頁 5、6、7 也可改開 repo 中 `shared/reference/` 的同名檔案，內容相同。
 **使用網址的好處是不必事先 clone repo**，換一台電腦亦可開啟。
@@ -210,7 +210,7 @@ Pages 一旦「暖機」過，之後每次 commit 大約 30–60 秒就會更新
 - [ ] 手機也打得開同一個網址
 - [ ] 三段提示詞已存成文字檔，可直接複製
 - [ ] 七個分頁都開好並排序
-- [ ] 手機實際掃過第 1 頁的 QR，人生導師打得開
+- [ ] 手機實際掃過第 2 頁的 QR，人生導師打得開
 - [ ] 文字編輯器已開空白檔（Mac 已切純文字）
 - [ ] 完整跑過一次示範一與示範二，知道各花多久
 - [ ] 場地網路確認可連 claude.ai 與 github.com
