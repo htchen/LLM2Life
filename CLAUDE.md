@@ -120,7 +120,7 @@ CDNs, so the type personality comes from weight, scale, and spacing on the syste
 
 `web/index.html` is the project's **landing page**, published to GitHub Pages at
 `https://htchen.github.io/LLM2Life/` by `.github/workflows/pages.yml`. The workflow publishes
-exactly nine files plus the reference examples:
+the files below plus the reference examples (the table is the list — do not restate a count):
 
 | Published as | Source |
 | --- | --- |
