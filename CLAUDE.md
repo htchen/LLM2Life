@@ -11,11 +11,25 @@ There is no application to ship here — the deliverable is the material itself.
 **The audience is high-school teachers, attending as seed teachers.** That sets up a
 teacher-to-teacher bootstrap with two returns:
 
-1. They re-run this workshop for other teachers at their own school — which is why the
-   instructor layer (timeline, insights, troubleshooting, pre-workshop email) is part of the
-   deliverable, not backstage material, and why the repo is CC BY 4.0.
-2. They use what they learned to build tools that support their own teaching — 高中教材製作與
-   輔助教學 is the project domain, not a generic personal-productivity tool.
+1. They run a three-hour 啟動場 for other teachers at their own school — teacher-to-teacher is the
+   primary direction of the bootstrap. This is why the instructor layer (timeline, insights,
+   troubleshooting, pre-workshop email) is part of the deliverable, and why the repo is CC BY 4.0.
+2. They build tools that support their own teaching — 高中教材製作與輔助教學 is the project
+   domain, not a generic personal-productivity tool.
+
+**The talk frames this repo as a self-demonstration, not a curriculum to reuse.** Everything in it —
+three decks, four sites, five examples, the cases page, the instructor layer — was produced the way
+the talk describes, and the commit history is the proof (talk slide 27 carries the numbers; they
+drift, so the speaker refreshes them the day before). The ask is therefore "build your own repo and
+run a kickoff with it", with this material offered as a forkable starting point, not as the thing to
+teach. The three-hour material stays complete and the free track stays its default — that is what a
+seed teacher's colleagues on free accounts will actually use.
+
+**The talk's live demos use Claude Code CLI on the projector**, because that is what the speaker
+actually uses; demoing the copy-paste route would be performing a workflow the presenter has never
+adopted. `talk/demo-runbook.md` carries the mechanics and the free-route fallback. Slide 29 says out
+loud that the demo used a paid tool and the free chat interface does the same job — do not remove
+that sentence, it is what keeps the demo from contradicting the free default.
 
 **Students never need an account.** The tool a teacher builds is a web page their students
 *use*; the students do not use Claude or GitHub. This is a deliberate design decision that

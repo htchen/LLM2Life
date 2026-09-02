@@ -79,6 +79,7 @@ style: |
 ### 稍後另有一個英文單字遊戲的例子<br>不倚賴任何學科的專門構造
 
 <!--
+示範用投影機上的終端機跑 Claude Code CLI，台下看得到你打的提示詞與它的每個動作。
 這一句是講給非數理科教師聽的。接下來十分鐘全是和角公式，
 若不先說清楚後面還有一個與學科構造無關的例子，他們會在此判定這場與自己無關。
 -->
@@ -97,10 +98,10 @@ P 的高度就是 sin(α+β)，它會被 Q 的高度分成兩段：下段 sin α
 ```
 
 <!--
-中間三行是幾何構造，投影片 24 會回頭指這裡——那是教師提供的部分。
-實際產生。不要解釋程式碼。
-這個提示詞比一般的長，失敗機率也較高：失敗時直接開
-shared/reference/sine-addition.html 繼續，不要當場除錯。
+在 Claude Code 裡貼上，它會寫檔、自己打開瀏覽器。中間三行是幾何構造，
+投影片 24 會回頭指這裡——那是教師提供的部分。不要解釋程式碼，也不要解釋終端機。
+它跑的時候台下看得到它在讀什麼、寫什麼——那就是「轉為機器可執行的形式」正在發生。
+失敗時直接開 shared/reference/sine-addition.html 繼續，不要當場除錯。
 -->
 
 ---
@@ -153,11 +154,13 @@ shared/reference/sine-addition.html 繼續，不要當場除錯。
 
 ## 示範二：版本保存與發布
 
-# 上傳版本庫 → 取得公開網址<br>→ 以行動裝置驗證
+# 存進版本庫 → 取得公開網址<br>→ 以行動裝置驗證
 
 <!--
-這一段要當場做完，讓老師看見網址真的存在、手機真的打得開。
-沒有這一段，前一張只是宣稱。
+一句話：「請把這個檔案存進版本庫並發布，做好後告訴我網址。」
+它會 commit、push，Pages 更新後給你網址。指著終端機說：剛才那一步，就是還原點。
+然後拿出手機打開同一個網址，舉起來。這一段要當場做完，沒有它前一張只是宣稱。
+免費對話介面做同一件事要自己存檔、自己上傳——三小時教材裡有那個版本。
 -->
 
 ---
@@ -408,39 +411,47 @@ shared/reference/sine-addition.html 繼續，不要當場除錯。
 
 <!-- _class: big dark -->
 
-# 提供之教材
+# 這場演講本身<br>是怎麼做出來的
 
 ---
 
-## 可直接施教的完整教材
+## 這整個 repo，截至 9 月 3 日
 
-| 項目 | 內容 |
+### 三份投影片、四個網站、五個範例、案例頁、整套講師文件
+
+| | |
 | --- | --- |
-| 投影片 | 78 頁，含講師備忘稿 |
-| 學員手冊 | 共同練習、發想、規劃、實作 |
-| 隨堂網站 | 公開網址，學生無須帳號 |
-| 課前準備頁 | 公開網址，兩個免費帳號 |
-| 流程表 | 195 分鐘，附 180 分鐘調整方式 |
-| 帶領原則與疑難排解 | 現場常見問題與處理順序 |
+| commit 總數 | 68 |
+| 其中**帶 Claude 共同作者標記** | **64（94%）** |
+| 檔案 | 65 |
+| 期間 | 8 月 16 日起，18 天 |
 
-> 現場卡住不需要臨場判斷：疑難排解依出現頻率排序，每一項均附處理順序與備援做法。
+<div style="float: right; margin: -232px 0 0 36px; text-align: center;"><svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-label="QR code：https://github.com/htchen/LLM2Life/commits/main"><rect width="200" height="200" rx="10" fill="#ffffff"/><g fill="#14110e"><rect x="10.81" y="10.81" width="37.84" height="5.41"/><rect x="59.46" y="10.81" width="5.41" height="5.41"/><rect x="75.68" y="10.81" width="10.81" height="5.41"/><rect x="91.89" y="10.81" width="27.03" height="5.41"/><rect x="129.73" y="10.81" width="10.81" height="5.41"/><rect x="151.35" y="10.81" width="37.84" height="5.41"/><rect x="10.81" y="16.22" width="5.41" height="5.41"/><rect x="43.24" y="16.22" width="5.41" height="5.41"/><rect x="64.86" y="16.22" width="5.41" height="5.41"/><rect x="75.68" y="16.22" width="21.62" height="5.41"/><rect x="108.11" y="16.22" width="5.41" height="5.41"/><rect x="124.32" y="16.22" width="21.62" height="5.41"/><rect x="151.35" y="16.22" width="5.41" height="5.41"/><rect x="183.78" y="16.22" width="5.41" height="5.41"/><rect x="10.81" y="21.62" width="5.41" height="5.41"/><rect x="21.62" y="21.62" width="16.22" height="5.41"/><rect x="43.24" y="21.62" width="5.41" height="5.41"/><rect x="59.46" y="21.62" width="5.41" height="5.41"/><rect x="70.27" y="21.62" width="16.22" height="5.41"/><rect x="108.11" y="21.62" width="5.41" height="5.41"/><rect x="118.92" y="21.62" width="5.41" height="5.41"/><rect x="135.14" y="21.62" width="5.41" height="5.41"/><rect x="151.35" y="21.62" width="5.41" height="5.41"/><rect x="162.16" y="21.62" width="16.22" height="5.41"/><rect x="183.78" y="21.62" width="5.41" height="5.41"/><rect x="10.81" y="27.03" width="5.41" height="5.41"/><rect x="21.62" y="27.03" width="16.22" height="5.41"/><rect x="43.24" y="27.03" width="5.41" height="5.41"/><rect x="59.46" y="27.03" width="5.41" height="5.41"/><rect x="70.27" y="27.03" width="5.41" height="5.41"/><rect x="81.08" y="27.03" width="10.81" height="5.41"/><rect x="97.30" y="27.03" width="27.03" height="5.41"/><rect x="129.73" y="27.03" width="10.81" height="5.41"/><rect x="151.35" y="27.03" width="5.41" height="5.41"/><rect x="162.16" y="27.03" width="16.22" height="5.41"/><rect x="183.78" y="27.03" width="5.41" height="5.41"/><rect x="10.81" y="32.43" width="5.41" height="5.41"/><rect x="21.62" y="32.43" width="16.22" height="5.41"/><rect x="43.24" y="32.43" width="5.41" height="5.41"/><rect x="64.86" y="32.43" width="27.03" height="5.41"/><rect x="108.11" y="32.43" width="16.22" height="5.41"/><rect x="135.14" y="32.43" width="5.41" height="5.41"/><rect x="151.35" y="32.43" width="5.41" height="5.41"/><rect x="162.16" y="32.43" width="16.22" height="5.41"/><rect x="183.78" y="32.43" width="5.41" height="5.41"/><rect x="10.81" y="37.84" width="5.41" height="5.41"/><rect x="43.24" y="37.84" width="5.41" height="5.41"/><rect x="54.05" y="37.84" width="10.81" height="5.41"/><rect x="86.49" y="37.84" width="21.62" height="5.41"/><rect x="113.51" y="37.84" width="5.41" height="5.41"/><rect x="140.54" y="37.84" width="5.41" height="5.41"/><rect x="151.35" y="37.84" width="5.41" height="5.41"/><rect x="183.78" y="37.84" width="5.41" height="5.41"/><rect x="10.81" y="43.24" width="37.84" height="5.41"/><rect x="54.05" y="43.24" width="5.41" height="5.41"/><rect x="64.86" y="43.24" width="5.41" height="5.41"/><rect x="75.68" y="43.24" width="5.41" height="5.41"/><rect x="86.49" y="43.24" width="5.41" height="5.41"/><rect x="97.30" y="43.24" width="5.41" height="5.41"/><rect x="108.11" y="43.24" width="5.41" height="5.41"/><rect x="118.92" y="43.24" width="5.41" height="5.41"/><rect x="129.73" y="43.24" width="5.41" height="5.41"/><rect x="140.54" y="43.24" width="5.41" height="5.41"/><rect x="151.35" y="43.24" width="37.84" height="5.41"/><rect x="64.86" y="48.65" width="10.81" height="5.41"/><rect x="91.89" y="48.65" width="21.62" height="5.41"/><rect x="124.32" y="48.65" width="21.62" height="5.41"/><rect x="10.81" y="54.05" width="5.41" height="5.41"/><rect x="27.03" y="54.05" width="5.41" height="5.41"/><rect x="37.84" y="54.05" width="10.81" height="5.41"/><rect x="54.05" y="54.05" width="27.03" height="5.41"/><rect x="86.49" y="54.05" width="5.41" height="5.41"/><rect x="97.30" y="54.05" width="5.41" height="5.41"/><rect x="118.92" y="54.05" width="16.22" height="5.41"/><rect x="145.95" y="54.05" width="5.41" height="5.41"/><rect x="156.76" y="54.05" width="5.41" height="5.41"/><rect x="10.81" y="59.46" width="10.81" height="5.41"/><rect x="27.03" y="59.46" width="5.41" height="5.41"/><rect x="54.05" y="59.46" width="5.41" height="5.41"/><rect x="81.08" y="59.46" width="5.41" height="5.41"/><rect x="91.89" y="59.46" width="16.22" height="5.41"/><rect x="118.92" y="59.46" width="5.41" height="5.41"/><rect x="140.54" y="59.46" width="21.62" height="5.41"/><rect x="178.38" y="59.46" width="10.81" height="5.41"/><rect x="16.22" y="64.86" width="10.81" height="5.41"/><rect x="37.84" y="64.86" width="16.22" height="5.41"/><rect x="64.86" y="64.86" width="27.03" height="5.41"/><rect x="108.11" y="64.86" width="16.22" height="5.41"/><rect x="140.54" y="64.86" width="5.41" height="5.41"/><rect x="156.76" y="64.86" width="10.81" height="5.41"/><rect x="172.97" y="64.86" width="5.41" height="5.41"/><rect x="183.78" y="64.86" width="5.41" height="5.41"/><rect x="32.43" y="70.27" width="5.41" height="5.41"/><rect x="59.46" y="70.27" width="27.03" height="5.41"/><rect x="91.89" y="70.27" width="10.81" height="5.41"/><rect x="108.11" y="70.27" width="27.03" height="5.41"/><rect x="151.35" y="70.27" width="5.41" height="5.41"/><rect x="162.16" y="70.27" width="10.81" height="5.41"/><rect x="178.38" y="70.27" width="5.41" height="5.41"/><rect x="10.81" y="75.68" width="16.22" height="5.41"/><rect x="32.43" y="75.68" width="21.62" height="5.41"/><rect x="59.46" y="75.68" width="5.41" height="5.41"/><rect x="75.68" y="75.68" width="5.41" height="5.41"/><rect x="86.49" y="75.68" width="16.22" height="5.41"/><rect x="108.11" y="75.68" width="21.62" height="5.41"/><rect x="135.14" y="75.68" width="21.62" height="5.41"/><rect x="167.57" y="75.68" width="5.41" height="5.41"/><rect x="178.38" y="75.68" width="10.81" height="5.41"/><rect x="10.81" y="81.08" width="5.41" height="5.41"/><rect x="21.62" y="81.08" width="10.81" height="5.41"/><rect x="37.84" y="81.08" width="5.41" height="5.41"/><rect x="54.05" y="81.08" width="5.41" height="5.41"/><rect x="64.86" y="81.08" width="32.43" height="5.41"/><rect x="108.11" y="81.08" width="5.41" height="5.41"/><rect x="118.92" y="81.08" width="5.41" height="5.41"/><rect x="129.73" y="81.08" width="5.41" height="5.41"/><rect x="140.54" y="81.08" width="5.41" height="5.41"/><rect x="151.35" y="81.08" width="5.41" height="5.41"/><rect x="162.16" y="81.08" width="5.41" height="5.41"/><rect x="178.38" y="81.08" width="10.81" height="5.41"/><rect x="16.22" y="86.49" width="5.41" height="5.41"/><rect x="27.03" y="86.49" width="5.41" height="5.41"/><rect x="37.84" y="86.49" width="16.22" height="5.41"/><rect x="59.46" y="86.49" width="16.22" height="5.41"/><rect x="81.08" y="86.49" width="37.84" height="5.41"/><rect x="124.32" y="86.49" width="5.41" height="5.41"/><rect x="135.14" y="86.49" width="5.41" height="5.41"/><rect x="145.95" y="86.49" width="21.62" height="5.41"/><rect x="172.97" y="86.49" width="10.81" height="5.41"/><rect x="10.81" y="91.89" width="21.62" height="5.41"/><rect x="54.05" y="91.89" width="5.41" height="5.41"/><rect x="64.86" y="91.89" width="5.41" height="5.41"/><rect x="75.68" y="91.89" width="5.41" height="5.41"/><rect x="97.30" y="91.89" width="10.81" height="5.41"/><rect x="118.92" y="91.89" width="10.81" height="5.41"/><rect x="140.54" y="91.89" width="5.41" height="5.41"/><rect x="151.35" y="91.89" width="5.41" height="5.41"/><rect x="162.16" y="91.89" width="10.81" height="5.41"/><rect x="178.38" y="91.89" width="5.41" height="5.41"/><rect x="16.22" y="97.30" width="5.41" height="5.41"/><rect x="32.43" y="97.30" width="5.41" height="5.41"/><rect x="43.24" y="97.30" width="27.03" height="5.41"/><rect x="75.68" y="97.30" width="21.62" height="5.41"/><rect x="102.70" y="97.30" width="5.41" height="5.41"/><rect x="118.92" y="97.30" width="27.03" height="5.41"/><rect x="151.35" y="97.30" width="5.41" height="5.41"/><rect x="162.16" y="97.30" width="5.41" height="5.41"/><rect x="178.38" y="97.30" width="5.41" height="5.41"/><rect x="10.81" y="102.70" width="27.03" height="5.41"/><rect x="48.65" y="102.70" width="16.22" height="5.41"/><rect x="75.68" y="102.70" width="5.41" height="5.41"/><rect x="91.89" y="102.70" width="16.22" height="5.41"/><rect x="135.14" y="102.70" width="16.22" height="5.41"/><rect x="156.76" y="102.70" width="5.41" height="5.41"/><rect x="167.57" y="102.70" width="5.41" height="5.41"/><rect x="178.38" y="102.70" width="5.41" height="5.41"/><rect x="10.81" y="108.11" width="5.41" height="5.41"/><rect x="32.43" y="108.11" width="16.22" height="5.41"/><rect x="54.05" y="108.11" width="5.41" height="5.41"/><rect x="64.86" y="108.11" width="5.41" height="5.41"/><rect x="81.08" y="108.11" width="5.41" height="5.41"/><rect x="97.30" y="108.11" width="10.81" height="5.41"/><rect x="124.32" y="108.11" width="5.41" height="5.41"/><rect x="140.54" y="108.11" width="5.41" height="5.41"/><rect x="172.97" y="108.11" width="16.22" height="5.41"/><rect x="10.81" y="113.51" width="16.22" height="5.41"/><rect x="32.43" y="113.51" width="10.81" height="5.41"/><rect x="48.65" y="113.51" width="10.81" height="5.41"/><rect x="70.27" y="113.51" width="16.22" height="5.41"/><rect x="91.89" y="113.51" width="5.41" height="5.41"/><rect x="113.51" y="113.51" width="37.84" height="5.41"/><rect x="156.76" y="113.51" width="5.41" height="5.41"/><rect x="178.38" y="113.51" width="5.41" height="5.41"/><rect x="10.81" y="118.92" width="27.03" height="5.41"/><rect x="43.24" y="118.92" width="5.41" height="5.41"/><rect x="54.05" y="118.92" width="10.81" height="5.41"/><rect x="70.27" y="118.92" width="27.03" height="5.41"/><rect x="102.70" y="118.92" width="5.41" height="5.41"/><rect x="113.51" y="118.92" width="10.81" height="5.41"/><rect x="129.73" y="118.92" width="21.62" height="5.41"/><rect x="183.78" y="118.92" width="5.41" height="5.41"/><rect x="16.22" y="124.32" width="5.41" height="5.41"/><rect x="37.84" y="124.32" width="5.41" height="5.41"/><rect x="54.05" y="124.32" width="10.81" height="5.41"/><rect x="75.68" y="124.32" width="10.81" height="5.41"/><rect x="91.89" y="124.32" width="5.41" height="5.41"/><rect x="102.70" y="124.32" width="5.41" height="5.41"/><rect x="113.51" y="124.32" width="5.41" height="5.41"/><rect x="124.32" y="124.32" width="5.41" height="5.41"/><rect x="151.35" y="124.32" width="5.41" height="5.41"/><rect x="172.97" y="124.32" width="16.22" height="5.41"/><rect x="10.81" y="129.73" width="48.65" height="5.41"/><rect x="64.86" y="129.73" width="5.41" height="5.41"/><rect x="75.68" y="129.73" width="5.41" height="5.41"/><rect x="97.30" y="129.73" width="5.41" height="5.41"/><rect x="113.51" y="129.73" width="5.41" height="5.41"/><rect x="124.32" y="129.73" width="5.41" height="5.41"/><rect x="151.35" y="129.73" width="21.62" height="5.41"/><rect x="183.78" y="129.73" width="5.41" height="5.41"/><rect x="16.22" y="135.14" width="16.22" height="5.41"/><rect x="37.84" y="135.14" width="5.41" height="5.41"/><rect x="48.65" y="135.14" width="5.41" height="5.41"/><rect x="59.46" y="135.14" width="10.81" height="5.41"/><rect x="75.68" y="135.14" width="5.41" height="5.41"/><rect x="86.49" y="135.14" width="10.81" height="5.41"/><rect x="108.11" y="135.14" width="32.43" height="5.41"/><rect x="162.16" y="135.14" width="10.81" height="5.41"/><rect x="10.81" y="140.54" width="5.41" height="5.41"/><rect x="32.43" y="140.54" width="5.41" height="5.41"/><rect x="43.24" y="140.54" width="5.41" height="5.41"/><rect x="54.05" y="140.54" width="16.22" height="5.41"/><rect x="75.68" y="140.54" width="16.22" height="5.41"/><rect x="97.30" y="140.54" width="10.81" height="5.41"/><rect x="118.92" y="140.54" width="10.81" height="5.41"/><rect x="140.54" y="140.54" width="27.03" height="5.41"/><rect x="178.38" y="140.54" width="5.41" height="5.41"/><rect x="54.05" y="145.95" width="10.81" height="5.41"/><rect x="75.68" y="145.95" width="5.41" height="5.41"/><rect x="91.89" y="145.95" width="5.41" height="5.41"/><rect x="102.70" y="145.95" width="5.41" height="5.41"/><rect x="113.51" y="145.95" width="5.41" height="5.41"/><rect x="124.32" y="145.95" width="10.81" height="5.41"/><rect x="140.54" y="145.95" width="5.41" height="5.41"/><rect x="162.16" y="145.95" width="10.81" height="5.41"/><rect x="183.78" y="145.95" width="5.41" height="5.41"/><rect x="10.81" y="151.35" width="37.84" height="5.41"/><rect x="59.46" y="151.35" width="5.41" height="5.41"/><rect x="70.27" y="151.35" width="16.22" height="5.41"/><rect x="102.70" y="151.35" width="10.81" height="5.41"/><rect x="118.92" y="151.35" width="5.41" height="5.41"/><rect x="129.73" y="151.35" width="5.41" height="5.41"/><rect x="140.54" y="151.35" width="5.41" height="5.41"/><rect x="151.35" y="151.35" width="5.41" height="5.41"/><rect x="162.16" y="151.35" width="21.62" height="5.41"/><rect x="10.81" y="156.76" width="5.41" height="5.41"/><rect x="43.24" y="156.76" width="5.41" height="5.41"/><rect x="54.05" y="156.76" width="5.41" height="5.41"/><rect x="81.08" y="156.76" width="5.41" height="5.41"/><rect x="97.30" y="156.76" width="32.43" height="5.41"/><rect x="140.54" y="156.76" width="5.41" height="5.41"/><rect x="162.16" y="156.76" width="5.41" height="5.41"/><rect x="178.38" y="156.76" width="5.41" height="5.41"/><rect x="10.81" y="162.16" width="5.41" height="5.41"/><rect x="21.62" y="162.16" width="16.22" height="5.41"/><rect x="43.24" y="162.16" width="5.41" height="5.41"/><rect x="64.86" y="162.16" width="16.22" height="5.41"/><rect x="91.89" y="162.16" width="5.41" height="5.41"/><rect x="108.11" y="162.16" width="5.41" height="5.41"/><rect x="118.92" y="162.16" width="5.41" height="5.41"/><rect x="140.54" y="162.16" width="32.43" height="5.41"/><rect x="10.81" y="167.57" width="5.41" height="5.41"/><rect x="21.62" y="167.57" width="16.22" height="5.41"/><rect x="43.24" y="167.57" width="5.41" height="5.41"/><rect x="54.05" y="167.57" width="5.41" height="5.41"/><rect x="75.68" y="167.57" width="10.81" height="5.41"/><rect x="91.89" y="167.57" width="27.03" height="5.41"/><rect x="135.14" y="167.57" width="5.41" height="5.41"/><rect x="151.35" y="167.57" width="5.41" height="5.41"/><rect x="162.16" y="167.57" width="5.41" height="5.41"/><rect x="178.38" y="167.57" width="5.41" height="5.41"/><rect x="10.81" y="172.97" width="5.41" height="5.41"/><rect x="21.62" y="172.97" width="16.22" height="5.41"/><rect x="43.24" y="172.97" width="5.41" height="5.41"/><rect x="59.46" y="172.97" width="5.41" height="5.41"/><rect x="75.68" y="172.97" width="5.41" height="5.41"/><rect x="86.49" y="172.97" width="21.62" height="5.41"/><rect x="113.51" y="172.97" width="16.22" height="5.41"/><rect x="162.16" y="172.97" width="10.81" height="5.41"/><rect x="183.78" y="172.97" width="5.41" height="5.41"/><rect x="10.81" y="178.38" width="5.41" height="5.41"/><rect x="43.24" y="178.38" width="5.41" height="5.41"/><rect x="59.46" y="178.38" width="21.62" height="5.41"/><rect x="102.70" y="178.38" width="5.41" height="5.41"/><rect x="113.51" y="178.38" width="16.22" height="5.41"/><rect x="140.54" y="178.38" width="10.81" height="5.41"/><rect x="10.81" y="183.78" width="37.84" height="5.41"/><rect x="54.05" y="183.78" width="5.41" height="5.41"/><rect x="64.86" y="183.78" width="10.81" height="5.41"/><rect x="81.08" y="183.78" width="5.41" height="5.41"/><rect x="91.89" y="183.78" width="10.81" height="5.41"/><rect x="108.11" y="183.78" width="10.81" height="5.41"/><rect x="124.32" y="183.78" width="5.41" height="5.41"/><rect x="140.54" y="183.78" width="5.41" height="5.41"/><rect x="162.16" y="183.78" width="10.81" height="5.41"/><rect x="178.38" y="183.78" width="5.41" height="5.41"/></g></svg><div style="font-size:19px; color:#6b6259; margin-top:6px">github.com/htchen/LLM2Life/commits</div></div>
+
+> 你現在看到的每一頁——包括這一頁——都是這樣做出來的。這不是「我用它做了一門課」，是「你眼前的一切」。
 
 <!--
-辦活動的人最擔心的是「開了但學員做不出來」。這句要講出來，不要只放在表格裡。
+數字會漂。演講前一天跑：git rev-list --count HEAD 與 git log --format=%B | grep -c '^Co-Authored-By: Claude'，
+把表格與日期更新。四個數字都要對得上 commits 頁面，台下會有人當場點開。
+
+這一頁和第 31 頁是同一種證據，但更強：第 31 頁是「我用它做了一門課的教材」，
+這一頁是「你正在看的東西」。講完停一下。
 -->
 
 ---
 
-## 三項使教材得以移轉的條件
+## 三小時的教材，是其中一個成品
 
-### 學員僅需免費帳號
-無須訂閱或安裝，全程於瀏覽器完成
+### 可以直接 fork 來辦——CC BY 4.0，可改、可換題目、可自行發布
+### 學員僅需免費帳號，學生不需要任何帳號
 
-### 學生無須任何帳號
-產出為網頁，學生僅需開啟使用
+# 但更好的是：做你自己的
 
-### 採 CC BY 4.0 授權
-可修改、可更換題目、可自行發布，標示出處即可
+<!--
+不推銷這套教材。它是一個做好的例子——證明這樣做得出來、證明流程撐得起一整套——
+不是要你回去照用。你的科目、你的學校、你手上的問題，都跟我的不一樣。
+接下來兩頁講哪些可以換、哪些不能省；第 32 頁講怎麼開始。
+-->
 
 ---
 
@@ -452,8 +463,8 @@ shared/reference/sine-addition.html 繼續，不要當場除錯。
 ### 不可省略
 保存至版本庫：公開網址、版本回溯、所有權與移轉
 
-> 僅有其他 AI 工具的環境同樣可以辦。保留「訂定可驗收的規格 →
-> 保存至版本庫 → 依驗收條件迭代」三項即可成立。
+> 今天示範用的是 Claude Code；免費的對話介面能做到同一件事，三小時教材就是那個版本。
+> 保留「訂定可驗收的規格 → 保存至版本庫 → 依驗收條件迭代」三項即可成立。
 
 <!--
 主動講。不講的話，回到 Google Workspace 環境的老師會以為這套流程不適用於他們，然後就不開了。
@@ -513,14 +524,14 @@ shared/reference/sine-addition.html 繼續，不要當場除錯。
 
 # 若已有想做的東西<br>今天開始就是最好的時機
 
-### 回去辦一場三小時的**啟動場**——不是教課，是讓同事一起跨過第一次<br>辦完之後，把同事做出來的東西截一張圖回傳，它會放上案例頁
+### 回去建一個**你自己的 repo**——教材、工具，或今天想做的那個東西<br>用它辦一場三小時的啟動場；把連結回傳，它會放上案例頁
 
 <!--
 **全場唯一一次提出請求，不要快速帶過。講完停兩秒再翻頁。**
 
-兩個請求，一句一個：辦一場啟動場；辦完回傳一張截圖。第二個比第一個容易答應，
-而它讓案例頁長出「上一批老師做出的東西」——下一場演講就有實績可放。
-回傳方式在案例頁底下（GitHub issue），不必當場講。
+三個動作，一句一個：建自己的 repo；用它辦一場；回傳連結。不是「用我的教材」——
+第 27 頁剛證明整個 repo 就是這樣做出來的，請求自然是「做你自己的」。
+回傳一個 repo 連結（或一張截圖），案例頁就長出「上一批老師做出的東西」。方式在案例頁底下，不必當場講。
 
 講法：這件事沒有卡位問題。不會因為別人早開始就輪不到你，也不會因為現在才開始就落後——
 每一代新模型出來，既有的認知都要放下，大家都得重新試一次才知道它能做到什麼。
