@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>實際案例 · LLM2Life</title>
+<meta name="description" content="以本教材所述流程實際完成的課程與專題，含可查證的版本紀錄。">
+<style>
+  :root {
+    --ground: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef0f4;
+    --ink: #151a21;
+    --ink-2: #3d4753;
+    --muted: #6b7684;
+    --line: #dde1e8;
+    --line-2: #c9cfda;
+    --accent: #2f4a7c;
+    --accent-soft: #e6ecf7;
+    --accent-ink: #23395e;
+    --ok: #2b7a4b;
+    --ok-soft: #e3f2e8;
+    --warn: #b4531c;
+    --warn-soft: #fcece1;
+    --code-bg: #171c24;
+    --code-ink: #e9edf3;
+    --shadow: 0 1px 2px rgba(20, 26, 34, .05), 0 8px 24px -12px rgba(20, 26, 34, .18);
+    --radius: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0e1116;
+      --surface: #161b22;
+      --surface-2: #1d232c;
+      --ink: #e8ecf2;
+      --ink-2: #b9c2ce;
+      --muted: #8b96a5;
+      --line: #262d38;
+      --line-2: #333c49;
+      --accent: #92aee2;
+      --accent-soft: #1b2534;
+      --accent-ink: #b9ccf0;
+      --ok: #63c089;
+      --ok-soft: #14251b;
+      --warn: #e2905b;
+      --warn-soft: #2a1c12;
+      --code-bg: #0a0d12;
+      --code-ink: #e4e9f0;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -12px rgba(0, 0, 0, .6);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans TC", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 24px 88px; }
+
+  a { color: var(--accent-ink); }
+  a:hover { color: var(--accent); }
+
+  /* ---------- masthead ---------- */
+  .mast { padding: 60px 0 40px; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    font-size: .8rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700; margin: 0 0 14px;
+  }
+  .mast h1 {
+    margin: 0 0 18px; font-size: clamp(2rem, 5.2vw, 3.05rem); font-weight: 800;
+    letter-spacing: -.025em; line-height: 1.2; text-wrap: balance;
+  }
+  .mast p { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 1.08rem; }
+  .arc {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    margin-top: 26px; font-size: .96rem; color: var(--muted);
+  }
+  .arc b { color: var(--ink); font-weight: 700; }
+  .arc span[aria-hidden] { color: var(--line-2); }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 52px; }
+  section > h2 {
+    margin: 0 0 6px; font-size: clamp(1.4rem, 3vw, 1.85rem); font-weight: 800;
+    letter-spacing: -.02em; text-wrap: balance;
+  }
+  .lede { margin: 0 0 26px; color: var(--muted); font-size: 1rem; max-width: 68ch; }
+
+  /* ---------- cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 24px 26px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .card.lead { border-color: var(--line-2); background: var(--accent-soft); }
+  .card h3 { margin: 0; font-size: 1.16rem; font-weight: 800; letter-spacing: -.01em; }
+  .card p { margin: 0; color: var(--ink-2); font-size: .97rem; }
+  .card .go {
+    margin-top: auto; padding-top: 8px; font-weight: 700; font-size: .97rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .card .go svg { flex: none; }
+  .tag {
+    align-self: flex-start; font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
+    font-weight: 800; color: var(--muted);
+  }
+
+  /* ---------- flow ---------- */
+  .flow { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+  .flow li {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 18px 8px 10px; font-weight: 700; font-size: .97rem;
+  }
+  .flow .n {
+    flex: none; width: 24px; height: 24px; border-radius: 50%;
+    display: grid; place-items: center; font-size: .76rem; font-weight: 800;
+    background: var(--accent); color: #fff; font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- tables ---------- */
+  .tbl { width: 100%; border-collapse: collapse; font-size: .97rem; }
+  .tbl th, .tbl td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .tbl th { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .tbl td:first-child { font-weight: 700; white-space: nowrap; }
+  .tbl tr:last-child td { border-bottom: none; }
+  .scroll { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+  code {
+    background: var(--surface-2); border: 1px solid var(--line);
+    padding: 1px 7px; border-radius: 6px; font-size: .88em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  /* ---------- notes ---------- */
+  .note {
+    border: 1px solid var(--line); border-left: 4px solid var(--warn);
+    background: var(--warn-soft); border-radius: var(--radius);
+    padding: 18px 22px; margin: 0 0 16px;
+  }
+  .note:last-child { margin-bottom: 0; }
+  .note b { color: var(--ink); }
+  .note p { margin: 0; color: var(--ink-2); font-size: .97rem; }
+  .note h3 { margin: 0 0 6px; font-size: 1.02rem; font-weight: 800; }
+
+  .links { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+  .links a {
+    display: block; padding: 10px 14px; border-radius: 9px; text-decoration: none;
+    color: var(--ink); font-weight: 700; font-size: .99rem; border: 1px solid transparent;
+  }
+  .links a:hover { background: var(--surface-2); border-color: var(--line); }
+  .links small { display: block; font-weight: 500; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+  footer {
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: .93rem;
+  }
+  footer p { margin: 0 0 6px; }
+
+  .stat { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin:18px 0 4px; }
+  .stat div { background:var(--surface-2); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; }
+  .stat b { display:block; font-size:1.9rem; line-height:1.15; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .stat span { color:var(--muted); font-size:.9rem; }
+  figure { margin:20px 0 0; }
+  figure img { width:100%; border:1px solid var(--line); border-radius:var(--radius); display:block; }
+  figcaption { color:var(--muted); font-size:.9rem; margin-top:10px; }
+  .pending { background:var(--warn-soft); border:1px solid var(--line); border-left:4px solid var(--warn);
+             border-radius:var(--radius); padding:16px 20px; color:var(--ink-2); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">LLM2Life · 實際案例</p>
+    <h1>以這套流程<br>實際完成的東西</h1>
+    <p>本頁收錄依本教材所述流程完成的課程與專題。列出的每一項<b>都附可公開查證的紀錄</b>——
+       版本庫、commit 歷史，或可直接開啟的網頁——而非僅為描述。</p>
+    <p class="arc">
+      <b>可查證</b><span aria-hidden="true">·</span>
+      <b>非示意</b><span aria-hidden="true">·</span>
+      <b>載明不能證明的部分</b>
+    </p>
+  </header>
+
+  <section>
+    <h2>案例一：一門課的一整個學期教材</h2>
+    <p class="lede">2026 年春季，一門大學程式設計課（Python、Flask、地圖 API）的
+       16 週講義、實驗與小考，全程以 Claude Code 製作並保存於版本庫。</p>
+
+    <div class="stat">
+      <div><b>114</b><span>commit 總數</span></div>
+      <div><b>56</b><span>由 Claude 直接署名（49%）</span></div>
+      <div><b>38</b><span>經 Pull Request 合併</span></div>
+      <div><b>16</b><span>週教材，195 個檔案</span></div>
+    </div>
+
+    <p style="margin-top:18px">期間為 1 月 5 日至 6 月 1 日。作者欄位寫著 Claude 的 commit
+       附有 Claude Code 的工作階段連結，點進去看得到每一次改了什麼、為什麼改。
+       <b>這不是宣稱，是可以打開來核對的紀錄。</b></p>
+
+    <div class="note">
+      <p><b>這個案例證明什麼，不證明什麼。</b>
+         授課者具備程式背景，課程本身也是程式設計課，
+         因此它<b>不能</b>用來主張「沒有程式背景也做得到」。
+         它證明的是另一件事：這套流程撐得起一整個學期的真實教材，
+         且每一次改動都可稽核、可回溯、可移轉——也就是課程所說的
+         「差異在產出之後的處置」，在一個學期的尺度上實際成立。</p>
+    </div>
+
+    <p class="links" style="margin-top:18px">
+      <a href="https://github.com/htchen/I2P_Python">github.com/htchen/I2P_Python
+        <small>公開版本庫。建議直接看 commit 歷史與已合併的 Pull Request。</small></a>
+    </p>
+  </section>
+
+  <section>
+    <h2>案例二：學生的期末專題</h2>
+    <p class="lede">同一門課的期末專題。學生以相同流程完成一個地圖任務網頁：
+       在真實街道圖上接受外送任務、規劃路線，並與兩個 AI 對手競賽計分。</p>
+
+    <div class="pending">
+      <p><b>畫面待補。</b>此處將放入課堂實際執行的截圖。</p>
+    </div>
+
+    <p style="margin-top:18px">此案例的價值與案例一不同：<b>產出者是學習者，不是授課者</b>。
+       它回答的是在座教師最想問的一句話——學生自己做得出來嗎。</p>
+  </section>
+
+  <section>
+    <h2>為什麼把案例單獨列出來</h2>
+    <p class="lede">六十分鐘的演講放得下兩段現場示範，放不下完整的佐證。
+       示範證明的是「當場做得出來」，案例證明的是「撐得過一整個學期」——後者才是決定
+       是否投入時間的依據。</p>
+    <p class="links">
+      <a href="./">回到專案首頁<small>課程總覽、教材與各項連結。</small></a>
+      <a href="seed-teacher.html">種子教師指南<small>回校自行開課時，從這裡開始。</small></a>
+      <a href="examples/">四個互動範例<small>課堂上可直接打開的成品，各附 QR code。</small></a>
+    </p>
+  </section>
+
+</div>
+</body>
+</html>

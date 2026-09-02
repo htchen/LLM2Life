@@ -130,6 +130,7 @@ exactly nine files plus the reference examples:
 | `/handbook.html` | `workshop/site/index.html` (free — the default track) |
 | `/handbook-paid.html` | `workshop-paid/site/index.html` (Claude Code) |
 | `/seed-teacher.html` | `web/seed-teacher.html` (guide for teachers re-running the workshop) |
+| `/cases.html` | `web/cases.html` (real cases with verifiable version history) |
 | `/slides.html` | `workshop/slides/deck.md` — **built by Marp in CI**, not copied |
 | `/slides-paid.html` | `workshop-paid/slides/deck.md` — built by Marp in CI |
 | `/talk.html` | `talk/deck.md` — built by Marp in CI |
@@ -156,6 +157,12 @@ Keep the roles apart:
   you change timings, you should not need to touch `web/`. Keep it that way.
 - It follows the same self-contained rule as `workshop-paid/site/index.html` (no CDN, no webfonts, no remote
   images) and reuses that file's exact CSS custom properties, so the two read as one project.
+
+`web/cases.html` is the **evidence page**, and its rule is that every case must carry something a
+reader can open and check — a repo, a commit history, a live page — never a description alone. It
+also states, per case, what the case does *not* prove: the CS-course case was authored by someone
+with a programming background, so it cannot be cited as proof that non-programmers can do this.
+Dropping that qualifier would make the strongest evidence in the project into its weakest point.
 
 Only the two Artifact URLs are duplicated between `README.md` and `web/index.html`. If either
 ever changes, both files need the edit.

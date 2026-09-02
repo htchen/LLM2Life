@@ -7,6 +7,7 @@ name: 發布專案網站
 #   /handbook.html           ← workshop/site/index.html（免費版 · 主線）
 #   /handbook-paid.html      ← workshop-paid/site/index.html（付費版）
 #   /seed-teacher.html       ← web/seed-teacher.html（種子教師指南）
+#   /cases.html              ← web/cases.html（實際案例與可查證紀錄）
 #   /slides.html             ← workshop/slides/deck.md（免費版 · 主線，Marp 建置）
 #   /slides-paid.html        ← workshop-paid/slides/deck.md（付費版，Marp 建置）
 #   /talk.html               ← talk/deck.md（60 分鐘演講版，Marp 建置）
@@ -86,6 +87,7 @@ jobs:
           cp workshop/site/index.html public/handbook.html
           cp workshop-paid/site/index.html public/handbook-paid.html
           cp web/seed-teacher.html public/seed-teacher.html
+          cp web/cases.html public/cases.html
           mkdir -p public/examples
           cp shared/reference/*.html public/examples/
           cp web/examples.html public/examples/index.html
