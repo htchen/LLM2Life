@@ -18,7 +18,7 @@ teacher-to-teacher bootstrap with two returns:
    domain, not a generic personal-productivity tool.
 
 **The talk frames this repo as a self-demonstration, not a curriculum to reuse.** Everything in it —
-three decks, four sites, five examples, the cases page, the instructor layer — was produced the way
+three decks, four sites, six examples, the cases page, the instructor layer — was produced the way
 the talk describes, and the commit history is the proof (talk slide 28 carries the numbers; they
 drift, so the speaker refreshes them the day before). The ask is therefore "build your own repo and
 run a kickoff with it", with this material offered as a forkable starting point, not as the thing to
@@ -148,7 +148,7 @@ the files below plus the reference examples (the table is the list — do not re
 | `/slides.html` | `workshop/slides/deck.md` — **built by Marp in CI**, not copied |
 | `/slides-paid.html` | `workshop-paid/slides/deck.md` — built by Marp in CI |
 | `/talk.html` | `talk/deck.md` — built by Marp in CI |
-| `/examples/index.html` | `web/examples.html` — index of the five examples, each with its own QR |
+| `/examples/index.html` | `web/examples.html` — index of the six examples, each with its own QR |
 | `/examples/*.html` | `shared/reference/*.html` — copied so a presenter can open a fallback without a local checkout |
 
 The unqualified names are the free ones on purpose: those are the links students are given.
