@@ -19,7 +19,7 @@ teacher-to-teacher bootstrap with two returns:
 
 **The talk frames this repo as a self-demonstration, not a curriculum to reuse.** Everything in it —
 three decks, four sites, five examples, the cases page, the instructor layer — was produced the way
-the talk describes, and the commit history is the proof (talk slide 27 carries the numbers; they
+the talk describes, and the commit history is the proof (talk slide 28 carries the numbers; they
 drift, so the speaker refreshes them the day before). The ask is therefore "build your own repo and
 run a kickoff with it", with this material offered as a forkable starting point, not as the thing to
 teach. The three-hour material stays complete and the free track stays its default — that is what a
@@ -27,7 +27,7 @@ seed teacher's colleagues on free accounts will actually use.
 
 **The talk's live demos use Claude Code CLI on the projector**, because that is what the speaker
 actually uses; demoing the copy-paste route would be performing a workflow the presenter has never
-adopted. `talk/demo-runbook.md` carries the mechanics and the free-route fallback. Slide 29 says out
+adopted. `talk/demo-runbook.md` carries the mechanics and the free-route fallback. Slide 30 says out
 loud that the demo used a paid tool and the free chat interface does the same job — do not remove
 that sentence, it is what keeps the demo from contradicting the free default.
 
@@ -251,7 +251,7 @@ When editing, preserve these gates:
 
 ## Two formats: a 60-minute talk and a three-hour workshop
 
-`talk/deck.md` (33 slides) is the **seed-teacher talk**: 60 minutes, **no hands-on**, two
+`talk/deck.md` (34 slides) is the **seed-teacher talk**: 60 minutes, **no hands-on**, two
 live demos. `talk/timeline.md` is its timing source of truth. The three-hour workshop in
 `workshop/` is what the seed teachers deliver afterwards.
 

@@ -34,6 +34,7 @@ style: |
   section.big { justify-content: center; text-align: center; }
   section.big h1 { font-size: 82px; line-height: 1.25; }
   section.big h2 { font-size: 54px; line-height: 1.35; }
+  section.full { padding: 22px 24px; justify-content: center; }
   ul { line-height: 1.7; }
   footer { color: #9c948a; }
 ---
@@ -99,7 +100,7 @@ P 的高度就是 sin(α+β)，它會被 Q 的高度分成兩段：下段 sin α
 
 <!--
 在 Claude Code 裡貼上，它會寫檔、自己打開瀏覽器。中間三行是幾何構造，
-投影片 24 會回頭指這裡——那是教師提供的部分。不要解釋程式碼，也不要解釋終端機。
+投影片 25 會回頭指這裡——那是教師提供的部分。不要解釋程式碼，也不要解釋終端機。
 它跑的時候台下看得到它在讀什麼、寫什麼——那就是「轉為機器可執行的形式」正在發生。
 失敗時直接開 shared/reference/sine-addition.html 繼續，不要當場除錯。
 -->
@@ -186,6 +187,21 @@ P 的高度就是 sin(α+β)，它會被 Q 的高度分成兩段：下段 sin α
 <!-- _class: big dark -->
 
 # 本課程的立論基礎
+
+---
+
+<!-- _class: full -->
+
+<div style="margin:-8px 0 0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 990" style="width:100%;height:auto" role="img" aria-label="AI 的演進與人的角色：人把對真實世界的理解變成紀錄，紀錄數位化後成為 AI 模型的訓練資料；控制電腦的方式從機器碼演進到自然語言，AI 模型把人話轉成指令；未來機器人自行蒐集第一手資訊回到真實世界；人仍是理解宇宙的一環。" font-family="'PingFang TC','Noto Sans TC','Microsoft JhengHei',system-ui,sans-serif" font-size="22" fill="#14110e">  <defs>    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5a534b"/></marker>    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b8442a"/></marker>  </defs>  <rect fill="#fbfaf8"/>  <!-- 時間軸與分界 -->  <line x1="60" y1="96" x2="1740" y2="96" stroke="#c9c2b8" stroke-width="2" marker-end="url(#a)"/>  <text x="60" y="70" font-size="20" fill="#7a7168">遠古</text>  <text x="820" y="70" font-size="20" fill="#7a7168" text-anchor="middle">電腦發明</text>  <text x="1330" y="70" font-size="20" fill="#7a7168" text-anchor="middle">現在</text>  <text x="1690" y="70" font-size="20" fill="#7a7168" text-anchor="middle">未來</text>  <line x1="820" y1="110" x2="820" y2="810" stroke="#c9c2b8" stroke-width="2" stroke-dasharray="8 8"/>  <line x1="1330" y1="110" x2="1330" y2="810" stroke="#c9c2b8" stroke-width="2" stroke-dasharray="8 8"/>  <!-- 車道標籤 -->  <text x="470" y="176" font-size="20" fill="#7a7168">紀錄與傳遞</text>  <text x="880" y="596" font-size="20" fill="#7a7168">控制電腦的方式</text>  <path d="M852 712 L852 722 L1318 722 L1318 712" fill="none" stroke="#a9a196" stroke-width="2"/>  <text x="1085" y="742" text-anchor="middle" font-size="18" fill="#7a7168">中間過渡的知識——可被淘汰</text>  <!-- 真實世界 -->  <circle cx="120" cy="450" r="72" fill="#efece7" stroke="#5a534b" stroke-width="2.5"/>  <text x="120" y="443" text-anchor="middle" font-size="24" font-weight="700">真實世界</text>  <text x="120" y="472" text-anchor="middle" font-size="18" fill="#5a534b">宇宙</text>  <!-- 人 -->  <rect x="255" y="405" width="150" height="90" rx="12" fill="#fff" stroke="#b8442a" stroke-width="3"/>  <text x="330" y="443" text-anchor="middle" font-size="26" font-weight="700" fill="#b8442a">人</text>  <text x="330" y="474" text-anchor="middle" font-size="18" fill="#b8442a">理解</text>  <line x1="192" y1="450" x2="253" y2="450" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <path d="M255 420 C 215 385, 165 385, 140 378" fill="none" stroke="#b8442a" stroke-width="2.5" marker-end="url(#ar)"/>  <text x="200" y="366" text-anchor="middle" font-size="19" fill="#b8442a">繼續探索</text>  <!-- 上車道：紀錄 -->  <g stroke="#5a534b" stroke-width="2.5" fill="#fff">    <rect x="485" y="205" width="150" height="70" rx="10"/>    <rect x="650" y="205" width="160" height="70" rx="10" stroke="#a9a196" stroke-dasharray="none"/>    <rect x="880" y="200" width="180" height="80" rx="10" fill="#efece7"/>  </g>  <text x="560" y="235" text-anchor="middle" font-size="20" font-weight="700">書、畫、口傳</text>  <text x="560" y="259" text-anchor="middle" font-size="19" fill="#5a534b">代代相傳的知識</text>  <text x="730" y="235" text-anchor="middle" font-size="16" font-weight="700" fill="#7a7168">留聲機、唱片、底片</text>  <text x="730" y="259" text-anchor="middle" font-size="18" fill="#a9a196">類比紀錄</text>  <text x="970" y="232" text-anchor="middle" font-size="20" font-weight="700">數位資料</text>  <text x="970" y="258" text-anchor="middle" font-size="19" fill="#5a534b">文字、影像、影片</text>  <path d="M405 430 C 440 300, 450 240, 483 240" fill="none" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <text x="418" y="312" font-size="19" fill="#5a534b">記錄、傳遞</text>  <line x1="637" y1="240" x2="648" y2="240" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <line x1="812" y1="240" x2="878" y2="240" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <text x="845" y="226" text-anchor="middle" font-size="18" fill="#5a534b">數位化</text>  <path d="M1062 240 C 1200 240, 1250 360, 1376 372" fill="none" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <text x="1190" y="262" font-size="19" fill="#5a534b">成為訓練資料</text>  <path d="M1376 396 C 1250 396, 1150 300, 1062 262" fill="none" stroke="#5a534b" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#a)"/>  <text x="1140" y="358" font-size="18" fill="#5a534b">電腦也產生數位資料</text>  <!-- 下車道：控制 -->  <g stroke="#5a534b" stroke-width="2.5" fill="#fff">    <rect x="850" y="625" width="100" height="70" rx="10" stroke="#a9a196"/>    <rect x="970" y="625" width="110" height="70" rx="10" stroke="#a9a196"/>    <rect x="1100" y="625" width="90" height="70" rx="10" stroke="#a9a196"/>    <rect x="1210" y="625" width="110" height="70" rx="10" stroke="#a9a196"/>    <rect x="1360" y="625" width="140" height="70" rx="10" stroke="#b8442a" stroke-width="3"/>  </g>  <text x="900" y="667" text-anchor="middle" font-size="20" font-weight="700" fill="#7a7168">機器碼</text>  <text x="1025" y="667" text-anchor="middle" font-size="20" font-weight="700" fill="#7a7168">組合語言</text>  <text x="1145" y="667" text-anchor="middle" font-size="20" font-weight="700" fill="#7a7168">C 語言</text>  <text x="1265" y="660" text-anchor="middle" font-size="19" font-weight="700" fill="#7a7168">高階語言</text>  <text x="1265" y="682" text-anchor="middle" font-size="18" fill="#a9a196">經編譯器</text>  <text x="1430" y="660" text-anchor="middle" font-size="21" font-weight="700" fill="#b8442a">自然語言</text>  <text x="1430" y="682" text-anchor="middle" font-size="18" fill="#b8442a">直接說人話</text>  <line x1="952" y1="660" x2="968" y2="660" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <line x1="1082" y1="660" x2="1098" y2="660" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <line x1="1192" y1="660" x2="1208" y2="660" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <line x1="1322" y1="660" x2="1358" y2="660" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <!-- 舊路徑：轉成指令直接進電腦 -->  <path d="M1265 623 C 1265 560, 1330 520, 1376 520" fill="none" stroke="#5a534b" stroke-width="2.5" marker-end="url(#a)"/>  <text x="1300" y="552" font-size="18" fill="#5a534b" text-anchor="end">轉成指令</text>  <!-- 新路徑：人話進 AI 模型 -->  <path d="M1430 623 C 1430 560, 1440 500, 1470 482" fill="none" stroke="#b8442a" stroke-width="3" marker-end="url(#ar)"/>  <text x="1448" y="560" font-size="18" fill="#b8442a">聽懂人話</text>  <!-- 人 → 自然語言 -->  <path d="M330 497 L 330 775 L 1430 775 L 1430 697" fill="none" stroke="#b8442a" stroke-width="2.5" marker-end="url(#ar)"/>  <text x="600" y="766" text-anchor="middle" font-size="19" fill="#b8442a">人直接用人話控制電腦</text>  <!-- 電腦：AI 模型 + 執行指令 -->  <rect x="1380" y="320" width="180" height="240" rx="14" fill="#fff" stroke="#14110e" stroke-width="3"/>  <line x1="1380" y1="470" x2="1560" y2="470" stroke="#14110e" stroke-width="2"/>  <text x="1470" y="306" text-anchor="middle" font-size="19" fill="#5a534b">電腦</text>  <text x="1470" y="380" text-anchor="middle" font-size="24" font-weight="700">AI 模型</text>  <text x="1470" y="408" text-anchor="middle" font-size="19" fill="#5a534b">讀過全部紀錄</text>  <text x="1470" y="431" text-anchor="middle" font-size="19" fill="#5a534b">把人話轉成指令</text>  <line x1="1470" y1="446" x2="1470" y2="468" stroke="#b8442a" stroke-width="3" marker-end="url(#ar)"/>  <text x="1470" y="522" text-anchor="middle" font-size="22" font-weight="700">執行指令</text>  <!-- 機器人與迴圈 -->  <rect x="1620" y="405" width="150" height="90" rx="12" fill="#fff" stroke="#5a534b" stroke-width="2.5" stroke-dasharray="8 6"/>  <text x="1695" y="443" text-anchor="middle" font-size="24" font-weight="700">機器人</text>  <text x="1695" y="474" text-anchor="middle" font-size="19" fill="#5a534b">感測、行動</text>  <line x1="1562" y1="450" x2="1618" y2="450" stroke="#5a534b" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#a)"/>  <path d="M1695 497 L 1695 845 L 120 845 L 120 524" fill="none" stroke="#5a534b" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#a)"/>  <text x="900" y="835" text-anchor="middle" font-size="19" fill="#5a534b">未來：自己蒐集第一手資訊，與真實世界對應</text>  <!-- 人的角色 -->  <text x="900" y="905" text-anchor="middle" font-size="24" font-weight="700" fill="#b8442a">人仍是理解宇宙的一環——繼續探索，別浪費了大腦與身體這樣的寶藏</text>  <text x="900" y="945" text-anchor="middle" font-size="20" fill="#5a534b">未來要學的，是理解宇宙的真理，以及人類思想與情感的基本要素；中間過渡的知識可以淘汰</text></svg></div>
+
+<!--
+四個觀點的地圖。指三處就好，不要逐格唸：
+一、人在左邊——世界進到紀錄，要經過人的理解；那條紅線是全圖唯一的顏色。
+二、兩條線在右邊的電腦框合流：紀錄變成訓練資料，人話變成指令。
+三、下面那一排灰掉的格子——機器碼到高階語言——是中間過渡的知識，正在被淘汰；
+　　留下的是兩端：人，和人話。
+虛線迴圈是未來：機器人自己去對應真實世界。接下來四頁（12–15）就是這張圖的四個角落。
+-->
 
 ---
 
@@ -434,7 +450,7 @@ P 的高度就是 sin(α+β)，它會被 Q 的高度分成兩段：下段 sin α
 數字會漂。演講前一天跑：git rev-list --count HEAD 與 git log --format=%B | grep -c '^Co-Authored-By: Claude'，
 把表格與日期更新。四個數字都要對得上 commits 頁面，台下會有人當場點開。
 
-這一頁和第 31 頁是同一種證據，但更強：第 31 頁是「我用它做了一門課的教材」，
+這一頁和第 32 頁是同一種證據，但更強：第 32 頁是「我用它做了一門課的教材」，
 這一頁是「你正在看的東西」。講完停一下。
 -->
 
@@ -450,7 +466,7 @@ P 的高度就是 sin(α+β)，它會被 Q 的高度分成兩段：下段 sin α
 <!--
 不推銷這套教材。它是一個做好的例子——證明這樣做得出來、證明流程撐得起一整套——
 不是要你回去照用。你的科目、你的學校、你手上的問題，都跟我的不一樣。
-接下來兩頁講哪些可以換、哪些不能省；第 32 頁講怎麼開始。
+接下來兩頁講哪些可以換、哪些不能省；第 33 頁講怎麼開始。
 -->
 
 ---
@@ -530,7 +546,7 @@ P 的高度就是 sin(α+β)，它會被 Q 的高度分成兩段：下段 sin α
 **全場唯一一次提出請求，不要快速帶過。講完停兩秒再翻頁。**
 
 三個動作，一句一個：建自己的 repo；用它辦一場；回傳連結。不是「用我的教材」——
-第 27 頁剛證明整個 repo 就是這樣做出來的，請求自然是「做你自己的」。
+第 28 頁剛證明整個 repo 就是這樣做出來的，請求自然是「做你自己的」。
 回傳一個 repo 連結（或一張截圖），案例頁就長出「上一批老師做出的東西」。方式在案例頁底下，不必當場講。
 
 講法：這件事沒有卡位問題。不會因為別人早開始就輪不到你，也不會因為現在才開始就落後——
